@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?scenebuilder-stylesheet testswitch.vista.css?>
+
+<StackPane fx:id="vista2" prefHeight="883.0" prefWidth="1060.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.LogBoekController">
+
+  	<GridPane fx:id="startPanel">
+     	<columnConstraints>
+        	<ColumnConstraints hgrow="SOMETIMES" />
+        	<ColumnConstraints hgrow="SOMETIMES" />
+        	<ColumnConstraints hgrow="SOMETIMES" />
+     	</columnConstraints>
+     	<rowConstraints>
+         <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+        	<RowConstraints vgrow="SOMETIMES" />
+        	<RowConstraints vgrow="SOMETIMES" />
+     	</rowConstraints>
+     	<children>
+         <VBox alignment="CENTER" minWidth="353.0" styleClass="correndon-blue" GridPane.rowIndex="2">
+            <children>
+               <Label text="Gevonden">
+                  <font>
+                     <Font name="System Bold" size="16.0" />
+                  </font>
+               </Label>
+              	<TableView>
+                 	<columns>
+                    	<TableColumn prefWidth="88.25" text="ID" />
+                    	<TableColumn prefWidth="88.25" text="Datum" />
+                    	<TableColumn prefWidth="88.25" text="Labelnr" />
+                    	<TableColumn prefWidth="88.25" text="Vluchtnr" />
+                 	</columns>
+                 	<effect>
+                    	<Blend />
+                 	</effect>
+              	</TableView>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" styleClass="correndon-blue" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <children>
+               <Label text="Vermist">
+                  <font>
+                     <Font name="System Bold" size="16.0" />
+                  </font>
+               </Label>
+               <TableView>
+                  <columns>
+                     <TableColumn prefWidth="88.25" text="ID" />
+                     <TableColumn prefWidth="88.25" text="Datum" />
+                     <TableColumn prefWidth="88.25" text="Labelnr" />
+                     <TableColumn prefWidth="88.25" text="Vluchtnr" />
+                  </columns>
+                  <effect>
+                     <Blend />
+                  </effect>
+               </TableView>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" styleClass="correndon-blue" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <children>
+               <Label text="Overeenkomst">
+                  <font>
+                     <Font name="System Bold" size="16.0" />
+                  </font>
+               </Label>
+               <TableView>
+                  <columns>
+                     <TableColumn prefWidth="88.25" text="ID" />
+                     <TableColumn prefWidth="88.25" text="Datum" />
+                     <TableColumn prefWidth="88.25" text="Labelnr" />
+                     <TableColumn prefWidth="88.25" text="Vluchtnr" />
+                  </columns>
+                  <effect>
+                     <Blend />
+                  </effect>
+               </TableView>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" styleClass="correndon-blue" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <children>
+               <Label text="Gesloten">
+                  <font>
+                     <Font name="System Bold" size="16.0" />
+                  </font>
+               </Label>
+               <TableView>
+                  <columns>
+                     <TableColumn prefWidth="88.25" text="ID" />
+                     <TableColumn prefWidth="88.25" text="Datum" />
+                     <TableColumn prefWidth="88.25" text="Labelnr" />
+                     <TableColumn prefWidth="88.25" text="Vluchtnr" />
+                  </columns>
+                  <effect>
+                     <Blend />
+                  </effect>
+               </TableView>
+            </children>
+         </VBox>
+         <HBox prefHeight="100.0" prefWidth="200.0" styleClass="correndon-blue" GridPane.columnSpan="3">
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+            <children>
+               <Label text="Logboek">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+               </Label>
+            </children>
+         </HBox>
+     	</children>
+  	</GridPane>
+</StackPane>
