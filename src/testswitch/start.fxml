@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Text?>
 <?scenebuilder-stylesheet testswitch.vista.css?>
 
-<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.MainController">
+<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.StartController">
     <GridPane fx:id="startPanel">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="565.0" minWidth="529.0" prefWidth="535.0" />
@@ -50,13 +50,13 @@
                      <Insets bottom="5.0" top="5.0" />
                   </VBox.margin>
                </AnchorPane>
-               <TableView prefHeight="422.0" prefWidth="1067.0">
+               <TableView fx:id="vermisteTabel" prefHeight="422.0" prefWidth="1067.0">
                   <columns>
-                     <TableColumn minWidth="-1.0" prefWidth="106.7" text="ID" />
-                     <TableColumn minWidth="-1.0" prefWidth="106.7" text="Datum" />
-                     <TableColumn minWidth="-1.0" prefWidth="106.7" text="Labelnummer" />
-                     <TableColumn minWidth="-1.0" prefWidth="106.7" text="Vluchtnr" />
-                     <TableColumn minWidth="-1.0" prefWidth="106.7" text="Bagage" />
+                     <TableColumn fx:id="vermisteIdKolom" minWidth="-1.0" prefWidth="72.0" text="ID" />
+                     <TableColumn fx:id="vermisteDatumKolom" minWidth="-1.0" prefWidth="101.0" text="Datum" />
+                     <TableColumn fx:id="vermisteLabelNummerKolom" minWidth="-1.0" prefWidth="120.0" text="Labelnummer" />
+                     <TableColumn fx:id="vermisteVluchtNrKolom" minWidth="-1.0" prefWidth="107.0" text="Vluchtnr" />
+                     <TableColumn fx:id="vermisteBagageTypeKolom" minWidth="-1.0" prefWidth="134.0" text="Bagage Type" />
                   </columns>
                   <effect>
                      <Blend />
@@ -79,13 +79,13 @@
                      <Insets bottom="5.0" top="5.0" />
                   </VBox.margin>
                </AnchorPane>
-                  <TableView prefHeight="422.0" prefWidth="1067.0">
+                  <TableView fx:id="gevondenTabel" prefHeight="422.0" prefWidth="1067.0">
                     <columns>
-                      <TableColumn minWidth="-1.0" prefWidth="106.7" text="ID" />
-                      <TableColumn minWidth="-1.0" prefWidth="106.7" text="Datum" />
-                        <TableColumn minWidth="-1.0" prefWidth="106.7" text="Labelnummer" />
-                        <TableColumn minWidth="-1.0" prefWidth="106.7" text="Vluchtnr" />
-                        <TableColumn minWidth="-1.0" prefWidth="106.7" text="Bagage" />
+                      <TableColumn fx:id="gevondenIdKolom" minWidth="-1.0" prefWidth="72.0" text="ID" />
+                      <TableColumn fx:id="gevondenDatumKolom" minWidth="-1.0" prefWidth="101.0" text="Datum" />
+                        <TableColumn fx:id="gevondenLabelNummerKolom" minWidth="-1.0" prefWidth="120.0" text="Labelnummer" />
+                        <TableColumn fx:id="gevondenVluchtNrKolom" minWidth="-1.0" prefWidth="107.0" text="Vluchtnr" />
+                        <TableColumn fx:id="gevondenBagageTypeKolom" minWidth="-1.0" prefWidth="134.0" text="Bagage Type" />
                     </columns>
                      <effect>
                         <Blend />

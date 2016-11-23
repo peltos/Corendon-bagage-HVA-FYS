@@ -62,12 +62,12 @@
                <children>
                   <TableView fx:id="gebruikerTableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="gebruikerIDKolom" prefWidth="177.83" text="ID" />
-                      <TableColumn fx:id="naamKolom" prefWidth="177.83" text="Naam" />
-                        <TableColumn fx:id="usernameKolom" prefWidth="177.83" text="Username" />
-                        <TableColumn fx:id="telefoonnummerKolom" prefWidth="177.83" text="Telefoonnummer" />
-                        <TableColumn fx:id="emailKolom" prefWidth="177.83" text="Email" />
-                        <TableColumn fx:id="positieKolom" prefWidth="177.83" text="Positie" />
+                      <TableColumn fx:id="gebruikerIDKolom" prefWidth="89.0" text="ID" />
+                      <TableColumn fx:id="naamKolom" prefWidth="236.0" text="Naam" />
+                        <TableColumn fx:id="usernameKolom" prefWidth="216.0" text="Username" />
+                        <TableColumn fx:id="telefoonnummerKolom" prefWidth="188.0" text="Telefoonnummer" />
+                        <TableColumn fx:id="emailKolom" prefWidth="225.0" text="Email" />
+                        <TableColumn fx:id="positieKolom" prefWidth="114.0" text="Positie" />
                     </columns>
                      <effect>
                         <Blend />
