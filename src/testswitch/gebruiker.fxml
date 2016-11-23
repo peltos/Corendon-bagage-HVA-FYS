@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" styleClass="corr" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.MainController">
+<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" styleClass="corr" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.GebruikerController">
       <GridPane fx:id="startPanel">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" />
@@ -60,14 +60,14 @@
          </HBox>
           <AnchorPane GridPane.rowIndex="2">
                <children>
-                  <TableView AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="gebruikerTableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="177.83" text="ID" />
-                      <TableColumn prefWidth="177.83" text="Naam" />
-                        <TableColumn prefWidth="177.83" text="Username" />
-                        <TableColumn prefWidth="177.83" text="Telefoonnummer" />
-                        <TableColumn prefWidth="177.83" text="Email" />
-                        <TableColumn prefWidth="177.83" text="Positie" />
+                      <TableColumn fx:id="gebruikerIDKolom" prefWidth="177.83" text="ID" />
+                      <TableColumn fx:id="naamKolom" prefWidth="177.83" text="Naam" />
+                        <TableColumn fx:id="usernameKolom" prefWidth="177.83" text="Username" />
+                        <TableColumn fx:id="telefoonnummerKolom" prefWidth="177.83" text="Telefoonnummer" />
+                        <TableColumn fx:id="emailKolom" prefWidth="177.83" text="Email" />
+                        <TableColumn fx:id="positieKolom" prefWidth="177.83" text="Positie" />
                     </columns>
                      <effect>
                         <Blend />
