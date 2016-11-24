@@ -89,6 +89,7 @@ public class MainController {
                                 )
                         );
                         stage.centerOnScreen();
+                        stage.setResizable(false);
                         return;
                     }
                     stage = (Stage) loginButton.getScene().getWindow();
@@ -98,6 +99,7 @@ public class MainController {
                             )
                     );
                     stage.centerOnScreen();
+                        stage.setResizable(false);
                     return;
                 }
                 error.setText("Verkeerde gebruikersnaam of wachtwoord");

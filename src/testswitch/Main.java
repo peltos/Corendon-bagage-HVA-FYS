@@ -26,6 +26,7 @@ public class Main extends Application {
         );
 
         stage.show();
+        stage.setResizable(false);
     }
 
     /**
@@ -40,6 +41,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
 
         Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(MainNavigator.LOGIN));
+        
 
         return mainPane;
     }
