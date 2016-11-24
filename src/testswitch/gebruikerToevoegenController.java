@@ -21,7 +21,6 @@ public class gebruikerToevoegenController {
     private TextField FXVoornaam, FXAchternaam, FXGebruikersnaam;
     @FXML
     private TextField FXWachtwoord, FXEmail, FXTelefoonnummer;
-
     @FXML
     private CheckBox ManagerPosition;
     @FXML
