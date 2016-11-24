@@ -18,13 +18,15 @@ import javafx.stage.Stage;
 public class gebruikerToevoegenController {
 
     @FXML
-    private TextField FXVoornaam, FXAchternaam, FXGebruikersnaam;
+    private TextField FXVoornaam, FXTussenvoegsel, FXAchternaam, FXGebruikersnaam;
     @FXML
     private TextField FXWachtwoord, FXEmail, FXTelefoonnummer;
     @FXML
     private CheckBox ManagerPosition;
     @FXML
-    private Button gebruikerButton;
+    private Button opslaanButton;
+    @FXML
+    private Button cancelButton;
 
     Main Main = new Main();
     Database database = new Database(
