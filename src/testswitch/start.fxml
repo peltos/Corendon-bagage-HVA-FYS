@@ -50,7 +50,7 @@
                      <Insets bottom="5.0" top="5.0" />
                   </VBox.margin>
                </AnchorPane>
-               <TableView fx:id="vermisteTabel" prefHeight="422.0" prefWidth="1067.0">
+               <TableView fx:id="vermisteTabel" maxWidth="535.0" prefHeight="422.0" prefWidth="535.0">
                   <columns>
                      <TableColumn fx:id="vermisteIdKolom" minWidth="-1.0" prefWidth="72.0" text="ID" />
                      <TableColumn fx:id="vermisteDatumKolom" minWidth="-1.0" prefWidth="101.0" text="Datum" />
@@ -79,7 +79,7 @@
                      <Insets bottom="5.0" top="5.0" />
                   </VBox.margin>
                </AnchorPane>
-                  <TableView fx:id="gevondenTabel" prefHeight="422.0" prefWidth="1067.0">
+                  <TableView fx:id="gevondenTabel" maxWidth="535.0" prefHeight="422.0" prefWidth="535.0">
                     <columns>
                       <TableColumn fx:id="gevondenIdKolom" minWidth="-1.0" prefWidth="72.0" text="ID" />
                       <TableColumn fx:id="gevondenDatumKolom" minWidth="-1.0" prefWidth="101.0" text="Datum" />
