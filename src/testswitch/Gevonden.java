@@ -15,77 +15,37 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Gevonden {
 
-    private final SimpleIntegerProperty gebruikerID = new SimpleIntegerProperty();
-    private final SimpleStringProperty voornaam = new SimpleStringProperty();
-    private final SimpleStringProperty tussenvoegsel = new SimpleStringProperty();
-    private final SimpleStringProperty achternaam = new SimpleStringProperty();
-    private final SimpleStringProperty naam = new SimpleStringProperty();
-    private final SimpleStringProperty username = new SimpleStringProperty();
-    private final SimpleIntegerProperty telefoonnummer = new SimpleIntegerProperty();
-    private final SimpleStringProperty email = new SimpleStringProperty();
-    private final SimpleIntegerProperty positie = new SimpleIntegerProperty();
-    
-    public void samenvoegenNaam(String voornaam, String tussenvoegsel, String achternaam){
-        if (tussenvoegsel == null) {
-            this.naam.set(voornaam + " " + achternaam);
-        }else {
-            this.naam.set(voornaam + " " + tussenvoegsel + " " + achternaam);
-        } 
-    }
+    private final SimpleIntegerProperty gevondenID = new SimpleIntegerProperty();
+    private final SimpleStringProperty date = new SimpleStringProperty();
+    private final SimpleIntegerProperty labelNr = new SimpleIntegerProperty();
+    private final SimpleIntegerProperty vluchtNr = new SimpleIntegerProperty();
     
     //Setters
-    public void setGebruikerID(int gebruikerID){
-        this.gebruikerID.set(gebruikerID);
+    public void setGevondenID(int gevondenID){
+        this.gevondenID.set(gevondenID);
     }
-    public void setVoornaam(String voornaam){
-        this.voornaam.set(voornaam);
+    public void setDatum(String date){
+        this.date.set(date);
     }
-    public void setTussenvoegsel(String tussenvoegsel){
-        this.tussenvoegsel.set(tussenvoegsel);
+    public void setLabelNr(int labelNr){
+        this.labelNr.set(labelNr);
     }
-    public void setAchternaam(String achternaam){
-        this.achternaam.set(achternaam);
-    }
-    public void setUsername(String username){
-        this.username.set(username);
-    }
-    public void setTelefoonnummer(int telefoonnummer){
-        this.telefoonnummer.set(telefoonnummer);
-    }
-    public void setEmail(String email){
-        this.email.set(email);
-    }
-    public void setPositie(int positie){
-        this.positie.set(positie);
+    public void setVluchtNr(int vluchtNr){
+        this.vluchtNr.set(vluchtNr);
     }
     
     //Getters
-    public Integer getGebruikerID(){
-        return gebruikerID.get();
+    public Integer getGevondenID(){
+        return gevondenID.get();
     }
-    public String getVoornaam(){
-        return voornaam.get();
+    public String getDatum(){
+        return date.get();
     }
-    public String getTussenvoegsel(){
-        return tussenvoegsel.get();
+    public Integer setLabelNr(){
+        return labelNr.get();
     }
-    public String getAchternaam(){
-        return achternaam.get();
-    }
-    public String getUsername(){
-        return username.get();
-    }
-    public Integer getTelefoonnummer(){
-        return telefoonnummer.get();
-    }
-    public String getEmail(){
-        return email.get();
-    }
-    public Integer getPositie(){
-        return positie.get();
-    }
-    public String getNaam(){
-        return naam.get();
+    public Integer setVluchtNr(){
+        return vluchtNr.get();
     }
          
 }

@@ -35,9 +35,9 @@
                      <Font name="System Bold" size="16.0" />
                   </font>
                </Label>
-              	<TableView fx:id="gebruikerTableView">
+              	<TableView fx:id="gevondenTableView">
                  	<columns>
-                    	<TableColumn fx:id="gebruikerIDKolom" prefWidth="88.25" text="ID" />
+                    	<TableColumn fx:id="gevondenIDKolom" prefWidth="88.25" text="ID" />
                     	<TableColumn fx:id="dateKolom" prefWidth="88.25" text="Datum" />
                     	<TableColumn fx:id="labelNrKolom" prefWidth="88.25" text="Labelnr" />
                     	<TableColumn fx:id="vluchtNrKolom" prefWidth="88.25" text="Vluchtnr" />
