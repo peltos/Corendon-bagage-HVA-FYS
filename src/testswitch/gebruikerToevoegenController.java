@@ -46,7 +46,7 @@ public class gebruikerToevoegenController {
         Statement stmt = null;
         String query = "INSERT INTO Gebruikers VALUES (" + FXVoornaam.getText() + "," + FXAchternaam.getText() + ")";
         try {
-            stmt = con.createStatement();
+//            stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
         } catch (SQLException e) {
             //print exception
