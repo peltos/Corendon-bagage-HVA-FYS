@@ -13,7 +13,7 @@ import javafx.beans.property.SimpleStringProperty;
  * @author Daan Dirker
  */
 
-public class Gebruiker {
+public class Gevonden {
 
     private final SimpleIntegerProperty gebruikerID = new SimpleIntegerProperty();
     private final SimpleStringProperty voornaam = new SimpleStringProperty();

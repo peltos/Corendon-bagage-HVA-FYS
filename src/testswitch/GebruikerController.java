@@ -20,15 +20,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class GebruikerController implements Initializable {
 
     //@FXML public Button refreshButton;
-    @FXML public TableView<Gebruiker> gebruikerTableView;
-    @FXML public TableColumn<Gebruiker, Integer> gebruikerIDKolom;
-    @FXML public TableColumn<Gebruiker, String> naamKolom;
-    @FXML public TableColumn<Gebruiker, String> usernameKolom;
-    @FXML public TableColumn<Gebruiker, Integer> telefoonnummerKolom;
-    @FXML public TableColumn<Gebruiker, String> emailKolom;
-    @FXML public TableColumn<Gebruiker, Integer> positieKolom;
+    @FXML public TableView<Gevonden> gebruikerTableView;
+    @FXML public TableColumn<Gevonden, Integer> gebruikerIDKolom;
+    @FXML public TableColumn<Gevonden, String> naamKolom;
+    @FXML public TableColumn<Gevonden, String> usernameKolom;
+    @FXML public TableColumn<Gevonden, Integer> telefoonnummerKolom;
+    @FXML public TableColumn<Gevonden, String> emailKolom;
+    @FXML public TableColumn<Gevonden, Integer> positieKolom;
     
-    private ObservableList<Gebruiker> data = FXCollections.observableArrayList();
+    private ObservableList<Gevonden> data = FXCollections.observableArrayList();
 
     @FXML
     private void writeTableData() {
@@ -44,7 +44,7 @@ public class GebruikerController implements Initializable {
 
             //Gaat net zo lang door, tot er geen records meer zijn
             while (result.next()) {
-                Gebruiker gebruiker = new Gebruiker();
+                Gevonden gebruiker = new Gevonden();
                 gebruiker.setGebruikerID(result.getInt("ID"));
                 gebruiker.setVoornaam(result.getString("Voornaam"));
                 gebruiker.setTussenvoegsel(result.getString("Tussenvoegsel"));
@@ -78,17 +78,17 @@ public class GebruikerController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //Kollomen worden gelinkt aan Atributen van de Person class
         gebruikerIDKolom.setCellValueFactory(
-                new PropertyValueFactory<Gebruiker, Integer>("gebruikerID"));
+                new PropertyValueFactory<Gevonden, Integer>("gebruikerID"));
         naamKolom.setCellValueFactory(
-                new PropertyValueFactory<Gebruiker, String>("naam"));
+                new PropertyValueFactory<Gevonden, String>("naam"));
         usernameKolom.setCellValueFactory(
-                new PropertyValueFactory<Gebruiker, String>("username"));
+                new PropertyValueFactory<Gevonden, String>("username"));
         telefoonnummerKolom.setCellValueFactory(
-                new PropertyValueFactory<Gebruiker, Integer>("telefoonnummer"));
+                new PropertyValueFactory<Gevonden, Integer>("telefoonnummer"));
         emailKolom.setCellValueFactory(
-                new PropertyValueFactory<Gebruiker, String>("email"));
+                new PropertyValueFactory<Gevonden, String>("email"));
         positieKolom.setCellValueFactory(
-                new PropertyValueFactory<Gebruiker, Integer>("positie"));
+                new PropertyValueFactory<Gevonden, Integer>("positie"));
                         
         gebruikerTableView.setItems(data);
         writeTableData();
