@@ -3,12 +3,11 @@ package testswitch;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Enumeration;
-import java.util.logging.Level;
-import java.util.logging.Logger;
  
 /**
  *
@@ -68,12 +67,16 @@ public class Database {
             logException(eSQL);
         }
     }
+    
+    public PreparedStatement prepareStatement(String query) throws SQLException {
+         return connection.prepareStatement(query);
+    }
+
  
     public ResultSet executeQuery(String query) {
         Statement statement;
         try {
             statement = connection.createStatement();
- 
             ResultSet result = statement.executeQuery(query);
            
             return result;

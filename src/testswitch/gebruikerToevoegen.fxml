@@ -68,7 +68,7 @@
                     	<TextField fx:id="FXTelefoonnummer" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                     	<TextField fx:id="FXEmail" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      <CheckBox fx:id="ManagerPosition" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                    	<Button fx:id="opslaanButton" mnemonicParsing="false" text="Opslaan" GridPane.rowIndex="8" />
+                    	<Button fx:id="opslaanButton" mnemonicParsing="false" onAction="#handle" text="Opslaan" GridPane.rowIndex="8" />
                      <Button fx:id="gebruikerToevoegenCancelButton" mnemonicParsing="false" onAction="#gebruikerToevoegenCancel" text="Cancel" GridPane.rowIndex="8">
                         <GridPane.margin>
                            <Insets left="70.0" />

@@ -41,13 +41,15 @@ public class gebruikerToevoegenController {
     Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
 
     public void handle(ActionEvent event) throws SQLException {
-        String sql = "INSERT INTO testDatabase.Gebruikers (Voornaam) VALUES " + FXVoornaam.getText();
+        String query = "INSERT INTO testDatabase.Gebruikers (Voornaam) VALUES (?);";
+        PreparedStatement statement = database.prepareStatement(query);
         try {
-
-//            database.executeQuery(sql);
-       
+            statement.setString(1, FXVoornaam.getText());
+            statement.executeUpdate();
         } catch (Exception e) {
-
+             // log info somewhere at least until it's properly tested/
+             // you implement a better way of handling the error
+             e.printStackTrace(System.err);
         }
     }
     
