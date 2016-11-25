@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -31,6 +32,8 @@ public class gebruikerToevoegenController {
     @FXML
     private CheckBox ManagerPosition;
     @FXML
+    private int positionCheck;
+    @FXML
     private Button gebruikerButton;
 
     public final String DB_NAME = "testDatabase";
@@ -43,17 +46,22 @@ public class gebruikerToevoegenController {
     public void handle(ActionEvent event) throws SQLException {
         String query = "INSERT INTO testDatabase.Gebruikers"
                 + " (Voornaam, Tussenvoegsel, Achternaam,"
-                + " Username, Password, Telefoonnummer, Email)"
-                + " VALUES (?,?,?,?,?,?,?);";
+                + " Username, Password, Telefoonnummer,  Email, Positie)"
+                + " VALUES (?,?,?,?,?,?,?,?);";
         PreparedStatement statement = database.prepareStatement(query);
         try {
             if (FXVoornaam.getText().equals("") || FXTussenvoegsel.getText().equals("")
                     || FXAchternaam.getText().equals("") || FXGebruikersnaam.getText().equals("")
                     || FXWachtwoord.getText().equals("")) 
             {
-                System.out.println("error");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Niet alles ingevult");
+                    alert.setHeaderText("Error");
+                    alert.setContentText("Voer alles in");
+                    alert.showAndWait();
                 return;
             }
+            
             statement.setString(1, FXVoornaam.getText());
             statement.setString(2, FXTussenvoegsel.getText());
             statement.setString(3, FXAchternaam.getText());
@@ -61,12 +69,16 @@ public class gebruikerToevoegenController {
             statement.setString(5, FXWachtwoord.getText());
             statement.setString(6, FXTelefoonnummer.getText());
             statement.setString(7, FXEmail.getText());
+            
+            if (ManagerPosition.isSelected()) {
+                statement.setInt(8, 1);
+            }else{
+                statement.setInt(8, 0);
+            }
 
             statement.executeUpdate();
 
         } catch (Exception e) {
-            // log info somewhere at least until it's properly tested/
-            // you implement a better way of handling the error
             e.printStackTrace(System.err);
         }
         MainNavigator.loadVista(MainNavigator.GEBRUIKER);
