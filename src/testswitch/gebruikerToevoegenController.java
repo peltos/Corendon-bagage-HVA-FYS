@@ -50,4 +50,12 @@ public class gebruikerToevoegenController {
 
         }
     }
+    
+    
+    
+    
+    @FXML
+    private void gebruikerToevoegenCancel(ActionEvent event) throws IOException {
+        MainNavigator.loadVista(MainNavigator.GEBRUIKER);
+    }
 }
