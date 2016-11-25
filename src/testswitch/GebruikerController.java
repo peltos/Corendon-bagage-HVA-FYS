@@ -1,5 +1,6 @@
 package testswitch;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +28,7 @@ public class GebruikerController implements Initializable {
     @FXML public TableColumn<Gebruiker, Integer> telefoonnummerKolom;
     @FXML public TableColumn<Gebruiker, String> emailKolom;
     @FXML public TableColumn<Gebruiker, Integer> positieKolom;
-    
+    @FXML public Button gebruikerToevoegenButton;
     private ObservableList<Gebruiker> data = FXCollections.observableArrayList();
 
     @FXML
@@ -73,7 +74,13 @@ public class GebruikerController implements Initializable {
         writeTableData();
     }
     */
-
+    
+    @FXML
+    private void gebruikerToevoegen(ActionEvent event) throws IOException {
+        System.out.println("gebruikerToevoegen running");
+        MainNavigator.loadVista(MainNavigator.GEBRUIKER_TOEVOEGEN);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Kollomen worden gelinkt aan Atributen van de Person class
