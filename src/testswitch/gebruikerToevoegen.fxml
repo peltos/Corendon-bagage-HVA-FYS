@@ -55,6 +55,7 @@
                 	</rowConstraints>
                  	<children>
                     	<Label text="Voornaam:" />
+                     <Label text="Tussenvoegsel" GridPane.rowIndex="1" />
                     	<Label text="Achternaam" GridPane.rowIndex="2" />
                     	<Label text="Gebruikersnaam" GridPane.rowIndex="3" />
                     	<Label text="Wachtwoord" GridPane.rowIndex="4" />
@@ -62,6 +63,7 @@
                     	<Label text="Email" GridPane.rowIndex="6" />
                     	<Label text="Manager?" GridPane.rowIndex="7" />
                     	<TextField fx:id="FXVoornaam" GridPane.columnIndex="1" />
+                     <TextField fx:id="FXTussenvoegsel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     	<TextField fx:id="FXAchternaam" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     	<TextField fx:id="FXGebruikersnaam" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                     	<TextField fx:id="FXWachtwoord" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -74,8 +76,6 @@
                            <Insets left="70.0" />
                         </GridPane.margin>
                      </Button>
-                     <Label text="Tussenvoegsel" GridPane.rowIndex="1" />
-                     <TextField fx:id="FXTussenvoegsel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                  	</children>
               	</GridPane>
            	</children>
