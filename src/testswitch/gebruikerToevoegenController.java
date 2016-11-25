@@ -1,6 +1,9 @@
 package testswitch;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,52 +13,41 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import testswitch.Database;
 
 /**
  *
- * @author Heaven
+ * @author Maarten
  */
 public class gebruikerToevoegenController {
 
+    //TextFields
     @FXML
     private TextField FXVoornaam, FXTussenvoegsel, FXAchternaam, FXGebruikersnaam;
     @FXML
     private TextField FXWachtwoord, FXEmail, FXTelefoonnummer;
+    
+    //Boolean checkbox positie
     @FXML
     private CheckBox ManagerPosition;
     @FXML
-    private Button opslaanButton;
-    @FXML
-    private Button cancelButton;
+    private Button gebruikerButton;
 
-    Main Main = new Main();
-    Database database = new Database(
-            "database",
-            "ronpelt.synology.me:3306",
-            "root",
-            "kGjMtEO06BPiu2u4"
-    );
+    public final String DB_NAME = "testDatabase";
+    public final String DB_SERVER = "ronpelt.synology.me:3306";
+    public final String DB_ACCOUNT = "root";
+    public final String DB_PASSWORD = "kGjMtEO06BPiu2u4";
 
-    @FXML
-    private void SaveToDB(ActionEvent event) throws IOException, SQLException {
-        // write all info to DB.
+    Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
 
-        //FXAchternaam.setText(FXVoornaam.getText());
-        //FXAchternaam.setText("asd123123123");
-        System.out.println(FXVoornaam.getText());
-
-        Statement stmt = null;
-        String query = "INSERT INTO Gebruikers VALUES (" + FXVoornaam.getText() + "," + FXAchternaam.getText() + ")";
+    public void handle(ActionEvent event) throws SQLException {
+        String sql = "INSERT INTO testDatabase.Gebruikers (Voornaam) VALUES " + FXVoornaam.getText();
         try {
-//            stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-        } catch (SQLException e) {
-            //print exception
+
+//            database.executeQuery(sql);
+       
+        } catch (Exception e) {
+
         }
-
     }
-
-//    ResultSet result = database.executeQuery("INSERT INTO testDatabase.Gebruikers(voornaam) VALUES" + FXVoornaam.getText());
 }
-
-
