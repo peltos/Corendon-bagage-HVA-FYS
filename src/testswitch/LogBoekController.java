@@ -44,7 +44,7 @@ public class LogBoekController {
     private final ObservableList<Gevonden> data = FXCollections.observableArrayList();
 
     private void DatabaseLogboek() {
-
+        System.out.println("sxqsx");
     }
 
     @FXML
