@@ -106,4 +106,20 @@ public class StartController implements Initializable {
         writeTableData("Vermist");
     }
 
+    @FXML
+    private void gevondenToevoegen(ActionEvent event) {
+        MainNavigator.loadVista(MainNavigator.GEVONDEN);
+
+    }
+    
+    @FXML
+    private void vermistToevoegen(ActionEvent event) {
+        MainNavigator.loadVista(MainNavigator.VERMIST);
+
+    }
+    
+    
+    
+    
+    
 }

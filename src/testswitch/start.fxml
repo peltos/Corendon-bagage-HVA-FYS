@@ -44,7 +44,7 @@
                            <Font name="System Bold" size="16.0" />
                         </font>
                      </Label>
-                     <Button layoutX="437.0" mnemonicParsing="false" text="+ Toevoegen" />
+                     <Button fx:id="VermistToevoegenButton" layoutX="437.0" mnemonicParsing="false" onAction="#vermistToevoegen" text="+ Toevoegen" />
                   </children>
                   <VBox.margin>
                      <Insets bottom="5.0" top="5.0" />
@@ -73,7 +73,7 @@
                            <Font name="System Bold" size="16.0" />
                         </font>
                      </Label>
-                     <Button layoutX="441.0" mnemonicParsing="false" text="+ Toevoegen" />
+                     <Button fx:id="gevondenToevoegenButton" layoutX="441.0" mnemonicParsing="false" onAction="#gevondenToevoegen" text="+ Toevoegen" />
                   </children>
                   <VBox.margin>
                      <Insets bottom="5.0" top="5.0" />
