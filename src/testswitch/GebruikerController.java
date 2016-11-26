@@ -29,6 +29,7 @@ public class GebruikerController implements Initializable {
     @FXML public TableColumn<Gebruiker, String> emailKolom;
     @FXML public TableColumn<Gebruiker, Integer> positieKolom;
     @FXML public Button gebruikerToevoegenButton;
+    
     private ObservableList<Gebruiker> data = FXCollections.observableArrayList();
 
     @FXML
