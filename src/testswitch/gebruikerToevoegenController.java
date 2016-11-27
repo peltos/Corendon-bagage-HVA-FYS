@@ -18,23 +18,18 @@ import testswitch.Database;
 
 /**
  *
- * @author Maarten
+ * @author Alexander/Maarten
  */
 public class gebruikerToevoegenController {
 
     //TextFields
-    @FXML
-    private TextField FXVoornaam, FXTussenvoegsel, FXAchternaam, FXGebruikersnaam;
-    @FXML
-    private TextField FXWachtwoord, FXEmail, FXTelefoonnummer;
+    @FXML private TextField FXVoornaam, FXTussenvoegsel, FXAchternaam, FXGebruikersnaam;
+    @FXML private TextField FXWachtwoord, FXEmail, FXTelefoonnummer;
 
     //Boolean checkbox positie
-    @FXML
-    private CheckBox ManagerPosition;
-    @FXML
-    private int positionCheck;
-    @FXML
-    private Button gebruikerButton;
+    @FXML private CheckBox ManagerPosition;
+    @FXML private int positionCheck;
+    @FXML private Button gebruikerButton;
 
     public final String DB_NAME = "testDatabase";
     public final String DB_SERVER = "ronpelt.synology.me:3306";
