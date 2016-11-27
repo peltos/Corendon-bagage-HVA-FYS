@@ -30,22 +30,38 @@ public class LogBoekController {
     *                                           *
     *********************************************/
 
-    @FXML
-    public TableView<Gevonden> gevondenTableView;
-    @FXML
-    public TableColumn<Gevonden, Integer> gevondenIDKolom;
-    @FXML
-    public TableColumn<Gevonden, Date> dateKolom;
-    @FXML
-    public TableColumn<Gevonden, Integer> labelNrKolom;
-    @FXML
-    public TableColumn<Gevonden, Integer> vluchtNrKolom;
+    //Gevonden bagage
+    @FXML public TableView<Bagage> gevondenTabel;
+    @FXML public TableColumn<Bagage, Integer> gevondenIdKolom;
+    @FXML public TableColumn<Bagage, Integer> gevondenDatumKolom;
+    @FXML public TableColumn<Bagage, Integer> gevondenLabelNummerKolom;
+    @FXML public TableColumn<Bagage, Integer> gevondenVluchtNrKolom;
+    
+    //Vermiste bagage
+    @FXML public TableView<Bagage> vermisteTabel;
+    @FXML public TableColumn<Bagage, Integer> vermisteIdKolom;
+    @FXML public TableColumn<Bagage, Integer> vermisteDatumKolom;
+    @FXML public TableColumn<Bagage, Integer> vermisteLabelNummerKolom;
+    @FXML public TableColumn<Bagage, Integer> vermisteVluchtNrKolom;
+    @FXML public TableColumn<Bagage, String> vermisteBagageTypeKolom;
+    
+    //Gesloten Bagage
+    @FXML public TableView<Bagage> geslotenTableView;
+    @FXML public TableColumn<Bagage, Integer> idKolom;
+    @FXML public TableColumn<Bagage, Integer> datumKolom;
+    @FXML public TableColumn<Bagage, Integer> labelnummerKolom;
+    @FXML public TableColumn<Bagage, Integer> vluchtnummerKolom;
+    
+    //Overeenkomst Bagage
+    @FXML public TableView<Bagage> overeenkomstTableView;
+    @FXML public TableColumn<Bagage, Integer> overeenkomstIdKolom;
+    @FXML public TableColumn<Bagage, Integer> overeenkomstDatumKolom;
+    @FXML public TableColumn<Bagage, Integer> overeenkomstLabelNummerKolom;
 
-    private final ObservableList<Gevonden> data = FXCollections.observableArrayList();
-
-    private void DatabaseLogboek() {
-       
-    }
+    private final ObservableList<Bagage> gevondenData = FXCollections.observableArrayList();
+    private final ObservableList<Bagage> vermisteData = FXCollections.observableArrayList();
+    private ObservableList<Bagage> geslotenData = FXCollections.observableArrayList();
+    private ObservableList<Bagage> overeenkomstData = FXCollections.observableArrayList();
 
     @FXML
     private void writeTableData() {
@@ -59,17 +75,45 @@ public class LogBoekController {
 
         try {
             ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gevonden;");
-
-            //Gaat net zo lang door, tot er geen records meer zijn
             while (result.next()) {
-                Gevonden gevonden = new Gevonden();
-                gevonden.setGevondenID(result.getInt("idGevonden"));
-                gevonden.setDatum(result.getString("Datum"));
-                gevonden.setLabelNr(result.getInt("Labelnummer"));
-                gevonden.setVluchtNr(result.getInt("Vluchtnummer"));
-
-                data.add(gevonden);
+                Bagage bagage = new Bagage();
+                bagage.setId(result.getInt("idGevonden"));
+                bagage.setDatum(result.getInt("Datum"));
+                bagage.setLabelNummer(result.getInt("Labelnummer"));
+                bagage.setVluchtNr(result.getInt("Vluchtnummer"));
+                gevondenData.add(bagage);
             }
+            
+            result = database.executeQuery("SELECT * FROM testDatabase.Vermist;");
+            while (result.next()) {
+                Bagage bagage = new Bagage();
+                bagage.setId(result.getInt("idVermist"));
+                bagage.setDatum(result.getInt("Datum"));
+                bagage.setLabelNummer(result.getInt("Labelnummer"));
+                bagage.setVluchtNr(result.getInt("Vluchtnummer"));
+                vermisteData.add(bagage);
+            }
+            
+            result = database.executeQuery("SELECT * FROM testDatabase.Gesloten;");
+            while (result.next()) {
+                Bagage bagage = new Bagage();
+                bagage.setId(result.getInt("idGesloten"));
+                bagage.setDatum(result.getInt("Datum"));               
+                bagage.setLabelNummer(result.getInt("Labelnummer"));
+                bagage.setVluchtNr(result.getInt("VluchtNr"));
+                bagage.setBagageType(result.getString("BagageType"));
+                geslotenData.add(bagage);
+            }
+            
+            result = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst;");
+            while (result.next()) {
+                Bagage bagage = new Bagage();
+                bagage.setId(result.getInt("OvereenkomstID"));
+                bagage.setDatum(result.getInt("Datum"));
+                bagage.setLabelNummer(result.getInt("Labelnummer"));
+                overeenkomstData.add(bagage);
+            }
+
 
         } catch (SQLException ex) {
 
@@ -85,9 +129,7 @@ public class LogBoekController {
     *************************/
     
     
-    @FXML
-    private GridPane startPanel;
-
+    @FXML private GridPane startPanel;
     static int aantalVermist = 0;
     static int aantalGevonden = 0;
     static int aantalOvereenkomst = 0;
@@ -164,17 +206,50 @@ public class LogBoekController {
     
     //URL url, ResourceBundle rb
     public void initialize() {
+        
+        //Kollomen worden gelinkt aan Atributen van de Person class
+        gevondenIdKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("id"));
+        gevondenDatumKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("datum"));
+        gevondenLabelNummerKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("labelNummer"));
+        gevondenVluchtNrKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("vluchtNr"));
+        
+        //Vermist
+        vermisteIdKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("id"));
+        vermisteDatumKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("datum"));
+        vermisteLabelNummerKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("labelNummer"));
+        vermisteVluchtNrKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("vluchtNr"));
+        
+        //Gesloten
+        idKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("id"));
+        datumKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("datum"));
+        labelnummerKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("labelNummer"));
+        vluchtnummerKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("vluchtNr"));
+        
+        //Overeenkomst
+        overeenkomstIdKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("id"));
+        overeenkomstDatumKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("datum"));
+        overeenkomstLabelNummerKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("labelNummer"));
+        
         createPieChart();
-        gevondenIDKolom.setCellValueFactory(
-                new PropertyValueFactory<Gevonden, Integer>("idGevonden"));
-        dateKolom.setCellValueFactory(
-                new PropertyValueFactory<Gevonden, Date>("Datum"));
-        labelNrKolom.setCellValueFactory(
-                new PropertyValueFactory<Gevonden, Integer>("Labelnummer"));
-        vluchtNrKolom.setCellValueFactory(
-                new PropertyValueFactory<Gevonden, Integer>("Vluchtnummer"));
-
-        gevondenTableView.setItems(data);
+        gevondenTabel.setItems(gevondenData);
+        vermisteTabel.setItems(vermisteData);
+        geslotenTableView.setItems(geslotenData);
+        overeenkomstTableView.setItems(overeenkomstData);
         writeTableData();
 
     }

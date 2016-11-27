@@ -35,10 +35,10 @@
          <children>
             <TableView fx:id="overeenkomstTableView" prefHeight="422.0" prefWidth="1067.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
               <columns>
-                <TableColumn fx:id="idKolom" minWidth="-1.0" prefWidth="266.75" text="ID" />
-                <TableColumn fx:id="datumKolom" minWidth="-1.0" prefWidth="266.75" text="Datum" />
-                  <TableColumn fx:id="labelNummerKolom" minWidth="-1.0" prefWidth="266.75" text="Labelnummer" />
-                  <TableColumn fx:id="bagageTypeKolom" minWidth="-1.0" prefWidth="266.75" text="Bagage" />
+                <TableColumn fx:id="overeenkomstIdKolom" minWidth="-1.0" prefWidth="266.75" text="ID" />
+                <TableColumn fx:id="overeenkomstDatumKolom" minWidth="-1.0" prefWidth="266.75" text="Datum" />
+                  <TableColumn fx:id="overeenkomstLabelNummerKolom" minWidth="-1.0" prefWidth="266.75" text="Labelnummer" />
+                  <TableColumn fx:id="overeenkomstBagageTypeKolom" minWidth="-1.0" prefWidth="266.75" text="Bagage Type" />
               </columns>
                <effect>
                   <Blend />

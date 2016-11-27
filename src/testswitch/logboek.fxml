@@ -35,12 +35,12 @@
                      <Font name="System Bold" size="16.0" />
                   </font>
                </Label>
-              	<TableView fx:id="gevondenTableView">
+              	<TableView fx:id="gevondenTabel">
                  	<columns>
-                    	<TableColumn fx:id="gevondenIDKolom" prefWidth="88.25" text="ID" />
-                    	<TableColumn fx:id="dateKolom" prefWidth="88.25" text="Datum" />
-                    	<TableColumn fx:id="labelNrKolom" prefWidth="88.25" text="Labelnr" />
-                    	<TableColumn fx:id="vluchtNrKolom" prefWidth="88.25" text="Vluchtnr" />
+                    	<TableColumn fx:id="gevondenIdKolom" prefWidth="88.25" text="ID" />
+                    	<TableColumn fx:id="gevondenDatumKolom" prefWidth="88.25" text="Datum" />
+                    	<TableColumn fx:id="gevondenLabelNummerKolom" prefWidth="88.25" text="Labelnr" />
+                    	<TableColumn fx:id="gevondenVluchtNrKolom" prefWidth="88.25" text="Vluchtnr" />
                  	</columns>
                  	<effect>
                     	<Blend />
@@ -55,12 +55,12 @@
                      <Font name="System Bold" size="16.0" />
                   </font>
                </Label>
-               <TableView>
+               <TableView fx:id="vermisteTabel" prefHeight="400.0" prefWidth="356.0">
                   <columns>
-                     <TableColumn prefWidth="88.25" text="ID" />
-                     <TableColumn prefWidth="88.25" text="Datum" />
-                     <TableColumn prefWidth="88.25" text="Labelnr" />
-                     <TableColumn prefWidth="88.25" text="Vluchtnr" />
+                     <TableColumn fx:id="vermisteIdKolom" prefWidth="88.25" text="ID" />
+                     <TableColumn fx:id="vermisteDatumKolom" prefWidth="88.25" text="Datum" />
+                     <TableColumn fx:id="vermisteLabelNummerKolom" prefWidth="88.25" text="Labelnr" />
+                     <TableColumn fx:id="vermisteVluchtNrKolom" prefWidth="86.0" text="Vluchtnr" />
                   </columns>
                   <effect>
                      <Blend />
@@ -75,12 +75,11 @@
                      <Font name="System Bold" size="16.0" />
                   </font>
                </Label>
-               <TableView>
+               <TableView fx:id="overeenkomstTableView" prefHeight="400.0" prefWidth="219.0">
                   <columns>
-                     <TableColumn prefWidth="88.25" text="ID" />
-                     <TableColumn prefWidth="88.25" text="Datum" />
-                     <TableColumn prefWidth="88.25" text="Labelnr" />
-                     <TableColumn prefWidth="88.25" text="Vluchtnr" />
+                     <TableColumn fx:id="overeenkomstIdKolom" prefWidth="88.25" text="ID" />
+                     <TableColumn fx:id="overeenkomstDatumKolom" prefWidth="88.25" text="Datum" />
+                     <TableColumn fx:id="overeenkomstLabelNummerKolom" prefWidth="88.25" text="Labelnr" />
                   </columns>
                   <effect>
                      <Blend />
@@ -95,12 +94,12 @@
                      <Font name="System Bold" size="16.0" />
                   </font>
                </Label>
-               <TableView>
+               <TableView fx:id="geslotenTableView">
                   <columns>
-                     <TableColumn prefWidth="88.25" text="ID" />
-                     <TableColumn prefWidth="88.25" text="Datum" />
-                     <TableColumn prefWidth="88.25" text="Labelnr" />
-                     <TableColumn prefWidth="88.25" text="Vluchtnr" />
+                     <TableColumn fx:id="idKolom" prefWidth="88.25" text="ID" />
+                     <TableColumn fx:id="datumKolom" prefWidth="88.25" text="Datum" />
+                     <TableColumn fx:id="labelnummerKolom" prefWidth="88.25" text="Labelnr" />
+                     <TableColumn fx:id="vluchtnummerKolom" prefWidth="88.25" text="Vluchtnr" />
                   </columns>
                   <effect>
                      <Blend />

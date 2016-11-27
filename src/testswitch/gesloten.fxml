@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Text?>
 <?scenebuilder-stylesheet testswitch.vista.css?>
 
-<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" stylesheets="@vista.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="testswitch.MainController">
+<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.GeslotenController">
     <GridPane fx:id="startPanel">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="565.0" minWidth="529.0" prefWidth="535.0" />
@@ -33,13 +33,13 @@
          <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TableView prefHeight="422.0" prefWidth="1067.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <TableView fx:id="geslotenTableView" prefHeight="422.0" prefWidth="1067.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
               <columns>
-                <TableColumn minWidth="-1.0" prefWidth="213.4" text="ID" />
-                <TableColumn minWidth="-1.0" prefWidth="213.4" text="Datum" />
-                  <TableColumn minWidth="-1.0" prefWidth="213.4" text="Labelnummer" />
-                  <TableColumn minWidth="-1.0" prefWidth="213.4" text="Vluchtnr" />
-                  <TableColumn minWidth="-1.0" prefWidth="213.4" text="Bagage" />
+                <TableColumn fx:id="idKolom" minWidth="-1.0" prefWidth="213.4" text="ID" />
+                <TableColumn fx:id="datumKolom" minWidth="-1.0" prefWidth="213.4" text="Datum" />
+                  <TableColumn fx:id="labelnummerKolom" minWidth="-1.0" prefWidth="213.4" text="Labelnummer" />
+                  <TableColumn fx:id="vluchtnummerKolom" minWidth="-1.0" prefWidth="213.4" text="Vluchtnr" />
+                  <TableColumn fx:id="bagagetypeKolom" minWidth="-1.0" prefWidth="213.4" text="Bagage Type" />
               </columns>
                <effect>
                   <Blend />

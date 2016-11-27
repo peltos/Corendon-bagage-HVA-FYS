@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package testswitch;
 
 import java.net.URL;
@@ -8,25 +13,24 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
- * @author Daan Dirker
- * 
+ *
+ * @author Daan
  */
-
-public class OvereenkomstController implements Initializable{
+public class GeslotenController implements Initializable {
     
-    @FXML public TableView<Bagage> overeenkomstTableView;
-    @FXML public TableColumn<Bagage, Integer> overeenkomstIdKolom;
-    @FXML public TableColumn<Bagage, Integer> overeenkomstDatumKolom;
-    @FXML public TableColumn<Bagage, Integer> overeenkomstLabelNummerKolom;
-    @FXML public TableColumn<Bagage, String> overeenkomstBagageTypeKolom;
+    @FXML public TableView<Bagage> geslotenTableView;
+    @FXML public TableColumn<Bagage, Integer> idKolom;
+    @FXML public TableColumn<Bagage, Integer> datumKolom;
+    @FXML public TableColumn<Bagage, Integer> labelnummerKolom;
+    @FXML public TableColumn<Bagage, Integer> vluchtnummerKolom;
+    @FXML public TableColumn<Bagage, String> bagagetypeKolom;
     
-    private ObservableList<Bagage> overeenkomstData = FXCollections.observableArrayList();
+    private ObservableList<Bagage> geslotenData = FXCollections.observableArrayList();
     
     @FXML
     private void writeTableData() {
@@ -38,17 +42,17 @@ public class OvereenkomstController implements Initializable{
         );
 
         try {
-            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst;");
+            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gesloten;");
 
             //Gaat net zo lang door, tot er geen records meer zijn
             while (result.next()) {
                 Bagage bagage = new Bagage();
-                bagage.setId(result.getInt("OvereenkomstID"));
-                bagage.setDatum(result.getInt("Datum"));
+                bagage.setId(result.getInt("idGesloten"));
+                bagage.setDatum(result.getInt("Datum"));               
                 bagage.setLabelNummer(result.getInt("Labelnummer"));
+                bagage.setVluchtNr(result.getInt("VluchtNr"));
                 bagage.setBagageType(result.getString("BagageType"));
-                
-                overeenkomstData.add(bagage);
+                geslotenData.add(bagage);
             }
 
         } catch (SQLException ex) {
@@ -59,18 +63,20 @@ public class OvereenkomstController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Kollomen worden gelinkt aan Atributen van de Person class
-        overeenkomstIdKolom.setCellValueFactory(
+        idKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("id"));
-        overeenkomstDatumKolom.setCellValueFactory(
+        datumKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("datum"));
-        overeenkomstLabelNummerKolom.setCellValueFactory(
+        labelnummerKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("labelNummer"));
-        overeenkomstBagageTypeKolom.setCellValueFactory(
+        vluchtnummerKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("vluchtNr"));
+        bagagetypeKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, String>("bagageType"));
-                        
-        overeenkomstTableView.setItems(overeenkomstData);
+        
+        geslotenTableView.setItems(geslotenData);
         writeTableData();
     }
-
 }
+
+
