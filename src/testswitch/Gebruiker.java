@@ -24,6 +24,11 @@ public class Gebruiker {
     private final SimpleIntegerProperty telefoonnummer = new SimpleIntegerProperty();
     private final SimpleStringProperty email = new SimpleStringProperty();
     private final SimpleIntegerProperty positie = new SimpleIntegerProperty();
+    private final SimpleStringProperty adres = new SimpleStringProperty();
+    private final SimpleStringProperty woonplaats = new SimpleStringProperty();
+    private final SimpleStringProperty postcode = new SimpleStringProperty();
+    private final SimpleStringProperty land = new SimpleStringProperty();
+    
     
     public void samenvoegenNaam(String voornaam, String tussenvoegsel, String achternaam){
         if (tussenvoegsel == null) {
@@ -58,6 +63,18 @@ public class Gebruiker {
     public void setPositie(int positie){
         this.positie.set(positie);
     }
+    public void setAdres(String adres){
+        this.adres.set(adres);
+    }
+    public void setWoonplaats(String woonplaats){
+        this.woonplaats.set(woonplaats);
+    }
+    public void setPostcode(String postcode){
+        this.postcode.set(postcode);
+    }
+    public void setLand(String land){
+        this.land.set(land);
+    }
     
     //Getters
     public Integer getGebruikerID(){
@@ -86,6 +103,15 @@ public class Gebruiker {
     }
     public String getNaam(){
         return naam.get();
+    }
+    public String getAdres(){
+        return adres.get();
+    }
+    public String getWoonplaats(){
+        return woonplaats.get();
+    }
+    public String getLand(){
+        return land.get();
     }
          
 }
