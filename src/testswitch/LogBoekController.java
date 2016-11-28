@@ -33,14 +33,14 @@ public class LogBoekController {
     //Gevonden bagage
     @FXML public TableView<Bagage> gevondenTabel;
     @FXML public TableColumn<Bagage, Integer> gevondenIdKolom;
-    @FXML public TableColumn<Bagage, Integer> gevondenDatumKolom;
+    @FXML public TableColumn<Bagage, String> gevondenDatumKolom;
     @FXML public TableColumn<Bagage, Integer> gevondenLabelNummerKolom;
     @FXML public TableColumn<Bagage, Integer> gevondenVluchtNrKolom;
     
     //Vermiste bagage
     @FXML public TableView<Bagage> vermisteTabel;
     @FXML public TableColumn<Bagage, Integer> vermisteIdKolom;
-    @FXML public TableColumn<Bagage, Integer> vermisteDatumKolom;
+    @FXML public TableColumn<Bagage, String> vermisteDatumKolom;
     @FXML public TableColumn<Bagage, Integer> vermisteLabelNummerKolom;
     @FXML public TableColumn<Bagage, Integer> vermisteVluchtNrKolom;
     @FXML public TableColumn<Bagage, String> vermisteBagageTypeKolom;
@@ -48,14 +48,14 @@ public class LogBoekController {
     //Gesloten Bagage
     @FXML public TableView<Bagage> geslotenTableView;
     @FXML public TableColumn<Bagage, Integer> idKolom;
-    @FXML public TableColumn<Bagage, Integer> datumKolom;
+    @FXML public TableColumn<Bagage, String> datumKolom;
     @FXML public TableColumn<Bagage, Integer> labelnummerKolom;
     @FXML public TableColumn<Bagage, Integer> vluchtnummerKolom;
     
     //Overeenkomst Bagage
     @FXML public TableView<Bagage> overeenkomstTableView;
     @FXML public TableColumn<Bagage, Integer> overeenkomstIdKolom;
-    @FXML public TableColumn<Bagage, Integer> overeenkomstDatumKolom;
+    @FXML public TableColumn<Bagage, String> overeenkomstDatumKolom;
     @FXML public TableColumn<Bagage, Integer> overeenkomstLabelNummerKolom;
 
     private final ObservableList<Bagage> gevondenData = FXCollections.observableArrayList();
@@ -74,42 +74,46 @@ public class LogBoekController {
         );
 
         try {
-            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gevonden;");
+            ResultSet result = database.executeQuery("SELECT idGevonden, Datum, "
+                    + "Labelnummer, Vluchtnummer FROM testDatabase.Gevonden;");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("idGevonden"));
-                bagage.setDatum(result.getInt("Datum"));
+                bagage.setDatum(result.getString("Datum"));
                 bagage.setLabelNummer(result.getInt("Labelnummer"));
                 bagage.setVluchtNr(result.getInt("Vluchtnummer"));
                 gevondenData.add(bagage);
             }
             
-            result = database.executeQuery("SELECT * FROM testDatabase.Vermist;");
+            result = database.executeQuery("SELECT idVermist, Datum, Labelnummer, "
+                    + "Vluchtnummer FROM testDatabase.Vermist;");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("idVermist"));
-                bagage.setDatum(result.getInt("Datum"));
+                bagage.setDatum(result.getString("Datum"));
                 bagage.setLabelNummer(result.getInt("Labelnummer"));
                 bagage.setVluchtNr(result.getInt("Vluchtnummer"));
                 vermisteData.add(bagage);
             }
             
-            result = database.executeQuery("SELECT * FROM testDatabase.Gesloten;");
+            result = database.executeQuery("SELECT idGesloten, Datum, Labelnummer, "
+                    + "VluchtNr, BagageType FROM testDatabase.Gesloten;");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("idGesloten"));
-                bagage.setDatum(result.getInt("Datum"));               
+                bagage.setDatum(result.getString("Datum"));               
                 bagage.setLabelNummer(result.getInt("Labelnummer"));
                 bagage.setVluchtNr(result.getInt("VluchtNr"));
                 bagage.setBagageType(result.getString("BagageType"));
                 geslotenData.add(bagage);
             }
             
-            result = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst;");
+            result = database.executeQuery("SELECT OvereenkomstID, Datum, Labelnummer "
+                    + "FROM testDatabase.Overeenkomst;");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("OvereenkomstID"));
-                bagage.setDatum(result.getInt("Datum"));
+                bagage.setDatum(result.getString("Datum"));
                 bagage.setLabelNummer(result.getInt("Labelnummer"));
                 overeenkomstData.add(bagage);
             }
@@ -211,7 +215,7 @@ public class LogBoekController {
         gevondenIdKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("id"));
         gevondenDatumKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("datum"));
+                new PropertyValueFactory<Bagage, String>("datum"));
         gevondenLabelNummerKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         gevondenVluchtNrKolom.setCellValueFactory(
@@ -221,7 +225,7 @@ public class LogBoekController {
         vermisteIdKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("id"));
         vermisteDatumKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("datum"));
+                new PropertyValueFactory<Bagage, String>("datum"));
         vermisteLabelNummerKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         vermisteVluchtNrKolom.setCellValueFactory(
@@ -231,7 +235,7 @@ public class LogBoekController {
         idKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("id"));
         datumKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("datum"));
+                new PropertyValueFactory<Bagage, String>("datum"));
         labelnummerKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         vluchtnummerKolom.setCellValueFactory(
@@ -241,7 +245,7 @@ public class LogBoekController {
         overeenkomstIdKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("id"));
         overeenkomstDatumKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("datum"));
+                new PropertyValueFactory<Bagage, String>("datum"));
         overeenkomstLabelNummerKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         

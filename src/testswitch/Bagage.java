@@ -14,7 +14,7 @@ import javafx.beans.property.SimpleStringProperty;
 public class Bagage {
     
     private final SimpleIntegerProperty id = new SimpleIntegerProperty();
-    private final SimpleIntegerProperty datum = new SimpleIntegerProperty();
+    private final SimpleStringProperty datum = new SimpleStringProperty();
     private final SimpleIntegerProperty labelNummer = new SimpleIntegerProperty();
     private final SimpleIntegerProperty vluchtNr = new SimpleIntegerProperty();
     private final SimpleStringProperty bagageType = new SimpleStringProperty();
@@ -23,7 +23,7 @@ public class Bagage {
     public void setId(int id){
         this.id.set(id);
     }
-    public void setDatum(int datum){
+    public void setDatum(String datum){
         this.datum.set(datum);
     }
     public void setLabelNummer(int labelNummer){
@@ -40,7 +40,7 @@ public class Bagage {
     public Integer getId(){
         return id.get();
     }
-    public Integer getDatum(){
+    public String getDatum(){
         return datum.get();
     }
     public Integer getLabelNummer(){

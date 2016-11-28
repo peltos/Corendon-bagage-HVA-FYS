@@ -22,7 +22,7 @@ public class OvereenkomstController implements Initializable{
     
     @FXML public TableView<Bagage> overeenkomstTableView;
     @FXML public TableColumn<Bagage, Integer> overeenkomstIdKolom;
-    @FXML public TableColumn<Bagage, Integer> overeenkomstDatumKolom;
+    @FXML public TableColumn<Bagage, String> overeenkomstDatumKolom;
     @FXML public TableColumn<Bagage, Integer> overeenkomstLabelNummerKolom;
     @FXML public TableColumn<Bagage, String> overeenkomstBagageTypeKolom;
     
@@ -44,7 +44,7 @@ public class OvereenkomstController implements Initializable{
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("OvereenkomstID"));
-                bagage.setDatum(result.getInt("Datum"));
+                bagage.setDatum(result.getString("Datum"));
                 bagage.setLabelNummer(result.getInt("Labelnummer"));
                 bagage.setBagageType(result.getString("BagageType"));
                 
@@ -63,7 +63,7 @@ public class OvereenkomstController implements Initializable{
         overeenkomstIdKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("id"));
         overeenkomstDatumKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("datum"));
+                new PropertyValueFactory<Bagage, String>("datum"));
         overeenkomstLabelNummerKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         overeenkomstBagageTypeKolom.setCellValueFactory(

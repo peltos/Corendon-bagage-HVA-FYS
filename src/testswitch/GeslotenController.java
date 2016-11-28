@@ -25,7 +25,7 @@ public class GeslotenController implements Initializable {
     
     @FXML public TableView<Bagage> geslotenTableView;
     @FXML public TableColumn<Bagage, Integer> idKolom;
-    @FXML public TableColumn<Bagage, Integer> datumKolom;
+    @FXML public TableColumn<Bagage, String> datumKolom;
     @FXML public TableColumn<Bagage, Integer> labelnummerKolom;
     @FXML public TableColumn<Bagage, Integer> vluchtnummerKolom;
     @FXML public TableColumn<Bagage, String> bagagetypeKolom;
@@ -48,7 +48,7 @@ public class GeslotenController implements Initializable {
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("idGesloten"));
-                bagage.setDatum(result.getInt("Datum"));               
+                bagage.setDatum(result.getString("Datum"));               
                 bagage.setLabelNummer(result.getInt("Labelnummer"));
                 bagage.setVluchtNr(result.getInt("VluchtNr"));
                 bagage.setBagageType(result.getString("BagageType"));
@@ -66,7 +66,7 @@ public class GeslotenController implements Initializable {
         idKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("id"));
         datumKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("datum"));
+                new PropertyValueFactory<Bagage, String>("datum"));
         labelnummerKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         vluchtnummerKolom.setCellValueFactory(

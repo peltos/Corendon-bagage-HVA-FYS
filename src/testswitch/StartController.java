@@ -22,7 +22,7 @@ public class StartController implements Initializable {
     //Gevonden bagage
     @FXML public TableView<Bagage> gevondenTabel;
     @FXML public TableColumn<Bagage, Integer> gevondenIdKolom;
-    @FXML public TableColumn<Bagage, Integer> gevondenDatumKolom;
+    @FXML public TableColumn<Bagage, String> gevondenDatumKolom;
     @FXML public TableColumn<Bagage, Integer> gevondenLabelNummerKolom;
     @FXML public TableColumn<Bagage, Integer> gevondenVluchtNrKolom;
     @FXML public TableColumn<Bagage, String> gevondenBagageTypeKolom;
@@ -30,7 +30,7 @@ public class StartController implements Initializable {
     //Vermiste bagage
     @FXML public TableView<Bagage> vermisteTabel;
     @FXML public TableColumn<Bagage, Integer> vermisteIdKolom;
-    @FXML public TableColumn<Bagage, Integer> vermisteDatumKolom;
+    @FXML public TableColumn<Bagage, String> vermisteDatumKolom;
     @FXML public TableColumn<Bagage, Integer> vermisteLabelNummerKolom;
     @FXML public TableColumn<Bagage, Integer> vermisteVluchtNrKolom;
     @FXML public TableColumn<Bagage, String> vermisteBagageTypeKolom;
@@ -55,10 +55,10 @@ public class StartController implements Initializable {
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("id" + tabelNaam));
-                bagage.setDatum(result.getInt("Datum"));
+                bagage.setDatum(result.getString("Datum"));
                 bagage.setLabelNummer(result.getInt("Labelnummer"));
                 bagage.setVluchtNr(result.getInt("Vluchtnummer"));
-                bagage.setBagageType(result.getString("BagageType"));  
+                bagage.setBagageType(result.getString("BagageType")); 
                 
                 if (tabelNaam == "Gevonden") {
                     gevondenData.add(bagage);
@@ -80,7 +80,7 @@ public class StartController implements Initializable {
         gevondenIdKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("id"));
         gevondenDatumKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("datum"));
+                new PropertyValueFactory<Bagage, String>("datum"));
         gevondenLabelNummerKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         gevondenVluchtNrKolom.setCellValueFactory(
@@ -92,7 +92,7 @@ public class StartController implements Initializable {
         vermisteIdKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("id"));
         vermisteDatumKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("datum"));
+                new PropertyValueFactory<Bagage, String>("datum"));
         vermisteLabelNummerKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         vermisteVluchtNrKolom.setCellValueFactory(
