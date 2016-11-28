@@ -14,6 +14,8 @@ import javafx.beans.property.SimpleStringProperty;
 public class Bagage extends Gebruiker{
     
     private final SimpleIntegerProperty id = new SimpleIntegerProperty();
+    private final SimpleIntegerProperty gevondenID = new SimpleIntegerProperty();
+    private final SimpleIntegerProperty vermistID = new SimpleIntegerProperty();
     private final SimpleStringProperty datum = new SimpleStringProperty();
     private final SimpleIntegerProperty labelNummer = new SimpleIntegerProperty();
     private final SimpleIntegerProperty vluchtNr = new SimpleIntegerProperty();
@@ -24,7 +26,6 @@ public class Bagage extends Gebruiker{
     private final SimpleStringProperty merk = new SimpleStringProperty();
     private final SimpleStringProperty kleur = new SimpleStringProperty();
     private final SimpleStringProperty BijzondereKenmerken = new SimpleStringProperty();
-
 
     //Setters
     public void setId(int id){
@@ -60,7 +61,12 @@ public class Bagage extends Gebruiker{
     public void setBijzondereKenmerken(String bijzondereKenmerken){
         this.BijzondereKenmerken.set(bijzondereKenmerken);
     }
-    
+    public void setGevondenID(int gevondenID){
+        this.gevondenID.set(gevondenID);
+    }
+    public void setVermistID(int vermistID){
+        this.vermistID.set(vermistID);
+    }
     
     //Getters
     public Integer getId(){
@@ -95,6 +101,12 @@ public class Bagage extends Gebruiker{
     }
     public String getBijzondereKenmerken(){
         return BijzondereKenmerken.get();
+    }
+    public Integer getVermistID(){
+        return vermistID.get();
+    }
+    public Integer getGevondenID(){
+        return gevondenID.get();
     }
     
 }

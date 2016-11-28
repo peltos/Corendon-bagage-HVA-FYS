@@ -44,11 +44,32 @@ public class OvereenkomstController implements Initializable{
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("OvereenkomstID"));
+                bagage.setGevondenID(result.getInt("GevondenID"));
+                bagage.setVermistID(result.getInt("VermistID"));
                 bagage.setDatum(result.getString("Datum"));
-                bagage.setLabelNummer(result.getInt("Labelnummer"));
-                bagage.setBagageType(result.getString("BagageType"));
+                
+                //Checkt of Labelnummer/BagageType waarde heeft in Gevonden tabel --> voert waarde in uit de database
+                ResultSet result2 = database.executeQuery("SELECT * FROM testDatabase.Gevonden WHERE idGevonden=" + bagage.getGevondenID());
+                if (result2.getInt("Labelnummer") != 0) {
+                    bagage.setLabelNummer(result.getInt("Labelnummer"));
+                } if (result2.getString("BagageType") != null){
+                    bagage.setBagageType(result.getString("BagageType"));
+                }
+                
+                //Checkt of Labelnummer/BagageType waarde heeft in Vermist tabel, en of de atribuut geen waarde heeft --> voert waarde in uit de database
+                result2 = database.executeQuery("SELECT * FROM testDatabase.Vermist WHERE idVermist=" + bagage.getVermistID());
+                if ((result2.getInt("Labelnummer") != 0) && (bagage.getLabelNummer() == 0)) {
+                    bagage.setLabelNummer(result.getInt("Labelnummer"));
+                } if ((result2.getString("BagageType") != null) && (bagage.getBagageType() == null)){
+                    bagage.setBagageType(result.getString("BagageType"));
+                }
+                
+                System.out.println("1" + bagage.getLabelNummer() + "\t" + bagage.getBagageType());
+                System.out.println("2" + bagage.getDatum());
+                System.out.println("3" + bagage.getGevondenID() + "\t" + bagage.getVermistID());
                 
                 overeenkomstData.add(bagage);
+                System.out.println(overeenkomstData);
             }
 
         } catch (SQLException ex) {
