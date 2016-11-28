@@ -60,6 +60,9 @@ public class Gebruiker {
     public void setEmail(String email){
         this.email.set(email);
     }
+    public void setNaam(String naam){
+        this.naam.set(naam);
+    }
     public void setPositie(int positie){
         this.positie.set(positie);
     }
@@ -109,6 +112,9 @@ public class Gebruiker {
     }
     public String getWoonplaats(){
         return woonplaats.get();
+    }
+    public String getPostcode(){
+        return postcode.get();
     }
     public String getLand(){
         return land.get();

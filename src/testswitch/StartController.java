@@ -49,24 +49,48 @@ public class StartController implements Initializable {
         );
 
         try {
-            ResultSet result = database.executeQuery("SELECT * FROM testDatabase." 
-                    + tabelNaam + ";");
-
+            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Vermist;");
             //Gaat net zo lang door, tot er geen records meer zijn
             while (result.next()) {
                 Bagage bagage = new Bagage();
-                bagage.setId(result.getInt("id" + tabelNaam));
+                bagage.setId(result.getInt("idVermist"));
+                bagage.setTijd(result.getString("Tijd")); 
                 bagage.setDatum(result.getString("Datum"));
+                bagage.setLuchthaven(result.getString("Luchthaven"));
                 bagage.setLabelNummer(result.getInt("Labelnummer"));
                 bagage.setVluchtNr(result.getInt("Vluchtnummer"));
+                bagage.setBestemming(result.getString("Bestemming"));
                 bagage.setBagageType(result.getString("BagageType")); 
+                bagage.setMerk(result.getString("Merk"));
+                bagage.setKleur(result.getString("Kleur"));
+                bagage.setBijzondereKenmerken(result.getString("BijzonderKenmerken"));
+                bagage.setNaam(result.getString("Naam"));
+                bagage.setAdres(result.getString("Adres"));
+                bagage.setWoonplaats(result.getString("Woonplaats"));
+                bagage.setPostcode(result.getString("Postcode"));
+                bagage.setLand(result.getString("Land"));
+                bagage.setTelefoonnummer(result.getInt("Telefoon"));
+                bagage.setEmail(result.getString("Email"));
                 
-                if (tabelNaam == "Gevonden") {
-                    gevondenData.add(bagage);
-                } else if (tabelNaam == "Vermist") {
-                    vermisteData.add(bagage);
-                }
+                vermisteData.add(bagage);
+            }
+            
+            result = database.executeQuery("SELECT * FROM testDatabase.Gevonden;");
+            while (result.next()) {
+                Bagage bagage = new Bagage();
+                bagage.setId(result.getInt("idGevonden"));
+                bagage.setTijd(result.getString("Tijd"));
+                bagage.setDatum(result.getString("Datum"));
+                bagage.setLuchthaven(result.getString("Luchthaven"));
+                bagage.setLabelNummer(result.getInt("Labelnummer"));
+                bagage.setVluchtNr(result.getInt("Vluchtnummer"));
+                bagage.setBestemming(result.getString("Bestemming"));
+                bagage.setBagageType(result.getString("BagageType")); 
+                bagage.setMerk(result.getString("Merk"));
+                bagage.setKleur(result.getString("Kleur"));
+                bagage.setBijzondereKenmerken(result.getString("BijzonderKenmerken"));
                 
+                gevondenData.add(bagage);
             }
 
         } catch (SQLException ex) {
@@ -75,17 +99,9 @@ public class StartController implements Initializable {
 
     }
     
-    @FXML public Label gevondenDatum;
-    @FXML public Label gevondenTijd;
-    @FXML public Label gevondenLuchthaven;
-    @FXML public Label gevondenID;
-    @FXML public Label gevondenType;
-    @FXML public Label gevondenMerk;
-    @FXML public Label gevondenKleur;
-    @FXML public Label gevondenBK;
-    @FXML public Label gevondenLabelNr;
-    @FXML public Label gevondenVluchtNr;
-    @FXML public Label gevondenBestemming;
+    @FXML public Label gevondenDatum, gevondenTijd, gevondenLuchthaven, gevondenID,
+            gevondenType, gevondenMerk, gevondenKleur, gevondenBK, gevondenLabelNr,
+            gevondenVluchtNr, gevondenBestemming;
 
     @FXML
     private void gevondenSelected() {
@@ -104,29 +120,15 @@ public class StartController implements Initializable {
         gevondenBestemming.setText(bagage.getBestemming());
     } 
     
-    @FXML public Label vermisteDatum;
-    @FXML public Label vermisteTijd;
-    @FXML public Label vermisteLuchthaven;
-    @FXML public Label vermisteID;
-    @FXML public Label vermisteNaam;
-    @FXML public Label vermisteAdres;
-    @FXML public Label vermisteWoonplaats;
-    @FXML public Label vermistePostcode;
-    @FXML public Label vermisteLand;
-    @FXML public Label vermisteTelefoon;
-    @FXML public Label vermisteEmail;
-    @FXML public Label vermisteType;
-    @FXML public Label vermisteMerk;
-    @FXML public Label vermisteKleur;
-    @FXML public Label vermisteBK;
-    @FXML public Label vermisteLabelNr;
-    @FXML public Label vermisteVluchtNr;
-    @FXML public Label vermisteBestemming;
-    
+    @FXML public Label  vermisteDatum, vermisteTijd, vermisteLuchthaven, vermisteID,
+            vermisteNaam, vermisteAdres, vermisteWoonplaats, vermistePostcode,
+            vermisteLand, vermisteTelefoon, vermisteEmail, vermisteType, vermisteMerk,
+            vermisteKleur, vermisteBK, vermisteLabelNr, vermisteVluchtNr, vermisteBestemming;
+
     @FXML
     private void vermisteSelected() {
-        
         Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
+        
         vermisteDatum.setText(bagage.getDatum());
         vermisteTijd.setText(bagage.getTijd());
         vermisteLuchthaven.setText(bagage.getLuchthaven());
@@ -134,7 +136,7 @@ public class StartController implements Initializable {
         vermisteNaam.setText(bagage.getNaam());
         vermisteAdres.setText(bagage.getAdres());
         vermisteWoonplaats.setText(bagage.getWoonplaats());
-//        vermistePostcode.setText(bagage.get);
+        vermistePostcode.setText(bagage.getPostcode());
         vermisteLand.setText(bagage.getLand());
         vermisteTelefoon.setText(String.valueOf(bagage.getTelefoonnummer()));
         vermisteEmail.setText(bagage.getEmail());
@@ -176,7 +178,6 @@ public class StartController implements Initializable {
         gevondenTabel.setItems(gevondenData);
         vermisteTabel.setItems(vermisteData);
         writeTableData("Gevonden");
-        writeTableData("Vermist");
     }
 
     @FXML
@@ -190,9 +191,5 @@ public class StartController implements Initializable {
         MainNavigator.loadVista(MainNavigator.VERMIST);
 
     }
-    
-    
-    
-    
-    
+
 }
