@@ -26,9 +26,6 @@ public class GeslotenController implements Initializable {
     @FXML public TableView<Bagage> geslotenTableView;
     @FXML public TableColumn<Bagage, Integer> idKolom;
     @FXML public TableColumn<Bagage, String> datumKolom;
-    @FXML public TableColumn<Bagage, Integer> labelnummerKolom;
-    @FXML public TableColumn<Bagage, Integer> vluchtnummerKolom;
-    @FXML public TableColumn<Bagage, String> bagagetypeKolom;
     
     private ObservableList<Bagage> geslotenData = FXCollections.observableArrayList();
     
@@ -42,16 +39,13 @@ public class GeslotenController implements Initializable {
         );
 
         try {
-            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gesloten;");
+            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst;");
 
             //Gaat net zo lang door, tot er geen records meer zijn
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("idGesloten"));
-                bagage.setDatum(result.getString("Datum"));               
-                bagage.setLabelNummer(result.getInt("Labelnummer"));
-                bagage.setVluchtNr(result.getInt("VluchtNr"));
-                bagage.setBagageType(result.getString("BagageType"));
+                bagage.setDatum(result.getString("Datum"));
                 geslotenData.add(bagage);
             }
 
@@ -67,12 +61,6 @@ public class GeslotenController implements Initializable {
                 new PropertyValueFactory<Bagage, Integer>("id"));
         datumKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, String>("datum"));
-        labelnummerKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("labelNummer"));
-        vluchtnummerKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("vluchtNr"));
-        bagagetypeKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, String>("bagageType"));
         
         geslotenTableView.setItems(geslotenData);
         writeTableData();

@@ -96,25 +96,19 @@ public class LogBoekController {
                 vermisteData.add(bagage);
             }
             
-            result = database.executeQuery("SELECT idGesloten, Datum, Labelnummer, "
-                    + "VluchtNr, BagageType FROM testDatabase.Gesloten;");
+            result = database.executeQuery("SELECT OvereenkomstID, Datum "
+                    + "FROM testDatabase.Overeenkomst;");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("idGesloten"));
-                bagage.setDatum(result.getString("Datum"));               
-                bagage.setLabelNummer(result.getInt("Labelnummer"));
-                bagage.setVluchtNr(result.getInt("VluchtNr"));
-                bagage.setBagageType(result.getString("BagageType"));
+                bagage.setDatum(result.getString("Datum"));
                 geslotenData.add(bagage);
             }
             
-            result = database.executeQuery("SELECT OvereenkomstID, Datum, Labelnummer "
-                    + "FROM testDatabase.Overeenkomst;");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("OvereenkomstID"));
                 bagage.setDatum(result.getString("Datum"));
-                bagage.setLabelNummer(result.getInt("Labelnummer"));
                 overeenkomstData.add(bagage);
             }
 
@@ -231,23 +225,11 @@ public class LogBoekController {
         vermisteVluchtNrKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("vluchtNr"));
         
-        //Gesloten
-        idKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("id"));
-        datumKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, String>("datum"));
-        labelnummerKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("labelNummer"));
-        vluchtnummerKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("vluchtNr"));
-        
         //Overeenkomst
         overeenkomstIdKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, Integer>("id"));
         overeenkomstDatumKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, String>("datum"));
-        overeenkomstLabelNummerKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         
         createPieChart();
         gevondenTabel.setItems(gevondenData);
