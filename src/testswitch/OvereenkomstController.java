@@ -6,13 +6,20 @@
 package testswitch;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -60,12 +67,12 @@ public class OvereenkomstController implements Initializable {
                 bagage.setGVluchtNr(resultGevonden.getInt("Vluchtnummer"));
                 bagage.setGBestemming(resultGevonden.getString("Bestemming"));
                 bagage.setGBagageType(resultGevonden.getString("BagageType")); 
-                bagage.setGId(resultGevonden.getInt("idGevonden"));
                 bagage.setGMerk(resultGevonden.getString("Merk"));
                 bagage.setGKleur(resultGevonden.getString("Kleur"));
                 bagage.setGBijzondereKenmerken(resultGevonden.getString("BijzonderKenmerken"));
 
-                bagage.setId(resultVermist.getInt("idVermist"));
+                bagage.setVId(resultVermist.getInt("idVermist"));
+                
                 bagage.setTijd(resultVermist.getString("Tijd")); 
                 bagage.setDatum(resultVermist.getString("Datum"));
                 bagage.setLuchthaven(resultVermist.getString("Luchthaven"));
@@ -97,7 +104,7 @@ public class OvereenkomstController implements Initializable {
             gevondenType, gevondenMerk, gevondenKleur, gevondenBK, gevondenLabelNr,
             gevondenVluchtNr, gevondenBestemming;
     
-    @FXML public Label  vermisteDatum, vermisteTijd, vermisteLuchthaven, vermisteID,
+    @FXML public Label vermisteDatum, vermisteTijd, vermisteLuchthaven, vermisteID,
             vermisteNaam, vermisteAdres, vermisteWoonplaats, vermistePostcode,
             vermisteLand, vermisteTelefoon, vermisteEmail, vermisteType, vermisteMerk,
             vermisteKleur, vermisteBK, vermisteLabelNr, vermisteVluchtNr, vermisteBestemming;
@@ -152,6 +159,108 @@ public class OvereenkomstController implements Initializable {
         
         overeenkomstTableView.setItems(overeenkomstData);
         writeTableData();
+    }
+    @FXML
+    public CheckBox overeenkomstCheckBox;
+    
+    @FXML
+    private void OvereenkomstDB() throws SQLException {
+        boolean gVCheckBox = overeenkomstCheckBox.isSelected();
+
+        Bagage overeenkomstBag = overeenkomstTableView.getSelectionModel().getSelectedItem();
+
+        String DB_NAME = "testDatabase", DB_SERVER = "ronpelt.synology.me:3306";
+        String DB_ACCOUNT = "root", DB_PASSWORD = "kGjMtEO06BPiu2u4";
+
+        Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
+
+        String query = "DELETE FROM `testDatabase`.`Overeenkomst` WHERE `OvereenkomstID`="+overeenkomstBag.getId()+";";
+        String queryGevonden = "UPDATE `testDatabase`.`Gevonden` SET `Visibility`='0' WHERE `idGevonden`="+ overeenkomstBag.getGId() +";";
+        String queryVermist = "UPDATE `testDatabase`.`Vermist` SET `Visibility`='0' WHERE `idVermist`="+ overeenkomstBag.getVermistID() +";";
+
+        PreparedStatement statement = database.prepareStatement(query);
+        PreparedStatement statementGevonden = database.prepareStatement(queryGevonden);
+        PreparedStatement statementVermist = database.prepareStatement(queryVermist);
+
+        try {
+            if (!gVCheckBox) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Niet bevestigd");
+                alert.setHeaderText("Niet bevestigd");
+                alert.setContentText("Klik op de checkbox \"bevestigen\" om te bevestigen dat je het echt wil doen");
+                alert.showAndWait();
+            } else {
+                    
+                statement.executeUpdate();
+                statementGevonden.executeUpdate();
+                statementVermist.executeUpdate();
+                
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Bevestiging overeenkomst vevrwijderd");
+                alert.setHeaderText("Bevestiging overeenkomst vevrwijderd");
+                alert.setContentText(
+                        "Acties ondernomen:" +
+                        "\nOvereenkomst ID: " + overeenkomstBag.getId() + " verwijderd" +
+                        "\nGevonden ID: " + overeenkomstBag.getGId() + " naar Gevonden Tabel" +
+                        "\nVermist ID: " + overeenkomstBag.getVermistID() + " naar Gevonden Tabel" +
+                        "\n \nWil je terug naar Overeenkomst of naar Start?"
+                );
+
+                ButtonType buttonTypeOne = new ButtonType("Start");
+                ButtonType buttonTypeTwo = new ButtonType("Overeenkomst");
+
+                alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == buttonTypeOne){
+                    MainNavigator.loadVista(MainNavigator.START);
+                } else {
+                    MainNavigator.loadVista(MainNavigator.OVEREENKOMST);
+                }
+                
+                overeenkomstCheckBox.setSelected(false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
+        
+
+    }
+    @FXML
+    private void GeslotenDB() throws SQLException {
+        boolean gVCheckBox = overeenkomstCheckBox.isSelected();
+
+        Bagage overeenkomstBag = overeenkomstTableView.getSelectionModel().getSelectedItem();
+
+        String DB_NAME = "testDatabase", DB_SERVER = "ronpelt.synology.me:3306";
+        String DB_ACCOUNT = "root", DB_PASSWORD = "kGjMtEO06BPiu2u4";
+
+        Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
+
+        String query = "UPDATE `testDatabase`.`Overeenkomst` SET `Gesloten`='1' WHERE `OvereenkomstID`="+ overeenkomstBag.getId() +";";
+
+        PreparedStatement statement = database.prepareStatement(query);
+
+        try {
+            if (!gVCheckBox) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Niet bevestigd");
+                alert.setHeaderText("Niet bevestigd");
+                alert.setContentText("Klik op de checkbox \"bevestigen\" om te bevestigen dat je het echt wil doen");
+                alert.showAndWait();
+            } else {
+                    
+                statement.executeUpdate();  
+                
+                overeenkomstCheckBox.setSelected(false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
+        MainNavigator.loadVista(MainNavigator.OVEREENKOMST);
+
     }
 }
 

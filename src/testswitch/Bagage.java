@@ -27,6 +27,8 @@ public class Bagage extends Gebruiker{
     private final SimpleStringProperty kleur = new SimpleStringProperty();
     private final SimpleStringProperty BijzondereKenmerken = new SimpleStringProperty();
     
+    private final SimpleIntegerProperty Vid = new SimpleIntegerProperty();
+    
     private final SimpleIntegerProperty Gid = new SimpleIntegerProperty();
     private final SimpleIntegerProperty GgevondenID = new SimpleIntegerProperty();
     private final SimpleIntegerProperty GvermistID = new SimpleIntegerProperty();
@@ -124,6 +126,11 @@ public class Bagage extends Gebruiker{
     }
     
     //Setters
+    
+    public void setVId(int id){
+        this.Vid.set(id);
+    }
+    
     public void setGId(int id){
         this.Gid.set(id);
     }
@@ -159,6 +166,10 @@ public class Bagage extends Gebruiker{
     }
     
     //Getters
+    public Integer getVId(){
+        return Vid.get();
+    }
+    
     public Integer getGId(){
         return Gid.get();
     }

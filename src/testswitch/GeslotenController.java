@@ -6,6 +6,7 @@
 package testswitch;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -13,6 +14,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -60,12 +63,12 @@ public class GeslotenController implements Initializable {
                 bagage.setGVluchtNr(resultGevonden.getInt("Vluchtnummer"));
                 bagage.setGBestemming(resultGevonden.getString("Bestemming"));
                 bagage.setGBagageType(resultGevonden.getString("BagageType")); 
-                bagage.setGId(resultGevonden.getInt("idGevonden"));
                 bagage.setGMerk(resultGevonden.getString("Merk"));
                 bagage.setGKleur(resultGevonden.getString("Kleur"));
                 bagage.setGBijzondereKenmerken(resultGevonden.getString("BijzonderKenmerken"));
 
-                bagage.setId(resultVermist.getInt("idVermist"));
+                bagage.setVId(resultVermist.getInt("idVermist"));
+                
                 bagage.setTijd(resultVermist.getString("Tijd")); 
                 bagage.setDatum(resultVermist.getString("Datum"));
                 bagage.setLuchthaven(resultVermist.getString("Luchthaven"));
@@ -151,6 +154,44 @@ public class GeslotenController implements Initializable {
         
         geslotenTableView.setItems(geslotenData);
         writeTableData();
+    }
+    @FXML
+    public CheckBox geslotenCheckBox;
+    
+    @FXML
+    private void GeslotenDB() throws SQLException {
+        boolean gVCheckBox = geslotenCheckBox.isSelected();
+
+        Bagage geslotenBag = geslotenTableView.getSelectionModel().getSelectedItem();
+
+        String DB_NAME = "testDatabase", DB_SERVER = "ronpelt.synology.me:3306";
+        String DB_ACCOUNT = "root", DB_PASSWORD = "kGjMtEO06BPiu2u4";
+
+        Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
+
+        String query = "UPDATE `testDatabase`.`Overeenkomst` SET `Gesloten`='0' WHERE `OvereenkomstID`="+ geslotenBag.getId() +";";
+
+        PreparedStatement statement = database.prepareStatement(query);
+
+        try {
+            if (!gVCheckBox) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Niet bevestigd");
+                alert.setHeaderText("Niet bevestigd");
+                alert.setContentText("Klik op de checkbox \"bevestigen\" om te bevestigen dat je het echt wil doen");
+                alert.showAndWait();
+            } else {
+                    
+                statement.executeUpdate();  
+                
+                geslotenCheckBox.setSelected(false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
+        MainNavigator.loadVista(MainNavigator.GESLOTEN);
+
     }
 }
 

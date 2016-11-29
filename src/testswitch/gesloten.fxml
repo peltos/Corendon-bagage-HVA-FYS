@@ -251,19 +251,14 @@
             </ScrollPane>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details gevonden baggage" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details vermiste baggage" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-            <CheckBox mnemonicParsing="false" text="Bevestig" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                <GridPane.margin>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                </GridPane.margin>
-            </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Bevestig" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+            <CheckBox fx:id="geslotenCheckBox" mnemonicParsing="false" text="Bevestig" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                 <GridPane.margin>
                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </GridPane.margin>
             </CheckBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
                 <children>
-                    <Button mnemonicParsing="false" text="Naar Overeenkomst">
+                    <Button mnemonicParsing="false" onAction="#GeslotenDB" text="Naar Overeenkomst">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
