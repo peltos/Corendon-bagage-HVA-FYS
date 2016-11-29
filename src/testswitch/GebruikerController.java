@@ -96,39 +96,44 @@ public class GebruikerController implements Initializable {
             "kGjMtEO06BPiu2u4"
         );
         data.removeAll(data);
-        try {
-            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gebruikers "
-                    + "WHERE ID LIKE '"+ searchField.getText() +"' "
-                    + "OR Voornaam LIKE '"+ searchField.getText() +"' "
-                    + "OR Tussenvoegsel LIKE '"+ searchField.getText() +"' "
-                    + "OR Achternaam LIKE '"+ searchField.getText() +"' "
-                    + "OR Username LIKE '"+ searchField.getText() +"' "
-                    + "OR Positie LIKE '"+ searchField.getText() +"' "
-                    + "OR Telefoonnummer LIKE '"+ searchField.getText() +"' "
-                    + "OR Email LIKE '"+ searchField.getText() +"' ;");
+        if (searchField.getText().equals("")) {
+            writeTableData();
+        }else{
+            try {
+                ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gebruikers "
+                        + "WHERE ID LIKE '"+ searchField.getText() +"' "
+                        + "OR Voornaam LIKE '"+ searchField.getText() +"' "
+                        + "OR Tussenvoegsel LIKE '"+ searchField.getText() +"' "
+                        + "OR Achternaam LIKE '"+ searchField.getText() +"' "
+                        + "OR Username LIKE '"+ searchField.getText() +"' "
+                        + "OR Positie LIKE '"+ searchField.getText() +"' "
+                        + "OR Telefoonnummer LIKE '"+ searchField.getText() +"' "
+                        + "OR Email LIKE '"+ searchField.getText() +"' ;");
 
-            //Gaat net zo lang door, tot er geen records meer zijn
-            while (result.next()) {
-                Gebruiker gebruiker = new Gebruiker();
-                gebruiker.setGebruikerID(result.getInt("ID"));
-                gebruiker.setVoornaam(result.getString("Voornaam"));
-                gebruiker.setTussenvoegsel(result.getString("Tussenvoegsel"));
-                gebruiker.setAchternaam(result.getString("Achternaam"));
-                gebruiker.samenvoegenNaam(gebruiker.getVoornaam(), 
-                        gebruiker.getTussenvoegsel(), gebruiker.getAchternaam());
-                gebruiker.setUsername(result.getString("Username"));               
-                gebruiker.setTelefoonnummer(result.getInt("Telefoonnummer"));
-                gebruiker.setEmail(result.getString("Email"));
-                gebruiker.setPositie(result.getInt("Positie"));
-                
-                
-                data.add(gebruiker);
-                
+                //Gaat net zo lang door, tot er geen records meer zijn
+                while (result.next()) {
+                    Gebruiker gebruiker = new Gebruiker();
+                    gebruiker.setGebruikerID(result.getInt("ID"));
+                    gebruiker.setVoornaam(result.getString("Voornaam"));
+                    gebruiker.setTussenvoegsel(result.getString("Tussenvoegsel"));
+                    gebruiker.setAchternaam(result.getString("Achternaam"));
+                    gebruiker.samenvoegenNaam(gebruiker.getVoornaam(), 
+                            gebruiker.getTussenvoegsel(), gebruiker.getAchternaam());
+                    gebruiker.setUsername(result.getString("Username"));               
+                    gebruiker.setTelefoonnummer(result.getInt("Telefoonnummer"));
+                    gebruiker.setEmail(result.getString("Email"));
+                    gebruiker.setPositie(result.getInt("Positie"));
+
+
+                    data.add(gebruiker);
+
+                }
+
+            } catch (SQLException ex) {
+
             }
-
-        } catch (SQLException ex) {
-
         }
+        
         
     }
     
