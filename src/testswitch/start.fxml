@@ -274,7 +274,7 @@
                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </padding>
             </HBox>
-         <Button mnemonicParsing="false" text="DELETE" GridPane.rowIndex="3" />
+         <Button fx:id="FXGevondenDelete" mnemonicParsing="false" onAction="#DeleteGevondenBagage" text="DELETE" GridPane.rowIndex="3" />
         </children>
     </GridPane>
 </StackPane>
