@@ -1,25 +1,34 @@
 package testswitch;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Button;
 
 /**
- * @author Daan Dirker
+ * @author Alexander 
  */
 public class StartController implements Initializable {
 
+    @FXML public CheckBox vermisteCheckBox;
+    @FXML public CheckBox gevondenCheckBox;
+    @FXML public Button buttonOvereenkomst;
+    
     //Gevonden bagage
     @FXML public TableView<Bagage> gevondenTabel;
     @FXML public TableColumn<Bagage, Integer> gevondenIdKolom;
@@ -27,6 +36,8 @@ public class StartController implements Initializable {
     @FXML public TableColumn<Bagage, Integer> gevondenLabelNummerKolom;
     @FXML public TableColumn<Bagage, Integer> gevondenVluchtNrKolom;
     @FXML public TableColumn<Bagage, String> gevondenBagageTypeKolom;
+    
+    
     
     //Vermiste bagage
     @FXML public TableView<Bagage> vermisteTabel;
@@ -39,19 +50,6 @@ public class StartController implements Initializable {
     private ObservableList<Bagage> gevondenData = FXCollections.observableArrayList();
     private ObservableList<Bagage> vermisteData = FXCollections.observableArrayList();
 
-    
-    
-     @FXML
-    private void gevondenToevoegen(ActionEvent event) {
-        MainNavigator.loadVista(MainNavigator.GEVONDEN);
-
-    }
-    
-    @FXML
-    private void vermistToevoegen(ActionEvent event) {
-        MainNavigator.loadVista(MainNavigator.VERMIST);
-
-    }
     
     @FXML
     private void writeTableData(String tabelNaam) {
@@ -90,8 +88,10 @@ public class StartController implements Initializable {
             }
             
             result = database.executeQuery("SELECT * FROM testDatabase.Gevonden;");
-            while (result.next()) {
+            while (result.next()) 
+            {
                 Bagage bagage = new Bagage();
+                
                 bagage.setId(result.getInt("idGevonden"));
                 bagage.setTijd(result.getString("Tijd"));
                 bagage.setDatum(result.getString("Datum"));
@@ -103,6 +103,8 @@ public class StartController implements Initializable {
                 bagage.setMerk(result.getString("Merk"));
                 bagage.setKleur(result.getString("Kleur"));
                 bagage.setBijzondereKenmerken(result.getString("BijzonderKenmerken"));
+                
+                
                 
                 gevondenData.add(bagage);
             }
@@ -121,6 +123,11 @@ public class StartController implements Initializable {
     private void gevondenSelected() {
         
         Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
+        
+        boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
+        
+        if (bSelected == true) gevondenCheckBox.setSelected(false);
+    
         gevondenDatum.setText(bagage.getDatum());
         gevondenTijd.setText(bagage.getTijd());
         gevondenLuchthaven.setText(bagage.getLuchthaven());
@@ -140,8 +147,13 @@ public class StartController implements Initializable {
             vermisteKleur, vermisteBK, vermisteLabelNr, vermisteVluchtNr, vermisteBestemming;
 
     @FXML
-    private void vermisteSelected() {
+    private void vermisteSelected() 
+    {
+        boolean bSelected = vermisteCheckBox.isSelected();
+        
         Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
+        
+        if (bSelected == true) vermisteCheckBox.setSelected(false);
         
         vermisteDatum.setText(bagage.getDatum());
         vermisteTijd.setText(bagage.getTijd());
@@ -193,7 +205,69 @@ public class StartController implements Initializable {
         vermisteTabel.setItems(vermisteData);
         writeTableData("Gevonden");
     }
+    
+     @FXML private void OvereenkomstDB() throws SQLException
+     {
+         boolean gVCheckBox = gevondenCheckBox.isSelected(), vVCheckBox = vermisteCheckBox.isSelected();
+         
+         Bagage vermisteBag = vermisteTabel.getSelectionModel().getSelectedItem();
+         Bagage gevondenBag = gevondenTabel.getSelectionModel().getSelectedItem();
+         
+         String DB_NAME = "testDatabase", DB_SERVER = "ronpelt.synology.me:3306";
+         String DB_ACCOUNT = "root", DB_PASSWORD = "kGjMtEO06BPiu2u4";
 
-   
+         Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
+         
+         
+         String query = "INSERT INTO testDatabase.Overeenkomst (GevondenID, VermistID, Datum, Gesloten)"
+                 + "VALUES (?, ?, ?, ?);";
+         
+         PreparedStatement statement = database.prepareStatement(query);
+         
+         try
+         {
+             if (!gVCheckBox || !vVCheckBox) 
+             {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("BEVESTIG OR DIE");
+                    alert.setHeaderText("BEVESTIG");
+                    alert.setContentText("BEVESTIG");
+                    alert.showAndWait();
+             } else 
+             {
+                 statement.setString(1, gevondenBag.getId().toString());
+                 
+                 String selected_log = String.format("[TIMESTAMP]: %s\ngevondenBag(): %d\nvermisteBag(): %d", "xxxx-xx-xx",
+                      gevondenBag.getId(), vermisteBag.getId());
+                 
+                 System.out.println(selected_log);
+                 
+                 statement.setString(2, vermisteBag.getId().toString());
+                 statement.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+                 statement.setString(4, "0");
+                 statement.executeUpdate();
+                 
+                 vermisteCheckBox.setSelected(false);
+                 gevondenCheckBox.setSelected(false);
+             }
+         
+           
+         } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
+      
+     }
+
+    @FXML
+    private void gevondenToevoegen(ActionEvent event) {
+        MainNavigator.loadVista(MainNavigator.GEVONDEN);
+
+    }
+    
+    @FXML
+    private void vermistToevoegen(ActionEvent event) {
+        MainNavigator.loadVista(MainNavigator.VERMIST);
+
+    }
 
 }

@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Text?>
 <?scenebuilder-stylesheet testswitch.vista.css?>
 
-<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.StartController">
+<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.StartController">
     <GridPane fx:id="startPanel">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="565.0" minWidth="529.0" prefWidth="535.0" />
@@ -244,19 +244,19 @@
             </ScrollPane>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details gevonden baggage" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details vermiste baggage" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-            <CheckBox mnemonicParsing="false" text="Bevestig" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+            <CheckBox fx:id="gevondenCheckBox" mnemonicParsing="false" text="Bevestig" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                 <GridPane.margin>
                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </GridPane.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Bevestig" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+            <CheckBox fx:id="vermisteCheckBox" mnemonicParsing="false" text="Bevestig" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                 <GridPane.margin>
                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </GridPane.margin>
             </CheckBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
                 <children>
-                    <Button layoutX="950.0" layoutY="15.0" mnemonicParsing="false" text="Naar Overeenkomst" />
+                    <Button fx:id="buttonOvereenkomst" layoutX="950.0" layoutY="15.0" mnemonicParsing="false" onAction="#OvereenkomstDB" text="Naar Overeenkomst" />
                 </children>
                 <padding>
                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
