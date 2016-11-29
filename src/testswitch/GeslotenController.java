@@ -64,6 +64,7 @@ public class GeslotenController implements Initializable {
                 bagage.setGMerk(resultGevonden.getString("Merk"));
                 bagage.setGKleur(resultGevonden.getString("Kleur"));
                 bagage.setGBijzondereKenmerken(resultGevonden.getString("BijzonderKenmerken"));
+                System.out.println(bagage.getGLabelNummer());
 
                 bagage.setId(resultVermist.getInt("idVermist"));
                 bagage.setTijd(resultVermist.getString("Tijd")); 
@@ -145,9 +146,9 @@ public class GeslotenController implements Initializable {
         geslotenDatumKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, String>("datum"));
         geslotenLabelNummerKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, Integer>("Labelnummer"));
+                new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         geslotenBagageTypeKolom.setCellValueFactory(
-                new PropertyValueFactory<Bagage, String>("BagageType"));
+                new PropertyValueFactory<Bagage, String>("bagageType"));
         
         geslotenTableView.setItems(geslotenData);
         writeTableData();
