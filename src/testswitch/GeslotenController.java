@@ -64,7 +64,6 @@ public class GeslotenController implements Initializable {
                 bagage.setGMerk(resultGevonden.getString("Merk"));
                 bagage.setGKleur(resultGevonden.getString("Kleur"));
                 bagage.setGBijzondereKenmerken(resultGevonden.getString("BijzonderKenmerken"));
-                System.out.println(bagage.getGLabelNummer());
 
                 bagage.setId(resultVermist.getInt("idVermist"));
                 bagage.setTijd(resultVermist.getString("Tijd")); 
