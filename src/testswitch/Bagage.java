@@ -26,6 +26,20 @@ public class Bagage extends Gebruiker{
     private final SimpleStringProperty merk = new SimpleStringProperty();
     private final SimpleStringProperty kleur = new SimpleStringProperty();
     private final SimpleStringProperty BijzondereKenmerken = new SimpleStringProperty();
+    
+    private final SimpleIntegerProperty Gid = new SimpleIntegerProperty();
+    private final SimpleIntegerProperty GgevondenID = new SimpleIntegerProperty();
+    private final SimpleIntegerProperty GvermistID = new SimpleIntegerProperty();
+    private final SimpleStringProperty Gdatum = new SimpleStringProperty();
+    private final SimpleIntegerProperty GlabelNummer = new SimpleIntegerProperty();
+    private final SimpleIntegerProperty GvluchtNr = new SimpleIntegerProperty();
+    private final SimpleStringProperty GbagageType = new SimpleStringProperty();
+    private final SimpleStringProperty Gtijd = new SimpleStringProperty();
+    private final SimpleStringProperty Gluchthaven = new SimpleStringProperty();
+    private final SimpleStringProperty Gbestemming = new SimpleStringProperty();
+    private final SimpleStringProperty Gmerk = new SimpleStringProperty();
+    private final SimpleStringProperty Gkleur = new SimpleStringProperty();
+    private final SimpleStringProperty GBijzondereKenmerken = new SimpleStringProperty();
 
     //Setters
     public void setId(int id){
@@ -109,4 +123,74 @@ public class Bagage extends Gebruiker{
         return gevondenID.get();
     }
     
+    //Setters
+    public void setGId(int id){
+        this.Gid.set(id);
+    }
+    public void setGDatum(String datum){
+        this.Gdatum.set(datum);
+    }
+    public void setGLabelNummer(int labelNummer){
+        this.GlabelNummer.set(labelNummer);
+    }
+    public void setGVluchtNr(int vluchtNr){
+        this.GvluchtNr.set(vluchtNr);
+    }
+    public void setGBagageType(String bagageType){
+        this.GbagageType.set(bagageType);
+    }
+    public void setGTijd(String tijd){
+        this.Gtijd.set(tijd);
+    }
+    public void setGLuchthaven(String luchthaven){
+        this.Gluchthaven.set(luchthaven);
+    }
+    public void setGBestemming(String bestemming){
+        this.Gbestemming.set(bestemming);
+    }
+    public void setGMerk(String merk){
+        this.Gmerk.set(merk);
+    }
+    public void setGKleur(String kleur){
+        this.Gkleur.set(kleur);
+    }
+    public void setGBijzondereKenmerken(String bijzondereKenmerken){
+        this.GBijzondereKenmerken.set(bijzondereKenmerken);
+    }
+    
+    //Getters
+    public Integer getGId(){
+        return Gid.get();
+    }
+    public String getGDatum(){
+        return Gdatum.get();
+    }
+    public Integer getGLabelNummer(){
+        return GlabelNummer.get();
+    }
+    public Integer getGVluchtNr(){
+        return GvluchtNr.get();
+    }
+    public String getGBagageType(){
+        return GbagageType.get();
+    }
+    public String getGTijd(){
+        return Gtijd.get();
+    }
+    public String getGLuchthaven(){
+        return Gluchthaven.get();
+    }
+    public String getGBestemming(){
+        return Gbestemming.get();
+    }
+    public String getGMerk(){
+        return Gmerk.get();
+    }
+    public String getGKleur(){
+        return Gkleur.get();
+    }
+    public String getGBijzondereKenmerken(){
+        return GBijzondereKenmerken.get();
+    }
 }
+
