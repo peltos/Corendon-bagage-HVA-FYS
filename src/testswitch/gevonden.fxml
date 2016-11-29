@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.MainController">
+<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.Gevonden">
    <GridPane>
      <columnConstraints>
        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -44,8 +44,6 @@
                 	<rowConstraints>
                      <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
                   	<RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                  	<RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                  	<RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
                     	<RowConstraints minHeight="0.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
                 	</rowConstraints>
                  	<children>
@@ -54,14 +52,10 @@
                            <Font name="System Bold" size="16.0" />
                         </font>
                      </Label>
-                    	<Label text="Datum:" GridPane.rowIndex="1" />
-                    	<Label text="Tijd:" GridPane.rowIndex="2" />
-                    	<Label text="Luchthaven" GridPane.rowIndex="3" />
-                    	<Label text="Lost-and-found ID:" GridPane.rowIndex="4" />
-                    	<TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                    	<TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                    	<TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                    	<TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                    	<Label text="Luchthaven" GridPane.rowIndex="1" />
+                    	<Label text="Lost-and-found ID:" GridPane.rowIndex="2" />
+                    	<TextField fx:id="FXGevondenLuchthaven" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    	<TextField fx:id="FXGevondenLAFID" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                  	</children>
               	</GridPane>
                <GridPane layoutX="20.0" layoutY="230.0">
@@ -85,10 +79,10 @@
                      <Label text="Label nummer" GridPane.rowIndex="1" />
                      <Label text="Vluchtnummer" GridPane.rowIndex="2" />
                      <Label text="Bestemming" GridPane.rowIndex="3" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                     <Button fx:id="gebruikerButton" mnemonicParsing="false" text="Opslaan" GridPane.rowIndex="4">
+                     <TextField fx:id="FXGevondenLabelNummer" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <TextField fx:id="FXGevondenVluchtNummer" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <TextField fx:id="FXGevondenBestemming" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <Button fx:id="gevondenButton" mnemonicParsing="false" onAction="#gevondenOpslaanDB" text="Opslaan" GridPane.rowIndex="4">
                         <GridPane.margin>
                            <Insets top="5.0" />
                         </GridPane.margin>
@@ -127,10 +121,10 @@
                            <Insets top="5.0" />
                         </GridPane.margin>
                      </Label>
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                     <TextField prefHeight="82.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <TextField fx:id="FXGevondenType" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <TextField fx:id="FXGevondenMerk" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <TextField fx:id="FXGevondenKleur" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <TextField fx:id="FXGevondenBijzondereKenmerken" prefHeight="82.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                         <GridPane.margin>
                            <Insets top="5.0" />
                         </GridPane.margin>
