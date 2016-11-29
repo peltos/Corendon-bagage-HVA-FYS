@@ -71,6 +71,11 @@ public class Gevonden {
         }
 
     }
+     @FXML
+    private void gevondenToevoegenCancel(ActionEvent event) {
+        MainNavigator.loadVista(MainNavigator.START);
+
+    }
 }
 /* Nog te fixen:
 Cancel button

@@ -39,6 +39,20 @@ public class StartController implements Initializable {
     private ObservableList<Bagage> gevondenData = FXCollections.observableArrayList();
     private ObservableList<Bagage> vermisteData = FXCollections.observableArrayList();
 
+    
+    
+     @FXML
+    private void gevondenToevoegen(ActionEvent event) {
+        MainNavigator.loadVista(MainNavigator.GEVONDEN);
+
+    }
+    
+    @FXML
+    private void vermistToevoegen(ActionEvent event) {
+        MainNavigator.loadVista(MainNavigator.VERMIST);
+
+    }
+    
     @FXML
     private void writeTableData(String tabelNaam) {
         Database database = new Database(
@@ -180,16 +194,6 @@ public class StartController implements Initializable {
         writeTableData("Gevonden");
     }
 
-    @FXML
-    private void gevondenToevoegen(ActionEvent event) {
-        MainNavigator.loadVista(MainNavigator.GEVONDEN);
-
-    }
-    
-    @FXML
-    private void vermistToevoegen(ActionEvent event) {
-        MainNavigator.loadVista(MainNavigator.VERMIST);
-
-    }
+   
 
 }

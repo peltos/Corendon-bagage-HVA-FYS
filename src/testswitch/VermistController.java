@@ -1,5 +1,6 @@
 package testswitch;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -14,6 +15,8 @@ import javafx.scene.control.TextField;
  */
 public class VermistController {
     
+    
+    
 @FXML private TextField  FXVermisteLabelNummer, FXVermisteVluchtNummer,
         FXVermisteBestemming, FXVermisteLuchthaven;
 @FXML private TextField FXVermisteType, FXVermisteMerk, FXVermisteKleur,
@@ -22,6 +25,7 @@ public class VermistController {
         FXVermistePostcode, FXVermisteLand, FXVermisteTelefoon, FXVermisteEmail;
         //datum tijd
 @FXML private Button vermisteButton;
+
 
 public final String DB_NAME = "testDatabase";
 public final String DB_SERVER = "ronpelt.synology.me:3306";
@@ -42,6 +46,7 @@ Database database = new Database(DB_NAME, DB_SERVER,
         
         PreparedStatement statement = database.prepareStatement(query);
         
+        
         try{ //
         statement.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
         statement.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
@@ -61,6 +66,7 @@ Database database = new Database(DB_NAME, DB_SERVER,
 
     }
 
-
+  
+    
 
 }
