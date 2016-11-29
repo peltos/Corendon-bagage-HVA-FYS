@@ -65,8 +65,15 @@ Database database = new Database(DB_NAME, DB_SERVER,
         }
 
     }
-
-  
+@FXML
+    private void vermistToevoegenCancel(ActionEvent event) throws IOException {
+        MainNavigator.loadVista(MainNavigator.START);
+    }
+  /* 
+    De knop hierboven is bestemd om van vermist.fxml naar start.fxml te gaan door op "cancel" te drukken.
+    maar omdat de controller niet compleet werkend is, doet dit het niet. Op het moment dat ik de knop
+    "vermistToevoegenCancelButton" een methode geef bij on Action in vermist.fxml , doet de switch van start naar vermist het niet meer.
+    */
     
 
 }
