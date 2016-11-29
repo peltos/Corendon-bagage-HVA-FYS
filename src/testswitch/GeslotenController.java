@@ -38,7 +38,7 @@ public class GeslotenController implements Initializable {
             "testDatabase",
             "ronpelt.synology.me:3306",
             "root",
-            "kGjMtEO06BPiu2u4"
+            "kGjMtEO06BPiu2u4" 
         );
 
         try {
