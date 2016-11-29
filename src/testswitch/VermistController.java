@@ -23,7 +23,6 @@ public class VermistController {
         FXVermisteBijzondereKenmerken;
 @FXML private TextField FXVermisteNaam, FXVermisteAdres, FXVermisteWoonplaats,
         FXVermistePostcode, FXVermisteLand, FXVermisteTelefoon, FXVermisteEmail;
-        //datum tijd
 @FXML private Button vermisteButton;
 
 
@@ -38,26 +37,41 @@ Database database = new Database(DB_NAME, DB_SERVER,
     public void vermisteOpslaanDB(ActionEvent event) throws SQLException {
         
         String query = "INSERT INTO testDatabase.Vermist"
-                + " (tijd, datum, Labelnummer, Vluchtnummer, Bestemming, Luchthaven)"
-                + " INTO VALUES"
-                + ""
-                + " (?,?,?,?,?,?)";
+                + " (Datum, Tijd, LabelNummer, VluchtNummer, Bestemming,"
+                + " Luchthaven, Naam, Adres, Woonplaats, Postcode, Land,"
+                + " Telefoon, Email, BagageType, Merk, Kleur, BijzonderKenmerken)"
+                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         
         
         PreparedStatement statement = database.prepareStatement(query);
         
         
-        try{ //
+        
+
+        try{ 
         statement.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
         statement.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
-        int VermisteLabelNummer = Integer.parseInt(FXVermisteLabelNummer.getText());
-        statement.setInt(3, VermisteLabelNummer);
-        int VermisteVluchtNummer = Integer.parseInt(FXVermisteVluchtNummer.getText());
-        statement.setInt(4, VermisteVluchtNummer);
+        int Labelnummer = Integer.parseInt(FXVermisteLabelNummer.getText());
+        statement.setInt(3, Labelnummer);
+        int Vluchtnummer = Integer.parseInt(FXVermisteVluchtNummer.getText());
+        statement.setInt(4, Vluchtnummer);
         statement.setString(5, FXVermisteBestemming.getText());
         statement.setString(6, FXVermisteLuchthaven.getText());
+        statement.setString(7, FXVermisteNaam.getText());
+        statement.setString(8, FXVermisteAdres.getText());
+        statement.setString(9, FXVermisteWoonplaats.getText());
+        statement.setString(10, FXVermistePostcode.getText());
+        statement.setString(11, FXVermisteLand.getText());
+        int VermisteTelefoon = Integer.parseInt(FXVermisteTelefoon.getText());
+        statement.setInt(12, VermisteTelefoon);
+        statement.setString(13, FXVermisteEmail.getText());
+        statement.setString(14, FXVermisteType.getText());
+        statement.setString(15, FXVermisteMerk.getText());
+        statement.setString(16, FXVermisteKleur.getText());
+        statement.setString(17, FXVermisteBijzondereKenmerken.getText());
         
-//        statement.setString(7, FXVermisteNaam.getText());
+        statement.executeUpdate();
+
         
         } catch (Exception e) {
             e.printStackTrace(System.err);
@@ -65,15 +79,8 @@ Database database = new Database(DB_NAME, DB_SERVER,
         }
 
     }
-@FXML
-    private void vermistToevoegenCancel(ActionEvent event) throws IOException {
-        MainNavigator.loadVista(MainNavigator.START);
-    }
-  /* 
-    De knop hierboven is bestemd om van vermist.fxml naar start.fxml te gaan door op "cancel" te drukken.
-    maar omdat de controller niet compleet werkend is, doet dit het niet. Op het moment dat ik de knop
-    "vermistToevoegenCancelButton" een methode geef bij on Action in vermist.fxml , doet de switch van start naar vermist het niet meer.
-    */
+
+  
     
 
 }
