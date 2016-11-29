@@ -35,36 +35,6 @@ public class Gevonden {
     private final SimpleIntegerProperty labelNr = new SimpleIntegerProperty();
     private final SimpleIntegerProperty vluchtNr = new SimpleIntegerProperty();
 
-    //Setters
-    public void setGevondenID(int gevondenID) {
-        this.gevondenID.set(gevondenID);
-    }
-
-    public void setDatum(String date) {
-        this.date.set(date);
-    }
-
-    public void setLabelNr(int labelNr) {
-        this.labelNr.set(labelNr);
-    }
-
-    public void setVluchtNr(int vluchtNr) {
-        this.vluchtNr.set(vluchtNr);
-    }
-
-    //Getters
-    public Integer getGevondenID() {
-        return gevondenID.get();
-    }
-
-    public String getDatum() {
-        return date.get();
-    }
-
-    public Integer setLabelNr() {
-        return labelNr.get();
-    }
-
     public Integer setVluchtNr() {
         return vluchtNr.get();
     }
@@ -74,20 +44,17 @@ public class Gevonden {
     public final String DB_ACCOUNT = "root";
     public final String DB_PASSWORD = "kGjMtEO06BPiu2u4";
 
-    Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
-    
-    private static java.sql.Timestamp getCurrentTimeStamp() {
+    Database database = new Database(DB_NAME, DB_SERVER,
+                                     DB_ACCOUNT, DB_PASSWORD);
 
-	java.util.Date today = new java.util.Date();
-	return new java.sql.Timestamp(today.getTime());
-    
-
-}
 
     public void gevondenOpslaanDB(ActionEvent event) throws SQLException {
         String query = "INSERT INTO testDatabase.Gevonden"
-                + " (Tijd, Datum, Luchthaven, Bestemming, BagageType, Merk, Kleur, BijzonderKenmerken, Labelnummer, Vluchtnummer)"
+                + " (Tijd, Datum, Luchthaven,"
+                + " Bestemming, BagageType, Merk,"
+                + " Kleur, BijzonderKenmerken, Labelnummer, Vluchtnummer)"
                 + " VALUES (?,?,?,?,?,?,?,?,?,?);";
+        
         PreparedStatement statement = database.prepareStatement(query);
         
 
