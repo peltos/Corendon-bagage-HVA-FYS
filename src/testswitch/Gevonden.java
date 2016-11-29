@@ -7,6 +7,7 @@ package testswitch;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -15,7 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 /**
- * @author Daan Dirker
+ * @author Daan Dirker/Maarten Mes
  */
 public class Gevonden {
 
@@ -91,8 +92,8 @@ public class Gevonden {
         
 
         try {
-            statement.setTimestamp(1,getCurrentTimeStamp());            
-            statement.setTimestamp(2,getCurrentTimeStamp());            
+            statement.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+            statement.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
             statement.setString(3, FXGevondenLuchthaven.getText());
             statement.setString(4, FXGevondenBestemming.getText());
             statement.setString(5, FXGevondenType.getText());
@@ -116,3 +117,13 @@ public class Gevonden {
 
     }
 }
+/* Nog te fixen:
+Cancel button
+
+Not NULL bepalen
+
+DATETIME ipv DATE & TIME
+
+Algemeen:
+Start en Open zijn het zelfde
+*/
