@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -30,6 +31,8 @@ public class GebruikerController implements Initializable {
     @FXML public TableColumn<Gebruiker, Integer> positieKolom;
     @FXML public Button gebruikerToevoegenButton;
     
+    
+    
     private ObservableList<Gebruiker> data = FXCollections.observableArrayList();
 
     @FXML
@@ -42,7 +45,7 @@ public class GebruikerController implements Initializable {
         );
 
         try {
-            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gebruikers;");
+            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gebruikers");
 
             //Gaat net zo lang door, tot er geen records meer zijn
             while (result.next()) {
@@ -80,6 +83,53 @@ public class GebruikerController implements Initializable {
     private void gebruikerToevoegen(ActionEvent event) throws IOException {
         System.out.println("gebruikerToevoegen running");
         MainNavigator.loadVista(MainNavigator.GEBRUIKER_TOEVOEGEN);
+    }
+    
+    @FXML public TextField searchField;
+    
+    @FXML
+    private void search(ActionEvent event) throws IOException{
+        Database database = new Database(
+            "testDatabase",
+            "ronpelt.synology.me:3306",
+            "root",
+            "kGjMtEO06BPiu2u4"
+        );
+        data.removeAll(data);
+        try {
+            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gebruikers "
+                    + "WHERE ID LIKE '"+ searchField.getText() +"' "
+                    + "OR Voornaam LIKE '"+ searchField.getText() +"' "
+                    + "OR Tussenvoegsel LIKE '"+ searchField.getText() +"' "
+                    + "OR Achternaam LIKE '"+ searchField.getText() +"' "
+                    + "OR Username LIKE '"+ searchField.getText() +"' "
+                    + "OR Positie LIKE '"+ searchField.getText() +"' "
+                    + "OR Telefoonnummer LIKE '"+ searchField.getText() +"' "
+                    + "OR Email LIKE '"+ searchField.getText() +"' ;");
+
+            //Gaat net zo lang door, tot er geen records meer zijn
+            while (result.next()) {
+                Gebruiker gebruiker = new Gebruiker();
+                gebruiker.setGebruikerID(result.getInt("ID"));
+                gebruiker.setVoornaam(result.getString("Voornaam"));
+                gebruiker.setTussenvoegsel(result.getString("Tussenvoegsel"));
+                gebruiker.setAchternaam(result.getString("Achternaam"));
+                gebruiker.samenvoegenNaam(gebruiker.getVoornaam(), 
+                        gebruiker.getTussenvoegsel(), gebruiker.getAchternaam());
+                gebruiker.setUsername(result.getString("Username"));               
+                gebruiker.setTelefoonnummer(result.getInt("Telefoonnummer"));
+                gebruiker.setEmail(result.getString("Email"));
+                gebruiker.setPositie(result.getInt("Positie"));
+                
+                
+                data.add(gebruiker);
+                
+            }
+
+        } catch (SQLException ex) {
+
+        }
+        
     }
     
     @Override

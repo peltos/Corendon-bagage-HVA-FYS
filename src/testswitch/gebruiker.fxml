@@ -44,12 +44,12 @@
          </HBox>
          <HBox styleClass="correndon-blue" GridPane.rowIndex="1">
             <children>
-                  <TextField promptText="Search">
+                  <TextField fx:id="searchField" promptText="Search">
                   <HBox.margin>
                      <Insets right="5.0" />
                   </HBox.margin>
                </TextField>
-               <Button mnemonicParsing="false" text="Zoeken" />
+               <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" text="Zoeken" />
             </children>
             <GridPane.margin>
                <Insets />
