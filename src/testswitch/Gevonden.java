@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 public class Gevonden {
 
     @FXML
-    private TextField FXGevondenLuchthaven, FXGevondenLAFID;
+    private TextField FXGevondenLuchthaven;
     @FXML
     private TextField FXGevondenLabelNummer, FXGevondenVluchtNummer, FXGevondenBestemming;
     @FXML
@@ -85,10 +85,9 @@ public class Gevonden {
 
     public void gevondenOpslaanDB(ActionEvent event) throws SQLException {
         String query = "INSERT INTO testDatabase.Gevonden"
-                + " (Tijd, Datum, Luchthaven, Bestemming, BagageType, Merk, Kleur, BijzonderKenmerken)"
-                + " VALUES (?,?,?,?,?,?,?,?);";
+                + " (Tijd, Datum, Luchthaven, Bestemming, BagageType, Merk, Kleur, BijzonderKenmerken, Labelnummer, Vluchtnummer)"
+                + " VALUES (?,?,?,?,?,?,?,?,?,?);";
         PreparedStatement statement = database.prepareStatement(query);
-        
         
 
         try {
@@ -100,6 +99,13 @@ public class Gevonden {
             statement.setString(6, FXGevondenMerk.getText());
             statement.setString(7, FXGevondenKleur.getText());
             statement.setString(8, FXGevondenBijzondereKenmerken.getText());
+            
+            int GevondenLabelNummer = Integer.parseInt(FXGevondenLabelNummer.getText());
+            statement.setInt(9, GevondenLabelNummer);
+            
+            int VluchtNummer = Integer.parseInt(FXGevondenVluchtNummer.getText());
+            statement.setInt(10, VluchtNummer);
+            
             statement.executeUpdate();
 
 
