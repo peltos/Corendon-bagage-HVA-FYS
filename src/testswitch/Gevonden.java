@@ -8,8 +8,6 @@ package testswitch;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,17 +26,7 @@ public class Gevonden {
     private TextField FXGevondenType, FXGevondenMerk, FXGevondenKleur, FXGevondenBijzondereKenmerken;
     
     @FXML private Button gevondenButton;
-
-
-    private final SimpleIntegerProperty gevondenID = new SimpleIntegerProperty();
-    private final SimpleStringProperty date = new SimpleStringProperty();
-    private final SimpleIntegerProperty labelNr = new SimpleIntegerProperty();
-    private final SimpleIntegerProperty vluchtNr = new SimpleIntegerProperty();
-
-    public Integer setVluchtNr() {
-        return vluchtNr.get();
-    }
-
+    
     public final String DB_NAME = "testDatabase";
     public final String DB_SERVER = "ronpelt.synology.me:3306";
     public final String DB_ACCOUNT = "root";

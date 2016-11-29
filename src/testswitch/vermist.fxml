@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.MainController">
+<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.MainController">
    <GridPane>
      <columnConstraints>
        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -36,93 +36,6 @@
          </HBox>
       	<AnchorPane prefHeight="757.0" prefWidth="908.0" GridPane.rowIndex="1">
            	<children>
-              	<GridPane layoutX="20.0" layoutY="20.0">
-                	<columnConstraints>
-                  	<ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="137.0" />
-                  	<ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="486.0" />
-                	</columnConstraints>
-                	<rowConstraints>
-                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                  	<RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                  	<RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                  	<RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                	</rowConstraints>
-                 	<children>
-                     <Label text="Vermist" GridPane.columnSpan="2">
-                        <font>
-                           <Font name="System Bold" size="16.0" />
-                        </font>
-                     </Label>
-                    	<Label text="Datum:" GridPane.rowIndex="1" />
-                    	<Label text="Tijd:" GridPane.rowIndex="2" />
-                    	<Label text="Luchthaven" GridPane.rowIndex="3" />
-                    	<TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                    	<TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                    	<TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                 	</children>
-              	</GridPane>
-               <GridPane layoutX="420.0" layoutY="20.0">
-                  <columnConstraints>
-                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="137.0" />
-                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="486.0" />
-                  </columnConstraints>
-                  <rowConstraints>
-                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                  </rowConstraints>
-                  <children>
-                     <Label text="Bagage label Informatie" GridPane.columnSpan="2">
-                        <font>
-                           <Font name="System Bold" size="16.0" />
-                        </font>
-                     </Label>
-                     <Label text="Label nummer" GridPane.rowIndex="1" />
-                     <Label text="Vluchtnummer" GridPane.rowIndex="2" />
-                     <Label text="Bestemming" GridPane.rowIndex="3" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  </children>
-               </GridPane>
-               <GridPane layoutX="420.0" layoutY="180.0">
-                  <columnConstraints>
-                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="137.0" />
-                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="486.0" />
-                  </columnConstraints>
-                  <rowConstraints>
-                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                     <RowConstraints maxHeight="109.0" minHeight="0.0" prefHeight="101.0" valignment="TOP" vgrow="SOMETIMES" />
-                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
-                  </rowConstraints>
-                  <children>
-                     <Label text="Bagage Informatie" GridPane.columnSpan="2">
-                        <font>
-                           <Font name="System Bold" size="16.0" />
-                        </font>
-                     </Label>
-                     <Label text="Type:" GridPane.rowIndex="1" />
-                     <Label text="Merk:" GridPane.rowIndex="2" />
-                     <Label text="Kleur" GridPane.rowIndex="3" />
-                     <Label text="Bijzondere kenmerken" GridPane.rowIndex="4">
-                        <GridPane.margin>
-                           <Insets top="5.0" />
-                        </GridPane.margin>
-                     </Label>
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                     <TextField prefHeight="91.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                        <GridPane.margin>
-                           <Insets top="5.0" />
-                        </GridPane.margin>
-                     </TextField>
-                  </children>
-               </GridPane>
                <GridPane layoutX="20.0" layoutY="180.0">
                   <columnConstraints>
                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="137.0" />
@@ -138,39 +51,82 @@
                      <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
                      <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
                      <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
                   </rowConstraints>
                   <children>
-                     <Label text="Reiziger Informatie" GridPane.columnSpan="2">
+                     <Label text="Reiziger Informatie" GridPane.columnSpan="2" GridPane.rowIndex="2">
                         <font>
                            <Font name="System Bold" size="16.0" />
                         </font>
                      </Label>
-                     <Label text="Naam:" GridPane.rowIndex="1" />
-                     <Label text="Adres:" GridPane.rowIndex="2" />
-                     <Label text="Woonplaats:" GridPane.rowIndex="3" />
-                     <Label layoutX="10.0" layoutY="115.0" text="Postcode" GridPane.rowIndex="4" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     <Label text="Naam:" GridPane.rowIndex="3" />
+                     <Label text="Adres:" GridPane.rowIndex="4" />
+                     <Label text="Woonplaats:" GridPane.rowIndex="5" />
+                     <Label layoutX="10.0" layoutY="115.0" text="Postcode" GridPane.rowIndex="6" />
                      <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                     <Label text="Land" GridPane.rowIndex="5" />
-                     <Label text="Telefoon" GridPane.rowIndex="6" />
-                     <Label text="Email" GridPane.rowIndex="7" />
-                     <Button fx:id="gebruikerButton" mnemonicParsing="false" text="Opslaan" GridPane.rowIndex="8">
+                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                     <Label text="Land" GridPane.rowIndex="7" />
+                     <Label text="Telefoon" GridPane.rowIndex="8" />
+                     <Label text="Email" GridPane.rowIndex="9" />
+                     <Button fx:id="gebruikerButton" mnemonicParsing="false" text="Opslaan" GridPane.rowIndex="10">
                         <GridPane.margin>
                            <Insets top="5.0" />
                         </GridPane.margin>
                      </Button>
-                     <Button mnemonicParsing="false" text="Cancel" GridPane.rowIndex="8">
+                     <Button mnemonicParsing="false" text="Cancel" GridPane.rowIndex="10">
                         <GridPane.margin>
                            <Insets left="70.0" top="5.0" />
                         </GridPane.margin>
                      </Button>
+                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   </children>
                </GridPane>
+              	<GridPane layoutX="20.0" layoutY="20.0" prefWidth="337.0">
+                	<columnConstraints>
+                  	<ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="137.0" />
+                  	<ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="486.0" />
+                	</columnConstraints>
+                	<rowConstraints>
+                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                  	<RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                  	<RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                  	<RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                	</rowConstraints>
+                 	<children>
+                     <Label text="Label nummer" GridPane.rowIndex="1" />
+                     <Label text="Vluchtnummer" GridPane.rowIndex="2" />
+                     <Label text="Bestemming" GridPane.rowIndex="3" />
+                    	<Label text="Luchthaven" GridPane.rowIndex="4" />
+                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     <Label prefWidth="138.0" text="Bagage Informatie" GridPane.columnSpan="2">
+                        <font>
+                           <Font name="System Bold" size="16.0" />
+                        </font>
+                     </Label>
+                 	</children>
+              	</GridPane>
+               <Label layoutX="448.0" layoutY="22.0" text="Overige Bagage Informatie">
+                  <font>
+                     <Font name="System Bold" size="16.0" />
+                  </font>
+               </Label>
+               <Label layoutX="448.0" layoutY="57.0" text="Type:" />
+               <Label layoutX="448.0" layoutY="92.0" text="Merk:" />
+               <Label layoutX="448.0" layoutY="127.0" text="Kleur" />
+               <Label layoutX="448.0" layoutY="167.0" text="Bijzondere kenmerken" />
+               <TextField layoutX="585.0" layoutY="57.0" />
+               <TextField layoutX="585.0" layoutY="92.0" />
+               <TextField layoutX="585.0" layoutY="127.0" />
+               <TextField layoutX="585.0" layoutY="167.0" prefHeight="91.0" prefWidth="200.0" />
            	</children>
         	</AnchorPane>
       </children>
