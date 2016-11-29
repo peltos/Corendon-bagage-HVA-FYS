@@ -77,7 +77,7 @@ Database database = new Database(DB_NAME, DB_SERVER,
             e.printStackTrace(System.err);
 
         }
-
+        MainNavigator.loadVista(MainNavigator.START);
     }
 
   

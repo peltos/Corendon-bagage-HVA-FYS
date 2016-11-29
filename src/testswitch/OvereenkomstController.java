@@ -85,6 +85,7 @@ public class OvereenkomstController implements Initializable {
                 bagage.setTelefoonnummer(resultVermist.getInt("Telefoon"));
                 bagage.setEmail(resultVermist.getString("Email"));
                 overeenkomstData.add(bagage);
+                
 
             }
             
