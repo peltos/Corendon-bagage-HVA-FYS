@@ -128,10 +128,7 @@ public class LogBoekController {
     
     
     @FXML private GridPane startPanel;
-    static int aantalVermist = 0;
-    static int aantalGevonden = 0;
-    static int aantalOvereenkomst = 0;
-    static int aantalGesloten = 0;
+    static int aantalVermist, aantalGevonden, aantalOvereenkomst, aantalGesloten = 0;
 
     private void createPieChart() {
 
@@ -190,6 +187,11 @@ public class LogBoekController {
         plot.setSectionPaint("Vermiste Bagages = " + aantalVermist, new Color(255, 196, 30));
         plot.setSectionPaint("Overeenkomst = " + aantalOvereenkomst, new Color(216, 30, 5));
         plot.setSectionPaint("Gesloten = " + aantalGesloten, new Color(255, 255, 255));
+        
+        aantalVermist = 0;
+        aantalGevonden = 0;
+        aantalOvereenkomst = 0;
+        aantalGesloten = 0;
 
         SwingNode swingNode = new SwingNode();
         swingNode.setContent(new ChartPanel(chart));
