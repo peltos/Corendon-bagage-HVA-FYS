@@ -74,6 +74,11 @@
                                 </font>
                             </Label>
                             <Button fx:id="gevondenToevoegenButton" layoutX="441.0" mnemonicParsing="false" onAction="#gevondenToevoegen" text="+ Toevoegen" />
+                     <Button fx:id="editGevonden" disable="true" layoutX="5.0" mnemonicParsing="false" onAction="#editGevonden" text="Bagage aanpassen">
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </Button>
                         </children>
                         <VBox.margin>
                             <Insets bottom="5.0" top="5.0" />

@@ -26,6 +26,8 @@ import javafx.scene.control.TextField;
  * @author Alexander
  */
 public class StartController implements Initializable {
+    
+    @FXML Button editGevonden;
 
     @FXML
     public CheckBox vermisteCheckBox;
@@ -67,6 +69,12 @@ public class StartController implements Initializable {
     private ObservableList<Bagage> gevondenData = FXCollections.observableArrayList();
     private ObservableList<Bagage> vermisteData = FXCollections.observableArrayList();
 
+    private static int selectedId;
+    
+    public static int getSelectedId(){
+        return selectedId;
+    }
+    
     @FXML
     private void writeTableData() {
         Database database = new Database(
@@ -137,6 +145,11 @@ public class StartController implements Initializable {
     private void gevondenSelected() {
 
         Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
+        selectedId = bagage.getId();
+
+        if (bagage.getId() != null){
+           editGevonden.setDisable(false); 
+        }
 
         boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
 
@@ -450,7 +463,12 @@ public class StartController implements Initializable {
     @FXML
     private void vermistToevoegen(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.VERMIST);
-
+    }
+    
+    @FXML
+    private void editGevonden(ActionEvent event) {
+        Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
+        MainNavigator.loadVista(MainNavigator.EDIT_GEVONDEN);
     }
 
 }

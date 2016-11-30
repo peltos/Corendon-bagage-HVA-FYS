@@ -28,6 +28,7 @@ public class MainNavigator {
     public static final String LOGBOEK = "logboek.fxml";
     public static final String GEBRUIKER = "gebruiker.fxml";
     public static final String GEBRUIKER_TOEVOEGEN = "gebruikerToevoegen.fxml";
+    public static final String EDIT_GEVONDEN = "editGevonden.fxml";
     
 
     /** The main application layout controller. */
