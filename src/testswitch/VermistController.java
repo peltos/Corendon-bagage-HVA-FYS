@@ -39,8 +39,8 @@ Database database = new Database(DB_NAME, DB_SERVER,
         String query = "INSERT INTO testDatabase.Vermist"
                 + " (Datum, Tijd, LabelNummer, VluchtNummer, Bestemming,"
                 + " Luchthaven, Naam, Adres, Woonplaats, Postcode, Land,"
-                + " Telefoon, Email, BagageType, Merk, Kleur, BijzonderKenmerken)"
-                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                + " Telefoon, Email, BagageType, Merk, Kleur, BijzonderKenmerken, Visibility)"
+                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         
         
         PreparedStatement statement = database.prepareStatement(query);
@@ -69,6 +69,7 @@ Database database = new Database(DB_NAME, DB_SERVER,
         statement.setString(15, FXVermisteMerk.getText());
         statement.setString(16, FXVermisteKleur.getText());
         statement.setString(17, FXVermisteBijzondereKenmerken.getText());
+        statement.setInt(18, 0);
         
         statement.executeUpdate();
 

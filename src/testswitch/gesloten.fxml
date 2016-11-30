@@ -58,30 +58,30 @@
                 </padding>
             </HBox>
             <ScrollPane GridPane.rowIndex="4">
-                <content>
-                    <GridPane>
-                        <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="276.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="208.0" />
-                        </columnConstraints>
-                        <rowConstraints>
-                            <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="243.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="346.0" minHeight="1.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="398.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="448.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="494.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="541.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="586.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="609.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="609.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="609.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                        </rowConstraints>
-                        <children>
+               <content>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="276.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="208.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="243.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="346.0" minHeight="1.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="398.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="448.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="494.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="541.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="586.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="609.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="609.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="609.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" GridPane.rowIndex="6" GridPane.valignment="TOP" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merk:" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage informatie:" GridPane.rowIndex="5" />
@@ -89,120 +89,67 @@
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bijzondere kenmerken:" GridPane.rowIndex="9" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage label informatie:" GridPane.rowIndex="11" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Label Nummer:" GridPane.rowIndex="12" />
-                            <Label text="Plastic koffer" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                            <Label text="Samsonite" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                            <Label text="Rood" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                            <Label text="Zitten stickers op" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                            <Label text="123456789" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                            <Label fx:id="gevondenType" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                            <Label fx:id="gevondenMerk" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                            <Label fx:id="gevondenKleur" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                            <Label fx:id="gevondenBK" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                            <Label fx:id="gevondenLabelNr" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Datum:" />
-                            <Label text="12-sep-2016" GridPane.columnIndex="1" />
-                            <Label text="12:10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <Label fx:id="gevondenDatum" GridPane.columnIndex="1" />
+                            <Label fx:id="gevondenTijd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tijd" GridPane.rowIndex="1" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luchthaven" GridPane.rowIndex="2" />
-                            <Label text="Schiphol AMS" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <Label fx:id="gevondenLuchthaven" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vlucht nummer:" GridPane.rowIndex="13" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bestemming:" GridPane.rowIndex="14" />
-                            <Label text="TK453" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                            <Label text="Amsterdam" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                            <Label fx:id="gevondenVluchtNr" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                            <Label fx:id="gevondenBestemming" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lost-and-found ID" GridPane.rowIndex="3" />
-                            <Label text="164832" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <Label fx:id="gevondenID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         </children>
-                    </GridPane>
-                </content>
-                <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                </padding>
-            </ScrollPane>
-            <ScrollPane GridPane.rowIndex="4">
-                <content>
-                    <GridPane>
-                        <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="276.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="208.0" />
-                        </columnConstraints>
-                        <rowConstraints>
-                            <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="243.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="346.0" minHeight="1.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="398.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="448.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="494.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="541.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="586.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="609.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="609.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="609.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                        </rowConstraints>
-                        <children>
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" GridPane.rowIndex="6" GridPane.valignment="TOP" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merk:" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage informatie:" GridPane.rowIndex="5" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur:" GridPane.rowIndex="8" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bijzondere kenmerken:" GridPane.rowIndex="9" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage label informatie:" GridPane.rowIndex="11" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Label Nummer:" GridPane.rowIndex="12" />
-                            <Label fx:id="gevondenType" text="Plastic koffer" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                            <Label fx:id="gevondenMerk" text="Samsonite" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                            <Label fx:id="gevondenKleur" text="Rood" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                            <Label fx:id="gevondenBK" text="Zitten stickers op" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                            <Label fx:id="gevondenLabelNr" text="123456789" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Datum:" />
-                            <Label fx:id="gevondenDatum" text="12-sep-2016" GridPane.columnIndex="1" />
-                            <Label fx:id="gevondenTijd" text="12:10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tijd" GridPane.rowIndex="1" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luchthaven" GridPane.rowIndex="2" />
-                            <Label fx:id="gevondenLuchthaven" text="Schiphol AMS" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vlucht nummer:" GridPane.rowIndex="13" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bestemming:" GridPane.rowIndex="14" />
-                            <Label fx:id="gevondenVluchtNr" text="TK453" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                            <Label fx:id="gevondenBestemming" text="Amsterdam" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lost-and-found ID" GridPane.rowIndex="3" />
-                            <Label fx:id="gevondenID" text="164832" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        </children>
-                    </GridPane>
-                </content>
-                <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                </padding>
+                  </GridPane>
+               </content>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
             </ScrollPane>
             <ScrollPane GridPane.columnIndex="1" GridPane.rowIndex="4">
-                <content>
-                    <GridPane>
-                        <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="235.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="208.0" />
-                        </columnConstraints>
-                        <rowConstraints>
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                        </rowConstraints>
-                        <children>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+            <content>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="235.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="208.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" GridPane.rowIndex="15" GridPane.valignment="TOP" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merk:" GridPane.halignment="LEFT" GridPane.rowIndex="16" GridPane.valignment="TOP" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage informatie:" GridPane.rowIndex="14" />
@@ -210,23 +157,23 @@
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bijzondere kenmerken:" GridPane.rowIndex="18" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage label informatie:" GridPane.rowIndex="20" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Label Nummer:" GridPane.rowIndex="21" />
-                            <Label fx:id="vermisteType" text="Plastic koffer" GridPane.columnIndex="1" GridPane.rowIndex="15" />
-                            <Label fx:id="vermisteMerk" text="Samsonite" GridPane.columnIndex="1" GridPane.rowIndex="16" />
-                            <Label fx:id="vermisteKleur" text="Rood" GridPane.columnIndex="1" GridPane.rowIndex="17" />
-                            <Label fx:id="vermisteBK" text="Zitten stickers op" GridPane.columnIndex="1" GridPane.rowIndex="18" />
-                            <Label fx:id="vermisteLabelNr" text="123456789" GridPane.columnIndex="1" GridPane.rowIndex="21" />
+                            <Label fx:id="vermisteType" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                            <Label fx:id="vermisteMerk" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                            <Label fx:id="vermisteKleur" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+                            <Label fx:id="vermisteBK" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+                            <Label fx:id="vermisteLabelNr" GridPane.columnIndex="1" GridPane.rowIndex="21" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Datum:" />
-                            <Label fx:id="vermisteDatum" text="12-sep-2016" GridPane.columnIndex="1" />
-                            <Label fx:id="vermisteTijd" text="12:10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <Label fx:id="vermisteDatum" GridPane.columnIndex="1" />
+                            <Label fx:id="vermisteTijd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tijd" GridPane.rowIndex="1" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luchthaven" GridPane.rowIndex="2" />
-                            <Label fx:id="vermisteLuchthaven" text="Schiphol AMS" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <Label fx:id="vermisteLuchthaven" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vlucht nummer:" GridPane.rowIndex="22" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bestemming:" GridPane.rowIndex="23" />
-                            <Label fx:id="vermisteVluchtNr" text="TK453" GridPane.columnIndex="1" GridPane.rowIndex="22" />
-                            <Label fx:id="vermisteBestemming" text="Amsterdam" GridPane.columnIndex="1" GridPane.rowIndex="23" />
+                            <Label fx:id="vermisteVluchtNr" GridPane.columnIndex="1" GridPane.rowIndex="22" />
+                            <Label fx:id="vermisteBestemming" GridPane.columnIndex="1" GridPane.rowIndex="23" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lost-and-found ID" GridPane.rowIndex="3" />
-                            <Label fx:id="vermisteID" text="164832" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <Label fx:id="vermisteID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reiziger informatie:" GridPane.rowIndex="5" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Naam:" GridPane.rowIndex="6" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adres:" GridPane.rowIndex="7" />
@@ -235,19 +182,16 @@
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Land:" GridPane.rowIndex="10" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefoon:" GridPane.rowIndex="11" />
                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" GridPane.rowIndex="12" />
-                            <Label fx:id="vermisteNaam" text="Erkan Atas" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                            <Label fx:id="vermisteAdres" text="Adm. de Ruyterweg 123" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                            <Label fx:id="vermisteWoonplaats" layoutX="312.0" layoutY="252.0" text="Amsterdam" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                            <Label fx:id="vermistePostcode" layoutX="312.0" layoutY="280.0" text="1018CK" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                            <Label fx:id="vermisteLand" layoutX="312.0" layoutY="309.0" text="Nederland" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                            <Label fx:id="vermisteTelefoon" layoutX="312.0" layoutY="338.0" text="06-12345678" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                            <Label fx:id="vermisteEmail" layoutX="312.0" layoutY="367.0" text="Erkan.Atar@Amsterdam.nl" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                            <Label fx:id="vermisteNaam" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                            <Label fx:id="vermisteAdres" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                            <Label fx:id="vermisteWoonplaats" layoutX="312.0" layoutY="252.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                            <Label fx:id="vermistePostcode" layoutX="312.0" layoutY="280.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                            <Label fx:id="vermisteLand" layoutX="312.0" layoutY="309.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                            <Label fx:id="vermisteTelefoon" layoutX="312.0" layoutY="338.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                            <Label fx:id="vermisteEmail" layoutX="312.0" layoutY="367.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                         </children>
-                    </GridPane>
-                </content>
-                <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                </padding>
+                  </GridPane>
+            </content>
             </ScrollPane>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details gevonden baggage" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details vermiste baggage" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />

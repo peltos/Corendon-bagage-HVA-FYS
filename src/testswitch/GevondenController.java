@@ -35,8 +35,8 @@ public class GevondenController {
         String query = "INSERT INTO testDatabase.Gevonden"
                 + " (Tijd, Datum, Luchthaven,"
                 + " Bestemming, BagageType, Merk,"
-                + " Kleur, BijzonderKenmerken, Labelnummer, Vluchtnummer)"
-                + " VALUES (?,?,?,?,?,?,?,?,?,?);";
+                + " Kleur, BijzonderKenmerken, Labelnummer, Vluchtnummer, Visibility)"
+                + " VALUES (?,?,?,?,?,?,?,?,?,?,?);";
         
         PreparedStatement statement = database.prepareStatement(query);
         
@@ -56,6 +56,7 @@ public class GevondenController {
             
             int VluchtNummer = Integer.parseInt(FXGevondenVluchtNummer.getText());
             statement.setInt(10, VluchtNummer);
+            statement.setInt(11, 0);
             
             statement.executeUpdate();
 
@@ -64,7 +65,7 @@ public class GevondenController {
             e.printStackTrace(System.err);
 
         }
-        
+        MainNavigator.loadVista(MainNavigator.START);
     }
      @FXML
     private void gevondenToevoegenCancel(ActionEvent event) {

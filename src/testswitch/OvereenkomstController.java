@@ -176,7 +176,7 @@ public class OvereenkomstController implements Initializable {
 
         String query = "DELETE FROM `testDatabase`.`Overeenkomst` WHERE `OvereenkomstID`="+overeenkomstBag.getId()+";";
         String queryGevonden = "UPDATE `testDatabase`.`Gevonden` SET `Visibility`='0' WHERE `idGevonden`="+ overeenkomstBag.getGId() +";";
-        String queryVermist = "UPDATE `testDatabase`.`Vermist` SET `Visibility`='0' WHERE `idVermist`="+ overeenkomstBag.getVermistID() +";";
+        String queryVermist = "UPDATE `testDatabase`.`Vermist` SET `Visibility`='0' WHERE `idVermist`="+ overeenkomstBag.getVId() +";";
 
         PreparedStatement statement = database.prepareStatement(query);
         PreparedStatement statementGevonden = database.prepareStatement(queryGevonden);
@@ -194,36 +194,12 @@ public class OvereenkomstController implements Initializable {
                 statement.executeUpdate();
                 statementGevonden.executeUpdate();
                 statementVermist.executeUpdate();
-                
-                Alert alert = new Alert(AlertType.CONFIRMATION);
-                alert.setTitle("Bevestiging overeenkomst vevrwijderd");
-                alert.setHeaderText("Bevestiging overeenkomst vevrwijderd");
-                alert.setContentText(
-                        "Acties ondernomen:" +
-                        "\nOvereenkomst ID: " + overeenkomstBag.getId() + " verwijderd" +
-                        "\nGevonden ID: " + overeenkomstBag.getGId() + " naar Gevonden Tabel" +
-                        "\nVermist ID: " + overeenkomstBag.getVermistID() + " naar Gevonden Tabel" +
-                        "\n \nWil je terug naar Overeenkomst of naar Start?"
-                );
-
-                ButtonType buttonTypeOne = new ButtonType("Start");
-                ButtonType buttonTypeTwo = new ButtonType("Overeenkomst");
-
-                alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
-
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == buttonTypeOne){
-                    MainNavigator.loadVista(MainNavigator.START);
-                } else {
-                    MainNavigator.loadVista(MainNavigator.OVEREENKOMST);
-                }
-                
-                overeenkomstCheckBox.setSelected(false);
             }
 
         } catch (Exception e) {
             e.printStackTrace(System.err);
         }
+        MainNavigator.loadVista(MainNavigator.OVEREENKOMST);
         
 
     }
