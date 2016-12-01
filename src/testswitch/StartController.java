@@ -28,6 +28,12 @@ import javafx.scene.control.TextField;
 public class StartController implements Initializable {
     
     @FXML Button editGevonden;
+    @FXML Button FXGevondenDelete;
+    @FXML Button gevondenToevoegenButton;
+    
+    @FXML Button editVermist;
+    @FXML Button FXVermistDelete;
+    @FXML Button VermistToevoegenButton;
 
     @FXML
     public CheckBox vermisteCheckBox;
@@ -35,8 +41,6 @@ public class StartController implements Initializable {
     public CheckBox gevondenCheckBox;
     @FXML
     public Button buttonOvereenkomst;
-    @FXML
-    public Button FXGevondenDelete;
 
     //Gevonden bagage
     @FXML
@@ -148,7 +152,11 @@ public class StartController implements Initializable {
         selectedId = bagage.getId();
 
         if (bagage.getId() != null){
-           editGevonden.setDisable(false); 
+            editGevonden.setDisable(false);
+            FXGevondenDelete.setDisable(false);
+            gevondenToevoegenButton.setDisable(false);
+
+           
         }
 
         boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
@@ -178,12 +186,22 @@ public class StartController implements Initializable {
 
     @FXML
     private void vermisteSelected() {
-        boolean bSelected = vermisteCheckBox.isSelected();
 
         Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
+        
+        if (bagage.getId() != null){
+            editVermist.setDisable(false);
+            FXVermistDelete.setDisable(false);
+            VermistToevoegenButton.setDisable(false);
+
+           
+        }
+        
+        boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
 
         if (bSelected == true) {
             vermisteCheckBox.setSelected(false);
+            
         }
 
         vermisteDatum.setText(bagage.getDatum());
