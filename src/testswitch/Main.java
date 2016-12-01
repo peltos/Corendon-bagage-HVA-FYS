@@ -7,41 +7,48 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.layout.BorderPane;
 
 /**
  * Main application class.
  */
 public class Main extends Application {
+
+    private static final Database database = new Database(
+        "testDatabase",
+        "ronpelt.synology.me:3306",
+        "root",
+        "kGjMtEO06BPiu2u4"
+    );
     
-    
-    
+    public static Database getDatabase() {
+        return Main.database;
+    }
+
     @Override
-    public void start(Stage stage) throws Exception{
-        
+    public void start(Stage stage) throws Exception {
+
         stage.setTitle("Corendon Bagage Systeem");
         stage.setScene(
-            createScene(
-                loadLogin()
-            )
+                createScene(
+                        loadLogin()
+                )
         );
 
         stage.show();
-        stage.setResizable(false);
     }
 
     /**
-     * Loads the main fxml layout.
-     * Sets up the vista switching MainNavigator.
+     * Loads the main fxml layout. Sets up the vista switching MainNavigator.
      * Loads the first vista into the fxml layout.
      *
      * @return the loaded pane.
      * @throws IOException if the pane could not be loaded.
      */
-    public Pane loadLogin() throws IOException {
+    public static Pane loadLogin() throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
-        Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(MainNavigator.LOGIN));
-        
+        Pane mainPane = (Pane) loader.load(Main.class.getResourceAsStream(MainNavigator.LOGIN));
 
         return mainPane;
     }
@@ -52,40 +59,44 @@ public class Main extends Application {
      * @param mainPane the main application layout.
      * @return the created scene.
      */
-    public Scene createScene(Pane mainPane) {
-        
+    public static Scene createScene(Pane mainPane) {
+
         Scene scene = new Scene(mainPane);
 
         scene.getStylesheets().setAll(
-            getClass().getResource("vista.css").toExternalForm()
+                Main.class.getResource("vista.css").toExternalForm()
         );
 
         return scene;
     }
+
     /**
      * Loads Panes from the MainNavigator.java
      *
      * @return the loaded pane.
      * @throws IOException if the pane could not be loaded.
      */
-    public Pane loadMedewerker() throws IOException {
+    public static Pane loadMedewerker() throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
-        Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(MainNavigator.MAINMEDEWERKER));
+        Pane mainPane = (Pane) loader.load(Main.class.getResourceAsStream(MainNavigator.MAINMEDEWERKER));
 
         MainController mainController = loader.getController();
+        mainController.setRoot((BorderPane) mainPane);
 
         MainNavigator.setMainController(mainController);
         MainNavigator.loadVista(MainNavigator.START);
 
         return mainPane;
     }
-    public Pane loadManager() throws IOException {
+
+    public static Pane loadManager() throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
-        Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(MainNavigator.MAINMANAGER));
+        Pane mainPane = (Pane) loader.load(Main.class.getResourceAsStream(MainNavigator.MAINMANAGER));
 
         MainController mainController = loader.getController();
+        mainController.setRoot((BorderPane) mainPane);
 
         MainNavigator.setMainController(mainController);
         MainNavigator.loadVista(MainNavigator.START);

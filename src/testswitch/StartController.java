@@ -26,14 +26,20 @@ import javafx.scene.control.TextField;
  * @author Alexander
  */
 public class StartController implements Initializable {
-    
-    @FXML Button editGevonden;
-    @FXML Button FXGevondenDelete;
-    @FXML Button gevondenToevoegenButton;
-    
-    @FXML Button editVermist;
-    @FXML Button FXVermistDelete;
-    @FXML Button VermistToevoegenButton;
+
+    @FXML
+    Button editGevonden;
+    @FXML
+    Button FXGevondenDelete;
+    @FXML
+    Button gevondenToevoegenButton;
+
+    @FXML
+    Button editVermist;
+    @FXML
+    Button FXVermistDelete;
+    @FXML
+    Button VermistToevoegenButton;
 
     @FXML
     public CheckBox vermisteCheckBox;
@@ -74,11 +80,11 @@ public class StartController implements Initializable {
     private ObservableList<Bagage> vermisteData = FXCollections.observableArrayList();
 
     private static int selectedId;
-    
-    public static int getSelectedId(){
+
+    public static int getSelectedId() {
         return selectedId;
     }
-    
+
     @FXML
     private void writeTableData() {
         Database database = new Database(
@@ -151,12 +157,11 @@ public class StartController implements Initializable {
         Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
         selectedId = bagage.getId();
 
-        if (bagage.getId() != null){
+        if (bagage.getId() != null) {
             editGevonden.setDisable(false);
             FXGevondenDelete.setDisable(false);
             gevondenToevoegenButton.setDisable(false);
 
-           
         }
 
         boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
@@ -188,22 +193,19 @@ public class StartController implements Initializable {
     private void vermisteSelected() {
 
         Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
-        
-        if (bagage.getId() != null){
-            editVermist.setDisable(false);
-            FXVermistDelete.setDisable(false);
-            VermistToevoegenButton.setDisable(false);
+//        
+//        if (bagage.getId() != null){
+//            editVermist.setDisable(false);
+//            FXVermistDelete.setDisable(false);
+//            VermistToevoegenButton.setDisable(false);
+//        }
 
-           
-        }
-        
         boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
 
         if (bSelected == true) {
             vermisteCheckBox.setSelected(false);
-            
-        }
 
+        }
         vermisteDatum.setText(bagage.getDatum());
         vermisteTijd.setText(bagage.getTijd());
         vermisteLuchthaven.setText(bagage.getLuchthaven());
@@ -222,6 +224,7 @@ public class StartController implements Initializable {
         vermisteLabelNr.setText(String.valueOf(bagage.getLabelNummer()));
         vermisteVluchtNr.setText(String.valueOf(bagage.getVluchtNr()));
         vermisteBestemming.setText(bagage.getBestemming());
+
     }
 
     @Override
@@ -254,11 +257,12 @@ public class StartController implements Initializable {
         vermisteTabel.setItems(vermisteData);
         writeTableData();
     }
-    @FXML public TextField searchField;
-    
     @FXML
-    private void search(ActionEvent event) throws IOException{
-        
+    public TextField searchField;
+
+    @FXML
+    private void search(ActionEvent event) throws IOException {
+
         Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
         gevondenDatum.setText(" ");
         gevondenTijd.setText(" ");
@@ -271,7 +275,7 @@ public class StartController implements Initializable {
         gevondenLabelNr.setText(" ");
         gevondenVluchtNr.setText(" ");
         gevondenBestemming.setText(" ");
-        
+
         bagage = vermisteTabel.getSelectionModel().getSelectedItem();
         vermisteDatum.setText(" ");
         vermisteTijd.setText(" ");
@@ -291,39 +295,39 @@ public class StartController implements Initializable {
         vermisteLabelNr.setText(" ");
         vermisteVluchtNr.setText(" ");
         vermisteBestemming.setText(" ");
-        
+
         Database database = new Database(
-            "testDatabase",
-            "ronpelt.synology.me:3306",
-            "root",
-            "kGjMtEO06BPiu2u4"
+                "testDatabase",
+                "ronpelt.synology.me:3306",
+                "root",
+                "kGjMtEO06BPiu2u4"
         );
         gevondenData.removeAll(gevondenData);
         vermisteData.removeAll(vermisteData);
-        
+
         if (searchField.getText().equals("")) {
             writeTableData();
-        }else{
+        } else {
             try {
                 ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Vermist "
-                        + "WHERE idVermist LIKE '"+ searchField.getText() +"' "
-                        + "OR Tijd LIKE '"+ searchField.getText() +"' "
-                        + "OR Datum LIKE '"+ searchField.getText() +"' "
-                        + "OR Luchthaven LIKE '"+ searchField.getText() +"' "
-                        + "OR Labelnummer LIKE '"+ searchField.getText() +"' "
-                        + "OR Vluchtnummer LIKE '"+ searchField.getText() +"' "
-                        + "OR Bestemming LIKE '"+ searchField.getText() +"' "
-                        + "OR BagageType LIKE '"+ searchField.getText() +"' "
-                        + "OR Merk LIKE '"+ searchField.getText() +"' "
-                        + "OR Kleur LIKE '"+ searchField.getText() +"' "
-                        + "OR BijzonderKenmerken LIKE '"+ searchField.getText() +"' "
-                        + "OR Naam LIKE '"+ searchField.getText() +"' "
-                        + "OR Adres LIKE '"+ searchField.getText() +"' "
-                        + "OR Woonplaats LIKE '"+ searchField.getText() +"' "
-                        + "OR Postcode LIKE '"+ searchField.getText() +"' "
-                        + "OR Land LIKE '"+ searchField.getText() +"' "
-                        + "OR Telefoon LIKE '"+ searchField.getText() +"' "
-                        + "OR Email LIKE '"+ searchField.getText() +"' "
+                        + "WHERE idVermist LIKE '" + searchField.getText() + "' "
+                        + "OR Tijd LIKE '" + searchField.getText() + "' "
+                        + "OR Datum LIKE '" + searchField.getText() + "' "
+                        + "OR Luchthaven LIKE '" + searchField.getText() + "' "
+                        + "OR Labelnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Vluchtnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Bestemming LIKE '" + searchField.getText() + "' "
+                        + "OR BagageType LIKE '" + searchField.getText() + "' "
+                        + "OR Merk LIKE '" + searchField.getText() + "' "
+                        + "OR Kleur LIKE '" + searchField.getText() + "' "
+                        + "OR BijzonderKenmerken LIKE '" + searchField.getText() + "' "
+                        + "OR Naam LIKE '" + searchField.getText() + "' "
+                        + "OR Adres LIKE '" + searchField.getText() + "' "
+                        + "OR Woonplaats LIKE '" + searchField.getText() + "' "
+                        + "OR Postcode LIKE '" + searchField.getText() + "' "
+                        + "OR Land LIKE '" + searchField.getText() + "' "
+                        + "OR Telefoon LIKE '" + searchField.getText() + "' "
+                        + "OR Email LIKE '" + searchField.getText() + "' "
                         + "AND Visibility = 0;");
 
                 //Gaat net zo lang door, tot er geen records meer zijn
@@ -350,21 +354,21 @@ public class StartController implements Initializable {
 
                     vermisteData.add(bagage);
                 }
-                
+
                 result = database.executeQuery("SELECT * FROM testDatabase.Gevonden "
-                        + "WHERE idGevonden LIKE '"+ searchField.getText() +"' "
-                        + "OR Tijd LIKE '"+ searchField.getText() +"' "
-                        + "OR Datum LIKE '"+ searchField.getText() +"' "
-                        + "OR Luchthaven LIKE '"+ searchField.getText() +"' "
-                        + "OR Labelnummer LIKE '"+ searchField.getText() +"' "
-                        + "OR Vluchtnummer LIKE '"+ searchField.getText() +"' "
-                        + "OR Bestemming LIKE '"+ searchField.getText() +"' "
-                        + "OR BagageType LIKE '"+ searchField.getText() +"' "
-                        + "OR Merk LIKE '"+ searchField.getText() +"' "
-                        + "OR Kleur LIKE '"+ searchField.getText() +"' "
-                        + "OR BijzonderKenmerken LIKE '"+ searchField.getText() +"' "
+                        + "WHERE idGevonden LIKE '" + searchField.getText() + "' "
+                        + "OR Tijd LIKE '" + searchField.getText() + "' "
+                        + "OR Datum LIKE '" + searchField.getText() + "' "
+                        + "OR Luchthaven LIKE '" + searchField.getText() + "' "
+                        + "OR Labelnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Vluchtnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Bestemming LIKE '" + searchField.getText() + "' "
+                        + "OR BagageType LIKE '" + searchField.getText() + "' "
+                        + "OR Merk LIKE '" + searchField.getText() + "' "
+                        + "OR Kleur LIKE '" + searchField.getText() + "' "
+                        + "OR BijzonderKenmerken LIKE '" + searchField.getText() + "' "
                         + "AND Visibility = 0;");
-                
+
                 while (result.next()) {
                     bagage = new Bagage();
 
@@ -387,8 +391,7 @@ public class StartController implements Initializable {
 
             }
         }
-        
-        
+
     }
 
     @FXML
@@ -482,7 +485,7 @@ public class StartController implements Initializable {
     private void vermistToevoegen(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.VERMIST);
     }
-    
+
     @FXML
     private void editGevonden(ActionEvent event) {
         Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();

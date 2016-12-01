@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -22,8 +23,8 @@ public class MainController {
     /**
      * Holder of a switchable vista.
      */
-    @FXML
-    private StackPane vistaHolder;
+    //@FXML
+    //private StackPane vistaHolder;
     @FXML
     private Pane mainPane;
 
@@ -33,11 +34,16 @@ public class MainController {
      * @param node the vista node to be swapped in.
      */
     public void setVista(Node node) {
-        vistaHolder.getChildren().setAll(node);
+        //vistaHolder.getChildren().setAll(node);
+        root.setCenter(node);
     }
 
+    public void setRoot(BorderPane root) {
+        this.root = root;
+    }
+    
     private Stage stage;
-    private Parent root;
+    private BorderPane root;
 
     @FXML
     private TextField gebruikersnaam;
@@ -62,13 +68,8 @@ public class MainController {
     @FXML
     private void loginCheck(ActionEvent event) throws Exception {
 
-        Main Main = new Main();
-        Database database = new Database(
-                "testDatabase",
-                "ronpelt.synology.me:3306",
-                "root",
-                "kGjMtEO06BPiu2u4"
-        );
+        Database database = Main.getDatabase();
+        
         ResultSet result = database.executeQuery("SELECT username, password, "
                 + "positie FROM testDatabase.Gebruikers;");
         
@@ -83,13 +84,14 @@ public class MainController {
                         && dbPassword.equals(wachtwoord.getText())) {
                     if (dbManager == 1) {
                         stage = (Stage) loginButton.getScene().getWindow();
+                        
                         stage.setScene(
                                 Main.createScene(
-                                        Main.loadManager()
+                                    Main.loadManager()
                                 )
                         );
                         stage.centerOnScreen();
-                        stage.setResizable(false);
+                        
                         return;
                     }
                     stage = (Stage) loginButton.getScene().getWindow();
@@ -99,7 +101,6 @@ public class MainController {
                             )
                     );
                     stage.centerOnScreen();
-                        stage.setResizable(false);
                     return;
                 }
                 error.setText("Verkeerde gebruikersnaam of wachtwoord");

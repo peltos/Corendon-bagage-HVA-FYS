@@ -69,18 +69,19 @@ public class EditGevondenController implements Initializable {
                 "kGjMtEO06BPiu2u4"
         );
         
-        String query = "UPDATE testDatabase.Gevonden SET"
+        String query = "UPDATE testDatabase.Gevonden SET "
                 + "Luchthaven=? "
-                + "WHERE idGevonden=" + id;
+                + "WHERE idGevonden=?";
         
         PreparedStatement statement = database.prepareStatement(query);
 
         try {
-            statement.setString(1, "'Hi there'");
+            statement.setString(1, "Hi there");
+            statement.setInt(2, id);
             statement.executeUpdate();
            
         } catch(SQLException ex) {
-            
+            ex.printStackTrace();
         }
         
         MainNavigator.loadVista(MainNavigator.START);

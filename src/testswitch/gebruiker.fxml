@@ -15,79 +15,77 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="vista2" prefHeight="873.0" prefWidth="1067.0" styleClass="corr" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.GebruikerController">
-      <GridPane fx:id="startPanel">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" />
-         </columnConstraints>
-         <rowConstraints>
-         <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-         <HBox styleClass="correndon-blue">
+<GridPane fx:id="startPanel" styleClass="corr" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.GebruikerController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <HBox styleClass="correndon-blue">
             <children>
-               <Label text="Gebruikers">
-                  <font>
-                     <Font name="System Bold" size="18.0" />
-                  </font>
-               </Label>
+                <Label text="Gebruikers">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
             </children>
             <GridPane.margin>
-               <Insets />
+                <Insets />
             </GridPane.margin>
             <padding>
-               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
-         </HBox>
-         <HBox styleClass="correndon-blue" GridPane.rowIndex="1">
+        </HBox>
+        <HBox styleClass="correndon-blue" GridPane.rowIndex="1">
             <children>
-                  <TextField fx:id="searchField" promptText="Search">
-                  <HBox.margin>
-                     <Insets right="5.0" />
-                  </HBox.margin>
-               </TextField>
-               <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" text="Zoeken" />
+                <TextField fx:id="searchField" promptText="Search">
+                    <HBox.margin>
+                        <Insets right="5.0" />
+                    </HBox.margin>
+                </TextField>
+                <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" text="Zoeken" />
             </children>
             <GridPane.margin>
-               <Insets />
+                <Insets />
             </GridPane.margin>
             <padding>
-               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
-         </HBox>
-          <AnchorPane GridPane.rowIndex="2">
-               <children>
-                  <TableView fx:id="gebruikerTableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        </HBox>
+        <AnchorPane GridPane.rowIndex="2">
+            <children>
+                <TableView fx:id="gebruikerTableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="gebruikerIDKolom" prefWidth="89.0" text="ID" />
-                      <TableColumn fx:id="naamKolom" prefWidth="236.0" text="Naam" />
+                        <TableColumn fx:id="gebruikerIDKolom" prefWidth="89.0" text="ID" />
+                        <TableColumn fx:id="naamKolom" prefWidth="236.0" text="Naam" />
                         <TableColumn fx:id="usernameKolom" prefWidth="216.0" text="Username" />
                         <TableColumn fx:id="telefoonnummerKolom" prefWidth="188.0" text="Telefoonnummer" />
                         <TableColumn fx:id="emailKolom" prefWidth="225.0" text="Email" />
                         <TableColumn fx:id="positieKolom" prefWidth="114.0" text="Positie" />
                     </columns>
-                     <effect>
+                    <effect>
                         <Blend />
-                     </effect>
-                  </TableView>
-               </children>
-            </AnchorPane>
-         <HBox alignment="TOP_RIGHT" GridPane.rowIndex="3">
+                    </effect>
+                </TableView>
+            </children>
+        </AnchorPane>
+        <HBox alignment="TOP_RIGHT" GridPane.rowIndex="3">
             <children>
-                  <Button fx:id="gebruikerToevoegenButton" mnemonicParsing="false" onAction="#gebruikerToevoegen" text="Gebruiker toevoegen" />
-                  <Button mnemonicParsing="false" text="Gebruiker verwijderen">
-                  <HBox.margin>
-                     <Insets left="5.0" />
-                  </HBox.margin>
-               </Button>
+                <Button fx:id="gebruikerToevoegenButton" mnemonicParsing="false" onAction="#gebruikerToevoegen" text="Gebruiker toevoegen" />
+                <Button mnemonicParsing="false" text="Gebruiker verwijderen">
+                    <HBox.margin>
+                        <Insets left="5.0" />
+                    </HBox.margin>
+                </Button>
             </children>
             <GridPane.margin>
-               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </GridPane.margin>
-         </HBox>
-         </children>
-      </GridPane>
-</StackPane>
+        </HBox>
+    </children>
+</GridPane>
