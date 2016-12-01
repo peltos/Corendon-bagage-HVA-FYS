@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.VermistController">
+<GridPane prefHeight="602.0" prefWidth="1129.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.VermistController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -23,7 +22,7 @@
     <children>
         <HBox prefHeight="35.0" prefWidth="200.0" styleClass="correndon-blue">
             <children>
-                <Label text="Vermiste bagage toevoegen">
+                <Label text="Add Lost Baggage">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -54,24 +53,24 @@
                         <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="Reiziger Informatie" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                        <Label prefHeight="25.0" prefWidth="184.0" text="Traveler Information" GridPane.columnSpan="2" GridPane.rowIndex="2">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Label>
-                        <Label text="Naam:" GridPane.rowIndex="3" />
-                        <Label text="Adres:" GridPane.rowIndex="4" />
-                        <Label text="Woonplaats:" GridPane.rowIndex="5" />
-                        <Label layoutX="10.0" layoutY="115.0" text="Postcode" GridPane.rowIndex="6" />
+                        <Label text="Name:" GridPane.rowIndex="3" />
+                        <Label text="Address:" GridPane.rowIndex="4" />
+                        <Label text="Residence:" GridPane.rowIndex="5" />
+                        <Label layoutX="10.0" layoutY="115.0" text="Zip Code:" GridPane.rowIndex="6" />
                         <TextField fx:id="FXVermisteWoonplaats" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <TextField fx:id="FXVermistePostcode" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <TextField fx:id="FXVermisteLand" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField fx:id="FXVermisteTelefoon" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <TextField fx:id="FXVermisteEmail" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                        <Label text="Land" GridPane.rowIndex="7" />
-                        <Label text="Telefoon" GridPane.rowIndex="8" />
-                        <Label text="Email" GridPane.rowIndex="9" />
-                        <Button fx:id="vermisteButton" mnemonicParsing="false" onAction="#vermisteOpslaanDB" text="Opslaan" GridPane.rowIndex="10">
+                        <Label text="Country:" GridPane.rowIndex="7" />
+                        <Label text="Phone Number:" GridPane.rowIndex="8" />
+                        <Label text="E-mail:" GridPane.rowIndex="9" />
+                        <Button fx:id="vermisteButton" mnemonicParsing="false" onAction="#vermisteOpslaanDB" prefHeight="25.0" prefWidth="51.0" text="Save" GridPane.rowIndex="10">
                             <GridPane.margin>
                                 <Insets top="5.0" />
                             </GridPane.margin>
@@ -98,30 +97,30 @@
                         <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="Label nummer" GridPane.rowIndex="1" />
-                        <Label text="Vluchtnummer" GridPane.rowIndex="2" />
-                        <Label text="Bestemming" GridPane.rowIndex="3" />
-                        <Label text="Luchthaven" GridPane.rowIndex="4" />
+                        <Label text="Label Number" GridPane.rowIndex="1" />
+                        <Label text="Flight Number" GridPane.rowIndex="2" />
+                        <Label text="Destination" GridPane.rowIndex="3" />
+                        <Label text="Airport" GridPane.rowIndex="4" />
                         <TextField fx:id="FXVermisteLabelNummer" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="FXVermisteVluchtNummer" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="FXVermisteBestemming" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="FXVermisteLuchthaven" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label prefWidth="138.0" text="Bagage Informatie" GridPane.columnSpan="2">
+                        <Label prefHeight="25.0" prefWidth="192.0" text="Baggage information" GridPane.columnSpan="2">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Label>
                     </children>
                 </GridPane>
-                <Label layoutX="448.0" layoutY="22.0" text="Overige Bagage Informatie">
+                <Label layoutX="448.0" layoutY="22.0" text="Extra Baggage Information">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
                 <Label layoutX="448.0" layoutY="57.0" text="Type:" />
-                <Label layoutX="448.0" layoutY="92.0" text="Merk:" />
-                <Label layoutX="448.0" layoutY="127.0" text="Kleur" />
-                <Label layoutX="448.0" layoutY="167.0" text="Bijzondere kenmerken" />
+                <Label layoutX="448.0" layoutY="92.0" text="Brand:" />
+                <Label layoutX="448.0" layoutY="127.0" text="Colour:" />
+                <Label layoutX="448.0" layoutY="167.0" prefHeight="17.0" prefWidth="122.0" text="Special Characteristics:" />
                 <TextField fx:id="FXVermisteType" layoutX="585.0" layoutY="57.0" />
                 <TextField fx:id="FXVermisteMerk" layoutX="585.0" layoutY="92.0" />
                 <TextField fx:id="FXVermisteKleur" layoutX="585.0" layoutY="127.0" />

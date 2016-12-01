@@ -39,7 +39,7 @@
             <children>
                 <AnchorPane>
                     <children>
-                        <Label layoutX="233.0" text="Vermiste">
+                        <Label layoutX="233.0" text="Lost">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
@@ -91,10 +91,10 @@
                 <TableView fx:id="vermisteTabel" onMouseClicked="#vermisteSelected">
                     <columns>
                         <TableColumn fx:id="vermisteIdKolom" minWidth="-1.0" prefWidth="72.0" text="ID" />
-                        <TableColumn fx:id="vermisteDatumKolom" minWidth="-1.0" prefWidth="101.0" text="Datum" />
-                        <TableColumn fx:id="vermisteLabelNummerKolom" minWidth="-1.0" prefWidth="120.0" text="Labelnummer" />
-                        <TableColumn fx:id="vermisteVluchtNrKolom" minWidth="-1.0" prefWidth="107.0" text="Vluchtnr" />
-                        <TableColumn fx:id="vermisteBagageTypeKolom" minWidth="-1.0" prefWidth="134.0" text="Bagage Type" />
+                        <TableColumn fx:id="vermisteDatumKolom" minWidth="-1.0" prefWidth="101.0" text="Date" />
+                        <TableColumn fx:id="vermisteLabelNummerKolom" minWidth="-1.0" prefWidth="120.0" text="Label Number" />
+                        <TableColumn fx:id="vermisteVluchtNrKolom" minWidth="-1.0" prefWidth="107.0" text="Flight Number" />
+                        <TableColumn fx:id="vermisteBagageTypeKolom" minWidth="-1.0" prefWidth="134.0" text="Baggage Type" />
                     </columns>
                     <effect>
                         <Blend />
@@ -106,7 +106,7 @@
             <children>
                 <AnchorPane>
                     <children>
-                        <Label layoutX="229.0" text="Gevonden">
+                        <Label layoutX="229.0" text="Found">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
@@ -158,10 +158,10 @@
                 <TableView fx:id="gevondenTabel" onMouseClicked="#gevondenSelected">
                     <columns>
                         <TableColumn fx:id="gevondenIdKolom" minWidth="-1.0" prefWidth="72.0" text="ID" />
-                        <TableColumn fx:id="gevondenDatumKolom" minWidth="-1.0" prefWidth="101.0" text="Datum" />
-                        <TableColumn fx:id="gevondenLabelNummerKolom" minWidth="-1.0" prefWidth="120.0" text="Labelnummer" />
-                        <TableColumn fx:id="gevondenVluchtNrKolom" minWidth="-1.0" prefWidth="107.0" text="Vluchtnr" />
-                        <TableColumn fx:id="gevondenBagageTypeKolom" minWidth="-1.0" prefWidth="134.0" text="Bagage Type" />
+                        <TableColumn fx:id="gevondenDatumKolom" minWidth="-1.0" prefWidth="101.0" text="Date" />
+                        <TableColumn fx:id="gevondenLabelNummerKolom" minWidth="-1.0" prefWidth="120.0" text="Label Number" />
+                        <TableColumn fx:id="gevondenVluchtNrKolom" minWidth="-1.0" prefWidth="107.0" text="Flight Number" />
+                        <TableColumn fx:id="gevondenBagageTypeKolom" minWidth="-1.0" prefWidth="134.0" text="Baggage Type" />
                     </columns>
                     <effect>
                         <Blend />
@@ -172,7 +172,7 @@
         <HBox styleClass="correndon-blue" GridPane.columnSpan="2" GridPane.rowIndex="1">
             <children>
                 <TextField fx:id="searchField" onAction="#search" promptText="Search" />
-                <Button mnemonicParsing="false" onAction="#search" text="Zoeken">
+                <Button mnemonicParsing="false" onAction="#search" text="Search">
                     <HBox.margin>
                         <Insets left="5.0" />
                     </HBox.margin>
@@ -208,25 +208,25 @@
                     </rowConstraints>
                     <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" GridPane.rowIndex="6" GridPane.valignment="TOP" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merk:" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage informatie:" GridPane.rowIndex="5" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur:" GridPane.rowIndex="8" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bijzondere kenmerken:" GridPane.rowIndex="9" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage label informatie:" GridPane.rowIndex="11" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Label Nummer:" GridPane.rowIndex="12" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Brand:" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage Information:" GridPane.rowIndex="5" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Colour:" GridPane.rowIndex="8" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Special Characteristics:" GridPane.rowIndex="9" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage Label Information:" GridPane.rowIndex="11" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Label Number:" GridPane.rowIndex="12" />
                         <Label fx:id="gevondenType" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Label fx:id="gevondenMerk" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <Label fx:id="gevondenKleur" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <Label fx:id="gevondenBK" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                         <Label fx:id="gevondenLabelNr" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Datum:" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" />
                         <Label fx:id="gevondenDatum" GridPane.columnIndex="1" />
                         <Label fx:id="gevondenTijd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tijd" GridPane.rowIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luchthaven" GridPane.rowIndex="2" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Airport:" GridPane.rowIndex="2" />
                         <Label fx:id="gevondenLuchthaven" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vlucht nummer:" GridPane.rowIndex="13" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bestemming:" GridPane.rowIndex="14" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vlucht Number:" GridPane.rowIndex="13" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Destination:" GridPane.rowIndex="14" />
                         <Label fx:id="gevondenVluchtNr" GridPane.columnIndex="1" GridPane.rowIndex="13" />
                         <Label fx:id="gevondenBestemming" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lost-and-found ID" GridPane.rowIndex="3" />
@@ -273,36 +273,36 @@
                     </rowConstraints>
                     <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" GridPane.rowIndex="15" GridPane.valignment="TOP" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merk:" GridPane.halignment="LEFT" GridPane.rowIndex="16" GridPane.valignment="TOP" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage informatie:" GridPane.rowIndex="14" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur:" GridPane.rowIndex="17" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bijzondere kenmerken:" GridPane.rowIndex="18" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage label informatie:" GridPane.rowIndex="20" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Label Nummer:" GridPane.rowIndex="21" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Brand:" GridPane.halignment="LEFT" GridPane.rowIndex="16" GridPane.valignment="TOP" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage Informatie:" GridPane.rowIndex="14" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Colour:" GridPane.rowIndex="17" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Special Characteristics:" GridPane.rowIndex="18" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Baggage Label Information:" GridPane.rowIndex="20" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Label Number:" GridPane.rowIndex="21" />
                         <Label fx:id="vermisteType" GridPane.columnIndex="1" GridPane.rowIndex="15" />
                         <Label fx:id="vermisteMerk" GridPane.columnIndex="1" GridPane.rowIndex="16" />
                         <Label fx:id="vermisteKleur" GridPane.columnIndex="1" GridPane.rowIndex="17" />
                         <Label fx:id="vermisteBK" GridPane.columnIndex="1" GridPane.rowIndex="18" />
                         <Label fx:id="vermisteLabelNr" GridPane.columnIndex="1" GridPane.rowIndex="21" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Datum:" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" />
                         <Label fx:id="vermisteDatum" GridPane.columnIndex="1" />
                         <Label fx:id="vermisteTijd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tijd" GridPane.rowIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Luchthaven" GridPane.rowIndex="2" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Airport:" GridPane.rowIndex="2" />
                         <Label fx:id="vermisteLuchthaven" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vlucht nummer:" GridPane.rowIndex="22" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bestemming:" GridPane.rowIndex="23" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Flight Number:" GridPane.rowIndex="22" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Destination:" GridPane.rowIndex="23" />
                         <Label fx:id="vermisteVluchtNr" GridPane.columnIndex="1" GridPane.rowIndex="22" />
                         <Label fx:id="vermisteBestemming" GridPane.columnIndex="1" GridPane.rowIndex="23" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lost-and-found ID" GridPane.rowIndex="3" />
                         <Label fx:id="vermisteID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reiziger informatie:" GridPane.rowIndex="5" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Naam:" GridPane.rowIndex="6" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adres:" GridPane.rowIndex="7" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Woonplaats:" GridPane.rowIndex="8" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" GridPane.rowIndex="9" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Land:" GridPane.rowIndex="10" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefoon:" GridPane.rowIndex="11" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Traveler Information:" GridPane.rowIndex="5" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" GridPane.rowIndex="6" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" GridPane.rowIndex="7" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Residence:" GridPane.rowIndex="8" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zip Code:" GridPane.rowIndex="9" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" GridPane.rowIndex="10" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" GridPane.rowIndex="11" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" GridPane.rowIndex="12" />
                         <Label fx:id="vermisteNaam" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Label fx:id="vermisteAdres" GridPane.columnIndex="1" GridPane.rowIndex="7" />
@@ -318,21 +318,21 @@
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
         </ScrollPane>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details gevonden baggage" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details vermiste baggage" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-        <CheckBox fx:id="gevondenCheckBox" mnemonicParsing="false" text="Bevestig" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details Found Baggage" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details Lost Baggage" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+        <CheckBox fx:id="gevondenCheckBox" mnemonicParsing="false" text="Confirm" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
             <GridPane.margin>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </GridPane.margin>
         </CheckBox>
-        <CheckBox fx:id="vermisteCheckBox" mnemonicParsing="false" text="Bevestig" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+        <CheckBox fx:id="vermisteCheckBox" mnemonicParsing="false" text="Confirm" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
             <GridPane.margin>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </GridPane.margin>
         </CheckBox>
         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
             <children>
-                <Button fx:id="buttonOvereenkomst" layoutX="950.0" layoutY="15.0" mnemonicParsing="false" onAction="#OvereenkomstDB" text="Naar Overeenkomst" />
+                <Button fx:id="buttonOvereenkomst" layoutX="950.0" layoutY="15.0" mnemonicParsing="false" onAction="#OvereenkomstDB" text="To Matches" />
             </children>
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?scenebuilder-stylesheet testswitch.vista.css?>
@@ -28,7 +27,7 @@
     <children>
         <VBox alignment="CENTER" minWidth="353.0" styleClass="correndon-blue" GridPane.rowIndex="2">
             <children>
-                <Label text="Gevonden">
+                <Label text="Found">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
@@ -36,9 +35,9 @@
                 <TableView fx:id="gevondenTabel">
                     <columns>
                         <TableColumn fx:id="gevondenIdKolom" prefWidth="88.25" text="ID" />
-                        <TableColumn fx:id="gevondenDatumKolom" prefWidth="88.25" text="Datum" />
-                        <TableColumn fx:id="gevondenLabelNummerKolom" prefWidth="88.25" text="Labelnr" />
-                        <TableColumn fx:id="gevondenVluchtNrKolom" prefWidth="88.25" text="Vluchtnr" />
+                        <TableColumn fx:id="gevondenDatumKolom" prefWidth="88.25" text="Date" />
+                        <TableColumn fx:id="gevondenLabelNummerKolom" prefWidth="88.25" text="Label Nr" />
+                        <TableColumn fx:id="gevondenVluchtNrKolom" prefWidth="88.25" text="Flight Nr" />
                     </columns>
                     <effect>
                         <Blend />
@@ -48,7 +47,7 @@
         </VBox>
         <VBox alignment="CENTER" styleClass="correndon-blue" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <children>
-                <Label text="Vermist">
+                <Label text="Lost">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
@@ -56,9 +55,9 @@
                 <TableView fx:id="vermisteTabel" prefHeight="400.0" prefWidth="356.0">
                     <columns>
                         <TableColumn fx:id="vermisteIdKolom" prefWidth="88.25" text="ID" />
-                        <TableColumn fx:id="vermisteDatumKolom" prefWidth="88.25" text="Datum" />
-                        <TableColumn fx:id="vermisteLabelNummerKolom" prefWidth="88.25" text="Labelnr" />
-                        <TableColumn fx:id="vermisteVluchtNrKolom" prefWidth="86.0" text="Vluchtnr" />
+                        <TableColumn fx:id="vermisteDatumKolom" prefWidth="88.25" text="Date" />
+                        <TableColumn fx:id="vermisteLabelNummerKolom" prefWidth="88.25" text="Label Nr" />
+                        <TableColumn fx:id="vermisteVluchtNrKolom" prefWidth="86.0" text="Flight Nr" />
                     </columns>
                     <effect>
                         <Blend />
@@ -68,7 +67,7 @@
         </VBox>
         <VBox alignment="CENTER" styleClass="correndon-blue" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <children>
-                <Label text="Overeenkomst">
+                <Label text="Match">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
@@ -76,8 +75,8 @@
                 <TableView fx:id="overeenkomstTableView" prefHeight="400.0" prefWidth="219.0">
                     <columns>
                         <TableColumn fx:id="overeenkomstIdKolom" prefWidth="88.25" text="ID" />
-                        <TableColumn fx:id="overeenkomstDatumKolom" prefWidth="88.25" text="Datum" />
-                        <TableColumn fx:id="overeenkomstLabelNummerKolom" prefWidth="88.25" text="Labelnr" />
+                        <TableColumn fx:id="overeenkomstDatumKolom" prefWidth="88.25" text="Date" />
+                        <TableColumn fx:id="overeenkomstLabelNummerKolom" prefWidth="88.25" text="Label Nr" />
                     </columns>
                     <effect>
                         <Blend />
@@ -87,7 +86,7 @@
         </VBox>
         <VBox alignment="CENTER" styleClass="correndon-blue" GridPane.columnIndex="2" GridPane.rowIndex="1">
             <children>
-                <Label text="Gesloten">
+                <Label text="Closed">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
@@ -95,9 +94,9 @@
                 <TableView fx:id="geslotenTableView">
                     <columns>
                         <TableColumn fx:id="idKolom" prefWidth="88.25" text="ID" />
-                        <TableColumn fx:id="datumKolom" prefWidth="88.25" text="Datum" />
-                        <TableColumn fx:id="labelnummerKolom" prefWidth="88.25" text="Labelnr" />
-                        <TableColumn fx:id="vluchtnummerKolom" prefWidth="88.25" text="Vluchtnr" />
+                        <TableColumn fx:id="datumKolom" prefWidth="88.25" text="Date" />
+                        <TableColumn fx:id="labelnummerKolom" prefWidth="88.25" text="Label Nr" />
+                        <TableColumn fx:id="vluchtnummerKolom" prefWidth="88.25" text="Flight Nr" />
                     </columns>
                     <effect>
                         <Blend />
@@ -110,7 +109,7 @@
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
             <children>
-                <Label text="Logboek">
+                <Label text="History">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>

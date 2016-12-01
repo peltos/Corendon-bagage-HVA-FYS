@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="TOP_CENTER" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.gebruikerToevoegenController">
+<GridPane alignment="TOP_CENTER" prefHeight="362.0" prefWidth="559.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.gebruikerToevoegenController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" />
     </columnConstraints>
@@ -22,7 +22,7 @@
     <children>
         <HBox maxHeight="35.0" prefHeight="35.0" prefWidth="200.0" styleClass="correndon-blue">
             <children>
-                <Label text="Wachtwoord Wijzigen">
+                <Label text="Change Password">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -46,13 +46,13 @@
                         <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="Oud Wachtwoord" />
-                        <Label text="Nieuw Wachtwoord" GridPane.rowIndex="1" />
-                        <Label text="Bevestig Wachtwoord" GridPane.rowIndex="2" />
+                        <Label text="Old Password:" />
+                        <Label text="New Password:" GridPane.rowIndex="1" />
+                        <Label text="Confirm New Password:" GridPane.rowIndex="2" />
                         <TextField fx:id="FXOudWachtwoord" GridPane.columnIndex="1" />
                         <TextField fx:id="FXNieuwWachtwoord" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="FXBevestigWachtwoord" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Button fx:id="opslaanButton" mnemonicParsing="false" onAction="#handle" text="Opslaan" GridPane.rowIndex="3" />
+                        <Button fx:id="opslaanButton" mnemonicParsing="false" onAction="#handle" prefHeight="25.0" prefWidth="49.0" text="Save" GridPane.rowIndex="3" />
                         <Button fx:id="gebruikerToevoegenCancelButton" mnemonicParsing="false" onAction="#gebruikerToevoegenCancel" text="Cancel" GridPane.rowIndex="3">
                             <GridPane.margin>
                                 <Insets left="70.0" />

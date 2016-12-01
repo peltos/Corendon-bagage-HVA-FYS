@@ -103,7 +103,8 @@ public class MainController {
                     stage.centerOnScreen();
                     return;
                 }
-                error.setText("Verkeerde gebruikersnaam of wachtwoord");
+                error.setText("Wrong username or password.");
+                
             }
         } catch (SQLException ex) {
 

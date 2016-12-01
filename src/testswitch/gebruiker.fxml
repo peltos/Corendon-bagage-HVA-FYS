@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <GridPane fx:id="startPanel" styleClass="corr" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.GebruikerController">
@@ -28,7 +27,7 @@
     <children>
         <HBox styleClass="correndon-blue">
             <children>
-                <Label text="Gebruikers">
+                <Label text="Users">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -48,7 +47,7 @@
                         <Insets right="5.0" />
                     </HBox.margin>
                 </TextField>
-                <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" text="Zoeken" />
+                <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" text="Search" />
             </children>
             <GridPane.margin>
                 <Insets />
@@ -62,11 +61,11 @@
                 <TableView fx:id="gebruikerTableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                         <TableColumn fx:id="gebruikerIDKolom" prefWidth="89.0" text="ID" />
-                        <TableColumn fx:id="naamKolom" prefWidth="236.0" text="Naam" />
+                        <TableColumn fx:id="naamKolom" prefWidth="236.0" text="Name" />
                         <TableColumn fx:id="usernameKolom" prefWidth="216.0" text="Username" />
-                        <TableColumn fx:id="telefoonnummerKolom" prefWidth="188.0" text="Telefoonnummer" />
-                        <TableColumn fx:id="emailKolom" prefWidth="225.0" text="Email" />
-                        <TableColumn fx:id="positieKolom" prefWidth="114.0" text="Positie" />
+                        <TableColumn fx:id="telefoonnummerKolom" prefWidth="188.0" text="Phone number" />
+                        <TableColumn fx:id="emailKolom" prefWidth="225.0" text="E-mail" />
+                        <TableColumn fx:id="positieKolom" prefWidth="114.0" text="Position" />
                     </columns>
                     <effect>
                         <Blend />
@@ -76,8 +75,8 @@
         </AnchorPane>
         <HBox alignment="TOP_RIGHT" GridPane.rowIndex="3">
             <children>
-                <Button fx:id="gebruikerToevoegenButton" mnemonicParsing="false" onAction="#gebruikerToevoegen" text="Gebruiker toevoegen" />
-                <Button mnemonicParsing="false" text="Gebruiker verwijderen">
+                <Button fx:id="gebruikerToevoegenButton" mnemonicParsing="false" onAction="#gebruikerToevoegen" text="Add User" />
+                <Button mnemonicParsing="false" text="Delete User">
                     <HBox.margin>
                         <Insets left="5.0" />
                     </HBox.margin>

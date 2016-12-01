@@ -170,23 +170,23 @@ public class LogBoekController {
         }
 
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Gevonden Bagages = " + aantalGevonden, new Double(aantalGevonden));
-        dataset.setValue("Vermiste Bagages = " + aantalVermist, new Double(aantalVermist));
-        dataset.setValue("Overeenkomst = " + aantalOvereenkomst, new Double(aantalOvereenkomst));
-        dataset.setValue("Gesloten = " + aantalGesloten, new Double(aantalGesloten));
+        dataset.setValue("Found Baggages = " + aantalGevonden, new Double(aantalGevonden));
+        dataset.setValue("Lost Baggages = " + aantalVermist, new Double(aantalVermist));
+        dataset.setValue("Matches = " + aantalOvereenkomst, new Double(aantalOvereenkomst));
+        dataset.setValue("Closed = " + aantalGesloten, new Double(aantalGesloten));
 
         JFreeChart chart = ChartFactory.createPieChart(
-                "Aantal bagages", // chart title
+                "Total baggages", // chart title
                 dataset, // data
                 true, // include legend
                 true,
                 false
         );
         PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setSectionPaint("Gevonden Bagages = " + aantalGevonden, new Color(0, 187, 225));
-        plot.setSectionPaint("Vermiste Bagages = " + aantalVermist, new Color(255, 196, 30));
-        plot.setSectionPaint("Overeenkomst = " + aantalOvereenkomst, new Color(216, 30, 5));
-        plot.setSectionPaint("Gesloten = " + aantalGesloten, new Color(255, 255, 255));
+        plot.setSectionPaint("Found Baggages = " + aantalGevonden, new Color(0, 187, 225));
+        plot.setSectionPaint("Lost Baggages = " + aantalVermist, new Color(255, 196, 30));
+        plot.setSectionPaint("Matches = " + aantalOvereenkomst, new Color(216, 30, 5));
+        plot.setSectionPaint("Closed = " + aantalGesloten, new Color(255, 255, 255));
         
         aantalVermist = 0;
         aantalGevonden = 0;
