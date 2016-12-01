@@ -177,5 +177,11 @@ public class MainController {
         MainNavigator.loadVista(MainNavigator.LOGBOEK);
         headerLabel.setText("Logboek");
     }
+    @FXML
+    private void wachtwoordWijzigen(ActionEvent event) throws IOException {
+        MainNavigator.loadVista(MainNavigator.WACHTWOORD_WIJZIGEN);
+        headerLabel.setText("Wachtwoord Wijzigen");
+        
+    }
 
 }

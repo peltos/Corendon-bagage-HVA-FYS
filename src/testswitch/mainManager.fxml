@@ -21,6 +21,7 @@
                      <children>
                         <Button fx:id="startButton" layoutX="6.0" layoutY="7.0" mnemonicParsing="false" onAction="#start" styleClass="buttonsNav" text="Start" />
                         <Button fx:id="afmeldenButton" layoutX="6.0" layoutY="30.0" mnemonicParsing="false" onAction="#afmelden" styleClass="buttonsNav" text="Afmelden" />
+                        <Button fx:id="wachtwoordWijzigenButton" layoutX="6.0" layoutY="53.0" mnemonicParsing="false" onAction="#wachtwoordWijzigen" styleClass="buttonsNav" text="Wachtwoord wijzigen" />
                      </children>
                   </AnchorPane>
               </content>

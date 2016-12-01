@@ -75,7 +75,7 @@ public class LogBoekController {
 
         try {
             ResultSet result = database.executeQuery("SELECT idGevonden, Datum, "
-                    + "Labelnummer, Vluchtnummer FROM testDatabase.Gevonden;");
+                    + "Labelnummer, Vluchtnummer FROM testDatabase.Gevonden WHERE Datum BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND CURDATE();");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("idGevonden"));
@@ -86,7 +86,7 @@ public class LogBoekController {
             }
             
             result = database.executeQuery("SELECT idVermist, Datum, Labelnummer, "
-                    + "Vluchtnummer FROM testDatabase.Vermist;");
+                    + "Vluchtnummer FROM testDatabase.Vermist WHERE Datum BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND CURDATE();");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("idVermist"));
