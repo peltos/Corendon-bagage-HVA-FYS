@@ -79,10 +79,14 @@ public class StartController implements Initializable {
     private ObservableList<Bagage> gevondenData = FXCollections.observableArrayList();
     private ObservableList<Bagage> vermisteData = FXCollections.observableArrayList();
 
-    private static int selectedId;
+    private static int selectedIdGevonden;
+    private static int selectedIdVermist;
 
-    public static int getSelectedId() {
-        return selectedId;
+    public static int getSelectedIdGevonden() {
+        return selectedIdGevonden;
+    }
+    public static int getSelectedIdVermist() {
+        return selectedIdVermist;
     }
 
     @FXML
@@ -155,7 +159,7 @@ public class StartController implements Initializable {
     private void gevondenSelected() {
 
         Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
-        selectedId = bagage.getId();
+        selectedIdGevonden = bagage.getId();
 
         if (bagage.getId() != null) {
             editGevonden.setDisable(false);
@@ -191,14 +195,15 @@ public class StartController implements Initializable {
 
     @FXML
     private void vermisteSelected() {
-
+        
         Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
-//        
-//        if (bagage.getId() != null){
-//            editVermist.setDisable(false);
-//            FXVermistDelete.setDisable(false);
-//            VermistToevoegenButton.setDisable(false);
-//        }
+        selectedIdVermist = bagage.getId();
+        
+        if (bagage.getId() != null){
+            editVermist.setDisable(false);
+            FXVermistDelete.setDisable(false);
+            VermistToevoegenButton.setDisable(false);
+        }
 
         boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
 
@@ -489,6 +494,11 @@ public class StartController implements Initializable {
     @FXML
     private void editGevonden(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.EDIT_GEVONDEN);
+    }
+    
+    @FXML
+    private void editVermist(ActionEvent event) {
+        MainNavigator.loadVista(MainNavigator.EDIT_VERMIST);
     }
 
 }

@@ -29,7 +29,7 @@ public class EditGevondenController implements Initializable {
             FXGevondenBijzondereKenmerken;
     @FXML Button gevondenButton;
     
-    int id = StartController.getSelectedId();
+    int id = StartController.getSelectedIdGevonden();
     
     
     @FXML
@@ -70,28 +70,32 @@ public class EditGevondenController implements Initializable {
         );
         
         String query = "UPDATE testDatabase.Gevonden SET "
-                + "Luchthaven=? "
-                //+ "Labelnummer=? "
-                //+ "Vluchtnummer=? "
-                //+ "Bestemming=? "
-                //+ "BagageType=? "
-                //+ "Merk=? "
-                //+ "Kleur=? "
-                //+ "BijzonderKenmerken=? "
+                + "Luchthaven=?, "
+                + "Labelnummer=?, "
+                + "Vluchtnummer=?, "
+                + "Bestemming=?, "
+                + "BagageType=?, "
+                + "Merk=?, "
+                + "Kleur=?, "
+                + "BijzonderKenmerken=? "
                 + "WHERE idGevonden=?;";
         
         PreparedStatement statement = database.prepareStatement(query);
 
         try {
             statement.setString(1, FXGevondenLuchthaven.getText());
-            //statement.setString(2, FXGevondenLabelNummer.getText());
-            //statement.setString(3, FXGevondenVluchtNummer.getText());
-            //statement.setString(2, FXGevondenBestemming.getText());
-            //statement.setString(3, FXGevondenType.getText());
-            //statement.setString(4, FXGevondenMerk.getText());
-            //statement.setString(5, FXGevondenKleur.getText());
-            //statement.setString(6, FXGevondenBijzondereKenmerken.getText());
-            statement.setInt(2, id);
+            
+            int gevondenLabelNummer = Integer.parseInt(FXGevondenLabelNummer.getText());
+            int gevondenVluchtNummer = Integer.parseInt(FXGevondenVluchtNummer.getText());
+            statement.setInt(2, gevondenLabelNummer);
+            statement.setInt(3, gevondenVluchtNummer);
+            
+            statement.setString(4, FXGevondenBestemming.getText());
+            statement.setString(5, FXGevondenType.getText());
+            statement.setString(6, FXGevondenMerk.getText());
+            statement.setString(7, FXGevondenKleur.getText());
+            statement.setString(8, FXGevondenBijzondereKenmerken.getText());
+            statement.setInt(9, id);
             statement.executeUpdate();
            
         } catch(SQLException ex) {
