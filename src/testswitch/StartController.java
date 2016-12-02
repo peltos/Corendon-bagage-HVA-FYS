@@ -488,7 +488,6 @@ public class StartController implements Initializable {
 
     @FXML
     private void editGevonden(ActionEvent event) {
-        Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
         MainNavigator.loadVista(MainNavigator.EDIT_GEVONDEN);
     }
 

@@ -71,12 +71,26 @@ public class EditGevondenController implements Initializable {
         
         String query = "UPDATE testDatabase.Gevonden SET "
                 + "Luchthaven=? "
-                + "WHERE idGevonden=?";
+                //+ "Labelnummer=? "
+                //+ "Vluchtnummer=? "
+                //+ "Bestemming=? "
+                //+ "BagageType=? "
+                //+ "Merk=? "
+                //+ "Kleur=? "
+                //+ "BijzonderKenmerken=? "
+                + "WHERE idGevonden=?;";
         
         PreparedStatement statement = database.prepareStatement(query);
 
         try {
-            statement.setString(1, "Hi there");
+            statement.setString(1, FXGevondenLuchthaven.getText());
+            //statement.setString(2, FXGevondenLabelNummer.getText());
+            //statement.setString(3, FXGevondenVluchtNummer.getText());
+            //statement.setString(2, FXGevondenBestemming.getText());
+            //statement.setString(3, FXGevondenType.getText());
+            //statement.setString(4, FXGevondenMerk.getText());
+            //statement.setString(5, FXGevondenKleur.getText());
+            //statement.setString(6, FXGevondenBijzondereKenmerken.getText());
             statement.setInt(2, id);
             statement.executeUpdate();
            
