@@ -160,7 +160,11 @@ public class StartController implements Initializable {
 
         Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
         selectedIdGevonden = bagage.getId();
-
+        
+        editVermist.setDisable(true);
+        FXVermistDelete.setDisable(true);
+        VermistToevoegenButton.setDisable(true);
+        
         if (bagage.getId() != null) {
             editGevonden.setDisable(false);
             FXGevondenDelete.setDisable(false);
@@ -198,6 +202,10 @@ public class StartController implements Initializable {
         
         Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
         selectedIdVermist = bagage.getId();
+ 
+        editGevonden.setDisable(true);
+        FXGevondenDelete.setDisable(true);
+        gevondenToevoegenButton.setDisable(true);
         
         if (bagage.getId() != null){
             editVermist.setDisable(false);
@@ -209,8 +217,8 @@ public class StartController implements Initializable {
 
         if (bSelected == true) {
             vermisteCheckBox.setSelected(false);
-
         }
+        
         vermisteDatum.setText(bagage.getDatum());
         vermisteTijd.setText(bagage.getTijd());
         vermisteLuchthaven.setText(bagage.getLuchthaven());
@@ -229,7 +237,6 @@ public class StartController implements Initializable {
         vermisteLabelNr.setText(String.valueOf(bagage.getLabelNummer()));
         vermisteVluchtNr.setText(String.valueOf(bagage.getVluchtNr()));
         vermisteBestemming.setText(bagage.getBestemming());
-
     }
 
     @Override
