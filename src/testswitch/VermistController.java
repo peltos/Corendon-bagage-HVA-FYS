@@ -26,13 +26,7 @@ public class VermistController {
 @FXML private Button vermisteButton;
 
 
-public final String DB_NAME = "testDatabase";
-public final String DB_SERVER = "ronpelt.synology.me:3306";
-public final String DB_ACCOUNT = "root";
-public final String DB_PASSWORD = "kGjMtEO06BPiu2u4";
-
-Database database = new Database(DB_NAME, DB_SERVER,
-                                     DB_ACCOUNT, DB_PASSWORD);
+Database database = Main.getDatabase();
 
     public void vermisteOpslaanDB(ActionEvent event) throws SQLException {
         

@@ -34,15 +34,10 @@ public class GeslotenController implements Initializable {
     @FXML public TableColumn<Bagage, String> geslotenDatumKolom;
     
     private ObservableList<Bagage> geslotenData = FXCollections.observableArrayList();
+    Database database = Main.getDatabase();
     
     @FXML
     private void writeTableData() {
-        Database database = new Database(
-            "testDatabase",
-            "ronpelt.synology.me:3306",
-            "root",
-            "kGjMtEO06BPiu2u4" 
-        );
 
         try {
             ResultSet resultGevonden = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Gevonden ON Gevonden.idGevonden = Overeenkomst.GevondenID  WHERE Gesloten = 1;");
@@ -163,11 +158,6 @@ public class GeslotenController implements Initializable {
         boolean gVCheckBox = geslotenCheckBox.isSelected();
 
         Bagage geslotenBag = geslotenTableView.getSelectionModel().getSelectedItem();
-
-        String DB_NAME = "testDatabase", DB_SERVER = "ronpelt.synology.me:3306";
-        String DB_ACCOUNT = "root", DB_PASSWORD = "kGjMtEO06BPiu2u4";
-
-        Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
 
         String query = "UPDATE `testDatabase`.`Overeenkomst` SET `Gesloten`='0' WHERE `OvereenkomstID`="+ geslotenBag.getId() +";";
 

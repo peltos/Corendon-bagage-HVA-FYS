@@ -34,15 +34,11 @@ public class GebruikerController implements Initializable {
     
     
     private ObservableList<Gebruiker> data = FXCollections.observableArrayList();
+    
+    Database database = Main.getDatabase();
 
     @FXML
     private void writeTableData() {
-        Database database = new Database(
-            "testDatabase",
-            "ronpelt.synology.me:3306",
-            "root",
-            "kGjMtEO06BPiu2u4"
-        );
 
         try {
             ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gebruikers");
@@ -89,12 +85,6 @@ public class GebruikerController implements Initializable {
     
     @FXML
     private void search(ActionEvent event) throws IOException{
-        Database database = new Database(
-            "testDatabase",
-            "ronpelt.synology.me:3306",
-            "root",
-            "kGjMtEO06BPiu2u4"
-        );
         data.removeAll(data);
         if (searchField.getText().equals("")) {
             writeTableData();

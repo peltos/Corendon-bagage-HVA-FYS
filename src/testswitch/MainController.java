@@ -19,6 +19,8 @@ import javafx.stage.Stage;
  * Main controller class for the entire layout.
  */
 public class MainController {
+    
+    Database database = Main.getDatabase();
 
     /**
      * Holder of a switchable vista.
@@ -67,8 +69,6 @@ public class MainController {
      */
     @FXML
     private void loginCheck(ActionEvent event) throws Exception {
-
-        Database database = Main.getDatabase();
         
         ResultSet result = database.executeQuery("SELECT username, password, "
                 + "positie FROM testDatabase.Gebruikers;");

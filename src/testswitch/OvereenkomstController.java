@@ -39,14 +39,10 @@ public class OvereenkomstController implements Initializable {
     
     private ObservableList<Bagage> overeenkomstData = FXCollections.observableArrayList();
     
+    Database database = Main.getDatabase();
+    
     @FXML
     private void writeTableData() {
-        Database database = new Database(
-            "testDatabase",
-            "ronpelt.synology.me:3306",
-            "root",
-            "kGjMtEO06BPiu2u4"
-        );
 
         try {
             ResultSet resultGevonden = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Gevonden ON Gevonden.idGevonden = Overeenkomst.GevondenID  WHERE Gesloten = 0;");
@@ -168,11 +164,6 @@ public class OvereenkomstController implements Initializable {
         boolean gVCheckBox = overeenkomstCheckBox.isSelected();
 
         Bagage overeenkomstBag = overeenkomstTableView.getSelectionModel().getSelectedItem();
-
-        String DB_NAME = "testDatabase", DB_SERVER = "ronpelt.synology.me:3306";
-        String DB_ACCOUNT = "root", DB_PASSWORD = "kGjMtEO06BPiu2u4";
-
-        Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
 
         String query = "DELETE FROM `testDatabase`.`Overeenkomst` WHERE `OvereenkomstID`="+overeenkomstBag.getId()+";";
         String queryGevonden = "UPDATE `testDatabase`.`Gevonden` SET `Visibility`='0' WHERE `idGevonden`="+ overeenkomstBag.getGId() +";";

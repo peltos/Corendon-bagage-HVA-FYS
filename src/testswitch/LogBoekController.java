@@ -62,16 +62,11 @@ public class LogBoekController {
     private final ObservableList<Bagage> vermisteData = FXCollections.observableArrayList();
     private ObservableList<Bagage> geslotenData = FXCollections.observableArrayList();
     private ObservableList<Bagage> overeenkomstData = FXCollections.observableArrayList();
+    
+    Database database = Main.getDatabase();
 
     @FXML
     private void writeTableData() {
-
-        Database database = new Database(
-                "testDatabase",
-                "ronpelt.synology.me:3306",
-                "root",
-                "kGjMtEO06BPiu2u4"
-        );
 
         try {
             ResultSet result = database.executeQuery("SELECT idGevonden, Datum, "
@@ -131,13 +126,6 @@ public class LogBoekController {
     static int aantalVermist, aantalGevonden, aantalOvereenkomst, aantalGesloten = 0;
 
     private void createPieChart() {
-
-        Database database = new Database(
-                "testDatabase",
-                "ronpelt.synology.me:3306",
-                "root",
-                "kGjMtEO06BPiu2u4"
-        );
 
         ResultSet graphVermist = database.executeQuery(
                 "SELECT idVermist FROM testDatabase.Vermist;");

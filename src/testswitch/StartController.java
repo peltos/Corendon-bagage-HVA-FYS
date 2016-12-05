@@ -88,15 +88,11 @@ public class StartController implements Initializable {
     public static int getSelectedIdVermist() {
         return selectedIdVermist;
     }
+    
+    Database database = Main.getDatabase();
 
     @FXML
     private void writeTableData() {
-        Database database = new Database(
-                "testDatabase",
-                "ronpelt.synology.me:3306",
-                "root",
-                "kGjMtEO06BPiu2u4"
-        );
 
         try {
             ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Vermist WHERE Visibility = 0;");
@@ -308,12 +304,6 @@ public class StartController implements Initializable {
         vermisteVluchtNr.setText(" ");
         vermisteBestemming.setText(" ");
 
-        Database database = new Database(
-                "testDatabase",
-                "ronpelt.synology.me:3306",
-                "root",
-                "kGjMtEO06BPiu2u4"
-        );
         gevondenData.removeAll(gevondenData);
         vermisteData.removeAll(vermisteData);
 
@@ -413,11 +403,6 @@ public class StartController implements Initializable {
         Bagage vermisteBag = vermisteTabel.getSelectionModel().getSelectedItem();
         Bagage gevondenBag = gevondenTabel.getSelectionModel().getSelectedItem();
 
-        String DB_NAME = "testDatabase", DB_SERVER = "ronpelt.synology.me:3306";
-        String DB_ACCOUNT = "root", DB_PASSWORD = "kGjMtEO06BPiu2u4";
-
-        Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
-
         String query = "INSERT INTO testDatabase.Overeenkomst (GevondenID, VermistID, Datum, Gesloten)"
                 + "VALUES (?, ?, ?, ?);";
 
@@ -465,10 +450,6 @@ public class StartController implements Initializable {
 
     @FXML
     private void DeleteGevondenBagage() {
-        String DB_NAME = "testDatabase", DB_SERVER = "ronpelt.synology.me:3306";
-        String DB_ACCOUNT = "root", DB_PASSWORD = "kGjMtEO06BPiu2u4";
-
-        Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
 
         gevondenTabel.getItems().removeAll(gevondenTabel.getSelectionModel().getSelectedItems());
 

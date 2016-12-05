@@ -33,16 +33,11 @@ public class EditVermistController implements Initializable {
     @FXML private Button vermisteButton;
     
     int id = StartController.getSelectedIdVermist();
+    Database database = Main.getDatabase();
     
     
     @FXML
     private void readData() {
-        Database database = new Database(
-                "testDatabase",
-                "ronpelt.synology.me:3306",
-                "root",
-                "kGjMtEO06BPiu2u4"
-        );
 
         try {
             ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Vermist WHERE idVermist=" + id);
@@ -72,12 +67,6 @@ public class EditVermistController implements Initializable {
     
     @FXML
     private void writeToDB() throws SQLException {
-        Database database = new Database(
-                "testDatabase",
-                "ronpelt.synology.me:3306",
-                "root",
-                "kGjMtEO06BPiu2u4"
-        );
         
         String query = "UPDATE testDatabase.Vermist SET "
                 + "Luchthaven=?, "
