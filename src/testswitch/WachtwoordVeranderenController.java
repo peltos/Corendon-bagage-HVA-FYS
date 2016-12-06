@@ -44,12 +44,12 @@ public class WachtwoordVeranderenController implements Initializable {
                 error.setText("You left one or more textfields empty");
             }
             else if ((!FXNieuwWachtwoord.getText().equals(FXBevestigWachtwoord.getText()))){
-                error.setText("Your new passwords arent the same");
+                error.setText("Your new passwords do not match");
             }
             else if ((FXOudWachtwoord.getText().equals(FXNieuwWachtwoord.getText()))){
                 error.setText("You can't use the same password again for your new password");
             }
-            else{
+            else{           
                 try {
                     statement.setString(1, FXNieuwWachtwoord.getText());
                     statement.executeUpdate();

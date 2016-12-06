@@ -45,9 +45,9 @@ public class gebruikerToevoegenController {
                     || FXWachtwoord.getText().equals("")) 
             {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Niet alles ingevult");
-                    alert.setHeaderText("Error");
-                    alert.setContentText("Voer alles in");
+                    alert.setTitle("Statements missing");
+                    alert.setHeaderText("There seems to be a problem");
+                    alert.setContentText("Fields are missing");
                     alert.showAndWait();
                 return;
             }

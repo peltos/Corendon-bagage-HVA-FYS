@@ -120,11 +120,11 @@
                 <Label layoutX="448.0" layoutY="57.0" text="Type:" />
                 <Label layoutX="448.0" layoutY="92.0" text="Brand:" />
                 <Label layoutX="448.0" layoutY="127.0" text="Colour:" />
-                <Label layoutX="448.0" layoutY="167.0" prefHeight="17.0" prefWidth="122.0" text="Special Characteristics:" />
-                <TextField fx:id="FXVermisteType" layoutX="585.0" layoutY="57.0" />
-                <TextField fx:id="FXVermisteMerk" layoutX="585.0" layoutY="92.0" />
-                <TextField fx:id="FXVermisteKleur" layoutX="585.0" layoutY="127.0" />
-                <TextField fx:id="FXVermisteBijzondereKenmerken" layoutX="585.0" layoutY="167.0" prefHeight="91.0" prefWidth="200.0" />
+                <Label layoutX="448.0" layoutY="167.0" prefHeight="21.0" prefWidth="176.0" text="Special Characteristics:" />
+                <TextField fx:id="FXVermisteType" layoutX="624.0" layoutY="52.0" />
+                <TextField fx:id="FXVermisteMerk" layoutX="624.0" layoutY="87.0" />
+                <TextField fx:id="FXVermisteKleur" layoutX="624.0" layoutY="122.0" />
+                <TextField fx:id="FXVermisteBijzondereKenmerken" layoutX="624.0" layoutY="167.0" prefHeight="91.0" prefWidth="200.0" />
             </children>
         </AnchorPane>
     </children>

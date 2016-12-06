@@ -92,17 +92,17 @@
                         <Label fx:id="gevondenKleur" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <Label fx:id="gevondenBK" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                         <Label fx:id="gevondenLabelNr" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" />
                         <Label fx:id="gevondenDatum" GridPane.columnIndex="1" />
                         <Label fx:id="gevondenTijd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time" GridPane.rowIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Airport" GridPane.rowIndex="2" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Airport:" GridPane.rowIndex="2" />
                         <Label fx:id="gevondenLuchthaven" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Flight Number:" GridPane.rowIndex="13" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Destination:" GridPane.rowIndex="14" />
                         <Label fx:id="gevondenVluchtNr" GridPane.columnIndex="1" GridPane.rowIndex="13" />
                         <Label fx:id="gevondenBestemming" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lost-and-found ID" GridPane.rowIndex="3" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lost-and-found ID:" GridPane.rowIndex="3" />
                         <Label fx:id="gevondenID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                     </children>
                 </GridPane>
@@ -160,17 +160,17 @@
                         <Label fx:id="vermisteKleur" GridPane.columnIndex="1" GridPane.rowIndex="17" />
                         <Label fx:id="vermisteBK" GridPane.columnIndex="1" GridPane.rowIndex="18" />
                         <Label fx:id="vermisteLabelNr" GridPane.columnIndex="1" GridPane.rowIndex="21" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" />
                         <Label fx:id="vermisteDatum" GridPane.columnIndex="1" />
                         <Label fx:id="vermisteTijd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time" GridPane.rowIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Airport" GridPane.rowIndex="2" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Airport:" GridPane.rowIndex="2" />
                         <Label fx:id="vermisteLuchthaven" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vlucht Number:" GridPane.rowIndex="22" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Flight Number:" GridPane.rowIndex="22" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Destination:" GridPane.rowIndex="23" />
                         <Label fx:id="vermisteVluchtNr" GridPane.columnIndex="1" GridPane.rowIndex="22" />
                         <Label fx:id="vermisteBestemming" GridPane.columnIndex="1" GridPane.rowIndex="23" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lost-and-found ID" GridPane.rowIndex="3" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lost-and-found ID:" GridPane.rowIndex="3" />
                         <Label fx:id="vermisteID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Traveler Information:" GridPane.rowIndex="5" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" GridPane.rowIndex="6" />

@@ -51,9 +51,9 @@
                         <Label text="New Password:" GridPane.rowIndex="1" />
                         <Label text="Confirm New Password:" GridPane.rowIndex="2" />
                         <TextField fx:id="FXOudWachtwoord" GridPane.columnIndex="1" />
-                        <TextField fx:id="FXNieuwWachtwoord" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="FXBevestigWachtwoord" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Button fx:id="opslaanButton" mnemonicParsing="false" onAction="#writeToDB" prefHeight="25.0" prefWidth="49.0" text="Save" GridPane.rowIndex="3" />
+                        <TextField fx:id="FXNieuwWachtwoord" prefHeight="31.0" prefWidth="216.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="FXBevestigWachtwoord" prefHeight="31.0" prefWidth="179.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="opslaanButton" mnemonicParsing="false" onAction="#writeToDB" prefHeight="31.0" prefWidth="59.0" text="Save" GridPane.rowIndex="3" />
                         <Button fx:id="gebruikerToevoegenCancelButton" mnemonicParsing="false" onAction="#cancel" text="Cancel" GridPane.rowIndex="3">
                             <GridPane.margin>
                                 <Insets left="70.0" />
