@@ -19,7 +19,7 @@ public class EditGebruikerController implements Initializable {
     
     //TextFields
     @FXML private TextField FXVoornaam, FXTussenvoegsel, FXAchternaam, FXGebruikersnaam;
-    @FXML private TextField FXWachtwoord, FXEmail, FXTelefoonnummer;
+    @FXML private TextField FXWachtwoord, FXBevestigWachtwoord, FXEmail, FXTelefoonnummer;
     @FXML private CheckBox ManagerPosition;
     
     int id = GebruikerController.getSelectedIdGebruiker();
@@ -28,7 +28,6 @@ public class EditGebruikerController implements Initializable {
     @FXML
     private void readData() {
         try {
-            System.out.println(id);
             ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gebruikers WHERE ID=" + id);
             
             //Gaat net zo lang door, tot er geen records meer zijn
@@ -37,7 +36,6 @@ public class EditGebruikerController implements Initializable {
                 FXTussenvoegsel.setText(result.getString("Tussenvoegsel"));
                 FXAchternaam.setText(result.getString("Achternaam"));
                 FXGebruikersnaam.setText(result.getString("Username"));
-                FXWachtwoord.setText(result.getString("Password"));
                 ManagerPosition.setSelected(result.getBoolean("Positie"));
                 FXEmail.setText(result.getString("Email"));
                 FXTelefoonnummer.setText(result.getString("Telefoonnummer"));
@@ -49,7 +47,7 @@ public class EditGebruikerController implements Initializable {
     }
     
     @FXML
-    private void writeToDB() throws SQLException {
+    private void writeToDB() throws SQLException, Exception {
         
         String query = "UPDATE testDatabase.Gebruikers SET "
                 + "Voornaam=?, "
@@ -63,28 +61,37 @@ public class EditGebruikerController implements Initializable {
                 + "WHERE ID=?;";
         
         PreparedStatement statement = database.prepareStatement(query);
+        if (!FXBevestigWachtwoord.getText().equals(FXWachtwoord.getText())) {
+            System.out.println("error");
+        }else{
+            try {
+                statement.setString(1, FXVoornaam.getText());
+                statement.setString(2, FXTussenvoegsel.getText());
 
-        try {
-            statement.setString(1, FXVoornaam.getText());
-            statement.setString(2, FXTussenvoegsel.getText());
-            statement.setString(3, FXAchternaam.getText());
-            statement.setString(4, FXGebruikersnaam.getText());
-            statement.setString(5, FXWachtwoord.getText());
-            statement.setString(6, FXEmail.getText());
-            statement.setInt(7, Integer.parseInt(FXTelefoonnummer.getText()));
-            
-            if (ManagerPosition.isSelected()) {
-                statement.setInt(8, 1);
-            }else{
-                statement.setInt(8, 0);
+                statement.setString(3, FXAchternaam.getText());
+                statement.setString(4, FXGebruikersnaam.getText());
+
+                String[] MD5 = {FXWachtwoord.getText()};
+                MD5 encryptie = new MD5();
+
+                statement.setString(5, encryptie.MD5(MD5));
+                statement.setString(6, FXEmail.getText());
+                statement.setInt(7, Integer.parseInt(FXTelefoonnummer.getText()));
+
+                if (ManagerPosition.isSelected()) {
+                    statement.setInt(8, 1);
+                }else{
+                    statement.setInt(8, 0);
+                }
+
+                statement.setInt(9, id);
+                statement.executeUpdate();
+
+            } catch(SQLException ex) {
+                ex.printStackTrace();
             }
-            
-            statement.setInt(9, id);
-            statement.executeUpdate();
-           
-        } catch(SQLException ex) {
-            ex.printStackTrace();
         }
+        
         
         MainNavigator.loadVista(MainNavigator.GEBRUIKER);
     }
