@@ -475,6 +475,39 @@ public class StartController implements Initializable {
         } catch (Exception e) { e.printStackTrace(System.err); }
 
     }
+    
+     @FXML private void DeleteVermisteBagage()
+     {
+        Bagage vermisteBagage = vermisteTabel.getSelectionModel().getSelectedItem();
+        String query = String.format("DELETE FROM testDatabase.Vermist WHERE idVermist = %d", vermisteBagage.getId()), 
+                deletionInfo = String.format("Are you sure you want to permanently remove this item?\n\n"
+                + "Destination - %s\nBrand - %s\nType - %s\n", vermisteBagage.getBestemming(), vermisteBagage.getMerk(), vermisteBagage.getBagageType());
+        
+        System.out.print("[QUERY]: " + query + "\n");
+        
+        Alert alertMessageBox = new Alert(AlertType.CONFIRMATION);
+        
+        alertMessageBox.setTitle("Confirm Deletion");
+        alertMessageBox.setContentText(deletionInfo);
+        
+        ButtonType OKButton = new ButtonType("OK.", ButtonData.OK_DONE);
+        ButtonType CancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+        alertMessageBox.getButtonTypes().setAll(CancelButton, OKButton);
+        
+        Optional<ButtonType> result = alertMessageBox.showAndWait();
+          
+          try
+          {
+              if (result.get() == OKButton)
+              {
+                  PreparedStatement statement = database.prepareStatement(query);
+                  vermisteTabel.getItems().removeAll(vermisteTabel.getSelectionModel().getSelectedItems());
+                  statement.executeUpdate();
+              } else if (result.get() == CancelButton) {
+                    System.out.println("[USERINPUT]: Canceled");
+            }
+        } catch (Exception e) { e.printStackTrace(System.err); }
+     }
 
     @FXML private void gevondenToevoegen(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.GEVONDEN);
