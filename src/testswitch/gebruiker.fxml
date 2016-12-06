@@ -58,7 +58,7 @@
         </HBox>
         <AnchorPane GridPane.rowIndex="2">
             <children>
-                <TableView fx:id="gebruikerTableView" onMouseClicked="#getSelected" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <TableView fx:id="gebruikerTableView" onKeyReleased="#getSelected" onMouseClicked="#getSelected" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                         <TableColumn fx:id="gebruikerIDKolom" prefWidth="89.0" text="ID" />
                         <TableColumn fx:id="naamKolom" prefWidth="236.0" text="Name" />
