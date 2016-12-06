@@ -81,7 +81,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-                <Button fx:id="gebruikerVerwijderen" disable="true" mnemonicParsing="false" text="Delete User">
+                <Button fx:id="gebruikerVerwijderen" disable="true" mnemonicParsing="false" onAction="#DeleteUser" text="Delete User">
                     <HBox.margin>
                         <Insets left="5.0" />
                     </HBox.margin>

@@ -2,15 +2,20 @@ package testswitch;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -22,7 +27,7 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 /**
- * @author Daan Dirker
+ * @author A/M
  */
 public class GebruikerController implements Initializable {
 
@@ -190,6 +195,39 @@ public class GebruikerController implements Initializable {
         // Save the results and ensure that the document is properly closed:
         document.save("Hello World.pdf");
         document.close();
+    }
+    
+    @FXML private void DeleteUser()
+    {
+        Gebruiker userClass = gebruikerTableView.getSelectionModel().getSelectedItem();
+        String query = String.format("DELETE FROM testDatabase.Gebruikers WHERE ID = %d", userClass.getGebruikerID()), 
+                deletionInfo = String.format("Are you sure you want to permanently remove this item?\n\n"
+                + "Delete Row: %s %s, %d", userClass.getVoornaam(), userClass.getAchternaam(), userClass.getGebruikerID());
+        
+        System.out.print("[QUERY]: " + query + " | " + userClass.getUsername() + "\n");
+        
+        Alert alertMessageBox = new Alert(Alert.AlertType.CONFIRMATION);
+        
+        alertMessageBox.setTitle("Confirm Deletion");
+        alertMessageBox.setContentText(deletionInfo);
+        
+        ButtonType OKButton = new ButtonType("OK.", ButtonBar.ButtonData.OK_DONE);
+        ButtonType CancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alertMessageBox.getButtonTypes().setAll(CancelButton, OKButton);
+        
+        Optional<ButtonType> result = alertMessageBox.showAndWait();
+          
+          try
+          {
+              if (result.get() == OKButton)
+              {
+                  PreparedStatement statement = database.prepareStatement(query);
+                  gebruikerTableView.getItems().removeAll(gebruikerTableView.getSelectionModel().getSelectedItems());
+                  statement.executeUpdate();
+              } else if (result.get() == CancelButton) {
+                    System.out.println("[USERINPUT]: Canceled");
+            }
+        } catch (Exception e) { e.printStackTrace(System.err); }
     }
 
 }
