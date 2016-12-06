@@ -40,8 +40,8 @@ public class gebruikerToevoegenController {
                 + " VALUES (?,?,?,?,?,?,?,?);";
         PreparedStatement statement = database.prepareStatement(query);
         try {
-            if (FXVoornaam.getText().equals("") || FXTussenvoegsel.getText().equals("")
-                    || FXAchternaam.getText().equals("") || FXGebruikersnaam.getText().equals("")
+            if (FXVoornaam.getText().equals("") || FXAchternaam.getText().equals("") 
+                    || FXGebruikersnaam.getText().equals("")
                     || FXWachtwoord.getText().equals("")) 
             {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -56,7 +56,11 @@ public class gebruikerToevoegenController {
             statement.setString(2, FXTussenvoegsel.getText());
             statement.setString(3, FXAchternaam.getText());
             statement.setString(4, FXGebruikersnaam.getText());
-            statement.setString(5, FXWachtwoord.getText());
+            
+            String[] MD5 = {FXWachtwoord.getText()};
+            MD5 encryptie = new MD5();
+            
+            statement.setString(5, encryptie.MD5(MD5));
             statement.setString(6, FXTelefoonnummer.getText());
             statement.setString(7, FXEmail.getText());
             

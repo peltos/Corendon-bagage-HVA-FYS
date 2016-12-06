@@ -56,7 +56,7 @@ public class MainController {
     @FXML
     private Label error;
 
-    private static String dbUsername, dbPassword ;
+    private static String dbUsername, dbPassword, MD5Password ;
     private static int dbID, dbManager;
     
     @FXML
@@ -71,6 +71,10 @@ public class MainController {
         ResultSet result = database.executeQuery("SELECT ID, username, password, "
                 + "positie FROM testDatabase.Gebruikers;");
         
+        
+        
+        
+        
         try {
 
             while (result.next()) {
@@ -78,9 +82,14 @@ public class MainController {
                 dbUsername = result.getString("username");
                 dbPassword = result.getString("password");
                 dbManager = result.getInt("positie");
+                
+                String[] MD5 = {wachtwoord.getText()};
+                MD5 encryptie = new MD5();
+                
+                MD5Password = encryptie.MD5(MD5);
 
                 if (dbUsername.equals(gebruikersnaam.getText())
-                        && dbPassword.equals(wachtwoord.getText())) {
+                        && dbPassword.equals(MD5Password)) {
                     if (dbManager == 1) {
                         stage = (Stage) loginButton.getScene().getWindow();
                         
