@@ -215,6 +215,8 @@ public class StartController implements Initializable {
             vermisteCheckBox.setSelected(false);
         }
         
+        // Updates grijze vlakken van Start pagina
+        
         vermisteDatum.setText(bagage.getDatum());
         vermisteTijd.setText(bagage.getTijd());
         vermisteLuchthaven.setText(bagage.getLuchthaven());

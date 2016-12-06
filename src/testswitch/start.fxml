@@ -88,7 +88,7 @@
                         <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                 </AnchorPane>
-                <TableView fx:id="vermisteTabel" onMouseClicked="#vermisteSelected">
+                <TableView fx:id="vermisteTabel" onKeyReleased="#vermisteSelected" onMouseClicked="#vermisteSelected">
                     <columns>
                         <TableColumn fx:id="vermisteIdKolom" minWidth="-1.0" prefWidth="72.0" text="ID" />
                         <TableColumn fx:id="vermisteDatumKolom" minWidth="-1.0" prefWidth="101.0" text="Date" />
@@ -155,7 +155,7 @@
                         <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                 </AnchorPane>
-                <TableView fx:id="gevondenTabel" onMouseClicked="#gevondenSelected">
+                <TableView fx:id="gevondenTabel" onKeyReleased="#gevondenSelected" onMouseClicked="#gevondenSelected">
                     <columns>
                         <TableColumn fx:id="gevondenIdKolom" minWidth="-1.0" prefWidth="72.0" text="ID" />
                         <TableColumn fx:id="gevondenDatumKolom" minWidth="-1.0" prefWidth="101.0" text="Date" />

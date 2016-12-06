@@ -58,7 +58,7 @@
         </HBox>
         <AnchorPane GridPane.rowIndex="2">
             <children>
-                <TableView fx:id="gebruikerTableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <TableView fx:id="gebruikerTableView" onKeyReleased="#getSelected" onMouseClicked="#getSelected" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                         <TableColumn fx:id="gebruikerIDKolom" prefWidth="89.0" text="ID" />
                         <TableColumn fx:id="naamKolom" prefWidth="236.0" text="Name" />
@@ -76,7 +76,12 @@
         <HBox alignment="TOP_RIGHT" GridPane.rowIndex="3">
             <children>
                 <Button fx:id="gebruikerToevoegenButton" mnemonicParsing="false" onAction="#gebruikerToevoegen" text="Add User" />
-                <Button mnemonicParsing="false" text="Delete User">
+            <Button fx:id="gebruikerEdit" disable="true" mnemonicParsing="false" onAction="#editGebruiker" onMouseClicked="#getSelected" text="Edit">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+                <Button fx:id="gebruikerVerwijderen" disable="true" mnemonicParsing="false" text="Delete User">
                     <HBox.margin>
                         <Insets left="5.0" />
                     </HBox.margin>
