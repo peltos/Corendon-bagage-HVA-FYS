@@ -26,12 +26,12 @@
                   </AnchorPane>
               </content>
             </TitledPane>
-            <TitledPane animated="false" style="-fx-background-color: #000;" text="Add User">
+            <TitledPane animated="false" style="-fx-background-color: #000;" text="Baggage">
               <content>
                 <AnchorPane style=": ;">
                      <children>
-                        <Button fx:id="vermistButton" layoutX="7.0" layoutY="25.0" mnemonicParsing="false" onAction="#vermist" styleClass="buttonsNav" text="Lost" />
-                        <Button fx:id="gevondenButton" layoutX="7.0" layoutY="4.0" mnemonicParsing="false" onAction="#gevonden" styleClass="buttonsNav" text="Found" />
+                        <Button fx:id="vermistButton" layoutX="7.0" layoutY="25.0" mnemonicParsing="false" onAction="#vermist" styleClass="buttonsNav" text="Add Lost" />
+                        <Button fx:id="gevondenButton" layoutX="7.0" layoutY="4.0" mnemonicParsing="false" onAction="#gevonden" styleClass="buttonsNav" text="Add Found" />
                      </children>
                   </AnchorPane>
               </content>
@@ -43,7 +43,7 @@
                         <Insets />
                      </opaqueInsets>
                      <children>
-                        <Button fx:id="openButton" layoutX="6.0" layoutY="6.0" mnemonicParsing="false" onAction="#open" styleClass="buttonsNav" text="Open" />
+                        <Button fx:id="openButton" layoutX="6.0" layoutY="6.0" mnemonicParsing="false" onAction="#open" styleClass="buttonsNav" text="Unsolved" />
                         <Button fx:id="GeslotenButton" layoutX="6.0" layoutY="51.0" mnemonicParsing="false" onAction="#gesloten" styleClass="buttonsNav" text="Closed" />
                         <Button fx:id="overeenkomstButton" layoutX="6.0" layoutY="28.0" mnemonicParsing="false" onAction="#overeenkomst" styleClass="buttonsNav" text="Matches" />
                      </children>

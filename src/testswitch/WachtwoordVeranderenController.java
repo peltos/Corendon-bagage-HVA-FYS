@@ -1,21 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package testswitch;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -24,74 +16,55 @@ import javafx.scene.control.TextField;
  */
 public class WachtwoordVeranderenController implements Initializable {
     
-    @FXML TextField FXGevondenLuchthaven, FXGevondenLabelNummer, FXGevondenVluchtNummer,
-            FXGevondenBestemming, FXGevondenType, FXGevondenMerk, FXGevondenKleur,
-            FXGevondenBijzondereKenmerken;
+    @FXML TextField FXOudWachtwoord, FXNieuwWachtwoord, FXBevestigWachtwoord;
     @FXML Button gevondenButton;
+    @FXML Label error;
     
-    int id = StartController.getSelectedIdGevonden();
     Database database = Main.getDatabase();
+    MainController controller = new MainController();
     
     
-    @FXML
-    private void readData() {
-
-        try {
-            ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gevonden WHERE idGevonden=" + id);
-            //Gaat net zo lang door, tot er geen records meer zijn
-            while (result.next()) {
-                FXGevondenLuchthaven.setText(result.getString("Luchthaven"));
-                FXGevondenLabelNummer.setText(result.getString("Labelnummer"));
-                FXGevondenVluchtNummer.setText(result.getString("Vluchtnummer"));
-                FXGevondenBestemming.setText(result.getString("Bestemming"));
-                FXGevondenType.setText(result.getString("BagageType"));
-                FXGevondenMerk.setText(result.getString("Merk"));
-                FXGevondenKleur.setText(result.getString("Kleur"));
-                FXGevondenBijzondereKenmerken.setText(result.getString("BijzonderKenmerken"));
-            }
-            
-        } catch(SQLException ex) {
-            
-        }
-    }
     
     @FXML
     private void writeToDB() throws SQLException {
-//        
-//        String query = "UPDATE testDatabase.Gevonden SET "
-//                + "Luchthaven=?, "
-//                + "Labelnummer=?, "
-//                + "Vluchtnummer=?, "
-//                + "Bestemming=?, "
-//                + "BagageType=?, "
-//                + "Merk=?, "
-//                + "Kleur=?, "
-//                + "BijzonderKenmerken=? "
-//                + "WHERE idGevonden=?;";
-//        
-//        PreparedStatement statement = database.prepareStatement(query);
-//
-//        try {
-//            statement.setString(1, FXGevondenLuchthaven.getText());
-//            
-//            int gevondenLabelNummer = Integer.parseInt(FXGevondenLabelNummer.getText());
-//            int gevondenVluchtNummer = Integer.parseInt(FXGevondenVluchtNummer.getText());
-//            statement.setInt(2, gevondenLabelNummer);
-//            statement.setInt(3, gevondenVluchtNummer);
-//            
-//            statement.setString(4, FXGevondenBestemming.getText());
-//            statement.setString(5, FXGevondenType.getText());
-//            statement.setString(6, FXGevondenMerk.getText());
-//            statement.setString(7, FXGevondenKleur.getText());
-//            statement.setString(8, FXGevondenBijzondereKenmerken.getText());
-//            statement.setInt(9, id);
-//            statement.executeUpdate();
-//           
-//        } catch(SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//        
-//        MainNavigator.loadVista(MainNavigator.START);
+        
+        String query = "UPDATE testDatabase.Gebruikers SET "
+                + "Password=? "
+                + "WHERE ID=" + MainController.getID() + ";";
+
+        PreparedStatement statement = database.prepareStatement(query);
+        
+        if ((FXOudWachtwoord.getText().equals("")) && (FXNieuwWachtwoord.getText().equals("")) && (FXBevestigWachtwoord.getText().equals(""))) {
+            error.setText("You left one or more textfields empty");
+        }else{
+            if (!FXOudWachtwoord.getText().equals(controller.getPassword())){
+                error.setText("Old password is wrong");
+            }
+            else if ((FXNieuwWachtwoord.getText().equals(""))){
+                error.setText("You left one or more textfields empty");
+            }
+            else if ((!FXNieuwWachtwoord.getText().equals(FXBevestigWachtwoord.getText()))){
+                error.setText("Your new passwords arent the same");
+            }
+            else if ((FXOudWachtwoord.getText().equals(FXNieuwWachtwoord.getText()))){
+                error.setText("You can't use the same password again for your new password");
+            }
+            else{
+                try {
+                    statement.setString(1, FXNieuwWachtwoord.getText());
+                    statement.executeUpdate();
+                    MainNavigator.loadVista(MainNavigator.START);
+                    
+                    controller.setPassword(FXNieuwWachtwoord.getText());
+                    System.out.println(controller.getPassword());
+                    
+                } catch(SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        
+        
     }
     
     @FXML
@@ -101,7 +74,6 @@ public class WachtwoordVeranderenController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        readData();
     }
     
 }

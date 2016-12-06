@@ -2,12 +2,10 @@ package testswitch;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -58,8 +56,8 @@ public class MainController {
     @FXML
     private Label error;
 
-    private String dbUsername, dbPassword ;
-    private int dbManager;
+    private static String dbUsername, dbPassword ;
+    private static int dbID, dbManager;
     
     @FXML
     private Label headerLabel;
@@ -70,12 +68,13 @@ public class MainController {
     @FXML
     private void loginCheck(ActionEvent event) throws Exception {
         
-        ResultSet result = database.executeQuery("SELECT username, password, "
+        ResultSet result = database.executeQuery("SELECT ID, username, password, "
                 + "positie FROM testDatabase.Gebruikers;");
         
         try {
 
             while (result.next()) {
+                dbID = result.getInt("ID");
                 dbUsername = result.getString("username");
                 dbPassword = result.getString("password");
                 dbManager = result.getInt("positie");
@@ -111,6 +110,17 @@ public class MainController {
         }
         wachtwoord.clear();
     }
+    public static int getID() {
+        return dbID;
+    }
+    public String getPassword() {
+        return dbPassword;
+    }
+
+    public void setPassword(String dbPassword) {
+        MainController.dbPassword = dbPassword;
+    }
+    
 
     @FXML
     private void afmelden(ActionEvent event) throws IOException {
