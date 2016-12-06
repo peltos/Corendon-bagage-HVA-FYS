@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,6 +22,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 /**
@@ -27,26 +31,17 @@ import javafx.scene.control.TextField;
  */
 public class StartController implements Initializable {
 
-    @FXML
-    Button editGevonden;
-    @FXML
-    Button FXGevondenDelete;
-    @FXML
-    Button gevondenToevoegenButton;
+    @FXML Button editGevonden;
+    @FXML Button FXGevondenDelete;
+    @FXML Button gevondenToevoegenButton;
 
-    @FXML
-    Button editVermist;
-    @FXML
-    Button FXVermistDelete;
-    @FXML
-    Button VermistToevoegenButton;
+    @FXML Button editVermist;
+    @FXML Button FXVermistDelete;
+    @FXML Button VermistToevoegenButton;
 
-    @FXML
-    public CheckBox vermisteCheckBox;
-    @FXML
-    public CheckBox gevondenCheckBox;
-    @FXML
-    public Button buttonOvereenkomst;
+    @FXML public CheckBox vermisteCheckBox;
+    @FXML public CheckBox gevondenCheckBox;
+    @FXML public Button buttonOvereenkomst;
 
     //Gevonden bagage
     @FXML
@@ -157,16 +152,15 @@ public class StartController implements Initializable {
         Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
         selectedIdGevonden = bagage.getId();
         
-        if ((selectedIdGevonden != 0) && (selectedIdVermist != 0)) {
-            buttonOvereenkomst.setDisable(false);
-        }
-        
         editVermist.setDisable(true);
         FXVermistDelete.setDisable(true);
+        VermistToevoegenButton.setDisable(true);
         
         if (bagage.getId() != null) {
             editGevonden.setDisable(false);
             FXGevondenDelete.setDisable(false);
+            gevondenToevoegenButton.setDisable(false);
+
         }
 
         boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
@@ -199,17 +193,15 @@ public class StartController implements Initializable {
         
         Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
         selectedIdVermist = bagage.getId();
-        
-        if ((selectedIdGevonden != 0) && (selectedIdVermist != 0)) {
-            buttonOvereenkomst.setDisable(false);
-        }
  
         editGevonden.setDisable(true);
         FXGevondenDelete.setDisable(true);
+        gevondenToevoegenButton.setDisable(true);
         
         if (bagage.getId() != null){
             editVermist.setDisable(false);
             FXVermistDelete.setDisable(false);
+            VermistToevoegenButton.setDisable(false);
         }
 
         boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
@@ -217,8 +209,6 @@ public class StartController implements Initializable {
         if (bSelected == true) {
             vermisteCheckBox.setSelected(false);
         }
-        
-        // Updates grijze vlakken van Start pagina
         
         vermisteDatum.setText(bagage.getDatum());
         vermisteTijd.setText(bagage.getTijd());
@@ -401,11 +391,10 @@ public class StartController implements Initializable {
 
     }
 
-    @FXML
-    private void OvereenkomstDB() throws SQLException {
-        boolean gVCheckBox = gevondenCheckBox.isSelected(), vVCheckBox = vermisteCheckBox.isSelected();
+    @FXML private void OvereenkomstDB() throws SQLException {
+        boolean gVCheckBox = gevondenCheckBox.isSelected(), vVCheckBox = vermisteCheckBox.isSelected(); // get selected table
 
-        Bagage vermisteBag = vermisteTabel.getSelectionModel().getSelectedItem();
+        Bagage vermisteBag = vermisteTabel.getSelectionModel().getSelectedItem(); // 
         Bagage gevondenBag = gevondenTabel.getSelectionModel().getSelectedItem();
 
         String query = "INSERT INTO testDatabase.Overeenkomst (GevondenID, VermistID, Datum, Gesloten)"
@@ -453,39 +442,50 @@ public class StartController implements Initializable {
 
     }
 
-    @FXML
-    private void DeleteGevondenBagage() {
-
-        gevondenTabel.getItems().removeAll(gevondenTabel.getSelectionModel().getSelectedItems());
-
-        String query = "DELETE INTO testDatabase.Overeenkomst (GevondenID, VermistID, Datum, Gesloten)"
-                + "VALUES (?, ?, ?, ?);";
-
-        //DELETE FROM MyGuests WHERE id=3
+    @FXML private void DeleteGevondenBagage() 
+    {
         Bagage gevondenBag = gevondenTabel.getSelectionModel().getSelectedItem();
-
-        try {
-            PreparedStatement statement = database.prepareStatement(query);
-
-        } catch (Exception e) {
-            e.printStackTrace(System.err);
-        }
+        String query = String.format("DELETE FROM testDatabase.Gevonden WHERE idGevonden = %d", gevondenBag.getId()), 
+                deletionInfo = String.format("Are you sure you want to permanently remove this item?\n\n"
+                + "Destination - %s\nBrand - %s\nType - %s\n", gevondenBag.getBestemming(), gevondenBag.getMerk(), gevondenBag.getBagageType());
+        
+        System.out.print("[QUERY]: " + query + "\n");
+        
+        Alert alertMessageBox = new Alert(AlertType.CONFIRMATION);
+        
+        alertMessageBox.setTitle("Confirm Deletion");
+        alertMessageBox.setContentText(deletionInfo);
+        
+        ButtonType OKButton = new ButtonType("OK.", ButtonData.OK_DONE);
+        ButtonType CancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+        alertMessageBox.getButtonTypes().setAll(CancelButton, OKButton);
+        
+        Optional<ButtonType> result = alertMessageBox.showAndWait();
+          
+          try
+          {
+              if (result.get() == OKButton)
+              {
+                  PreparedStatement statement = database.prepareStatement(query);
+                  gevondenTabel.getItems().removeAll(gevondenTabel.getSelectionModel().getSelectedItems());
+                  statement.executeUpdate();
+              } else if (result.get() == CancelButton) {
+                    System.out.println("[USERINPUT]: Canceled");
+            }
+        } catch (Exception e) { e.printStackTrace(System.err); }
 
     }
 
-    @FXML
-    private void gevondenToevoegen(ActionEvent event) {
+    @FXML private void gevondenToevoegen(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.GEVONDEN);
 
     }
 
-    @FXML
-    private void vermistToevoegen(ActionEvent event) {
+    @FXML private void vermistToevoegen(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.VERMIST);
     }
 
-    @FXML
-    private void editGevonden(ActionEvent event) {
+    @FXML private void editGevonden(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.EDIT_GEVONDEN);
     }
     
