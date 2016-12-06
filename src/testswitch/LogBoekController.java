@@ -92,20 +92,23 @@ public class LogBoekController {
             }
             
             result = database.executeQuery("SELECT OvereenkomstID, Datum "
-                    + "FROM testDatabase.Overeenkomst;");
-            while (result.next()) {
-                Bagage bagage = new Bagage();
-                bagage.setId(result.getInt("idGesloten"));
-                bagage.setDatum(result.getString("Datum"));
-                geslotenData.add(bagage);
-            }
-            
+                    + "FROM testDatabase.Overeenkomst WHERE gesloten = 0;");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("OvereenkomstID"));
                 bagage.setDatum(result.getString("Datum"));
+//                bagage.setDatum(result.get)
                 overeenkomstData.add(bagage);
             }
+            
+            result = database.executeQuery("SELECT * "
+                    + "FROM testDatabase.Overeenkomst WHERE gesloten = 1;");
+            while (result.next()) {
+                Bagage bagage = new Bagage();
+                bagage.setId(result.getInt("OvereenkomstID"));
+                bagage.setDatum(result.getString("Datum"));
+                geslotenData.add(bagage);
+            }   
 
 
         } catch (SQLException ex) {
