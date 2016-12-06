@@ -31,7 +31,7 @@
         <RowConstraints vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <TableView fx:id="geslotenTableView" onMouseClicked="#geslotenSelected" prefHeight="422.0" prefWidth="1067.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+        <TableView fx:id="geslotenTableView" onKeyReleased="#geslotenSelected" onMouseClicked="#geslotenSelected" prefHeight="422.0" prefWidth="1067.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
             <columns>
                 <TableColumn fx:id="geslotenIdKolom" minWidth="-1.0" prefWidth="266.75" text="ID" />
                 <TableColumn fx:id="geslotenDatumKolom" minWidth="-1.0" prefWidth="266.75" text="Date" />
