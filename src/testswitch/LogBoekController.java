@@ -94,7 +94,8 @@ public class LogBoekController {
             
             result = database.executeQuery("SELECT OvereenkomstID, Overeenkomst.Datum, "
                     + "Labelnummer FROM testDatabase.Overeenkomst JOIN testDatabase.Vermist "
-                    + "ON VermistID=idVermist WHERE Gesloten = 0 ;");
+                    + "ON VermistID=idVermist WHERE Gesloten = 0 AND Overeenkomst.Datum BETWEEN "
+                    + "DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND CURDATE();");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("OvereenkomstID"));
@@ -105,7 +106,8 @@ public class LogBoekController {
             
             result = database.executeQuery("SELECT OvereenkomstID, Overeenkomst.Datum, "
                     + "Labelnummer, Vluchtnummer FROM testDatabase.Overeenkomst JOIN testDatabase.Vermist "
-                    + "ON VermistID=idVermist WHERE Gesloten = 1 ;");
+                    + "ON VermistID=idVermist WHERE Gesloten = 1 AND Overeenkomst.Datum BETWEEN "
+                    + "DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND CURDATE();");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("OvereenkomstID"));
