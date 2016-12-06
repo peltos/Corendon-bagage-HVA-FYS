@@ -76,7 +76,7 @@
                     <columns>
                         <TableColumn fx:id="overeenkomstIdKolom" prefWidth="88.25" text="ID" />
                         <TableColumn fx:id="overeenkomstDatumKolom" prefWidth="88.25" text="Date" />
-                        <TableColumn fx:id="overeenkomstLabelNummerKolom" prefWidth="88.25" text="Label Nr" />
+                        <TableColumn fx:id="overeenkomstLabelNummerKolom" prefWidth="112.0" text="Label Nr" />
                     </columns>
                     <effect>
                         <Blend />

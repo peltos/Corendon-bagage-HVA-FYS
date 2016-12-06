@@ -57,11 +57,12 @@ public class LogBoekController {
     @FXML public TableColumn<Bagage, Integer> overeenkomstIdKolom;
     @FXML public TableColumn<Bagage, String> overeenkomstDatumKolom;
     @FXML public TableColumn<Bagage, Integer> overeenkomstLabelNummerKolom;
-
+    
+    //tabellen logboek
     private final ObservableList<Bagage> gevondenData = FXCollections.observableArrayList();
     private final ObservableList<Bagage> vermisteData = FXCollections.observableArrayList();
-    private ObservableList<Bagage> geslotenData = FXCollections.observableArrayList();
-    private ObservableList<Bagage> overeenkomstData = FXCollections.observableArrayList();
+    private final ObservableList<Bagage> geslotenData = FXCollections.observableArrayList();
+    private final ObservableList<Bagage> overeenkomstData = FXCollections.observableArrayList();
     
     Database database = Main.getDatabase();
 
@@ -91,22 +92,26 @@ public class LogBoekController {
                 vermisteData.add(bagage);
             }
             
-            result = database.executeQuery("SELECT OvereenkomstID, Datum "
-                    + "FROM testDatabase.Overeenkomst WHERE gesloten = 0;");
+            result = database.executeQuery("SELECT OvereenkomstID, Overeenkomst.Datum, "
+                    + "Labelnummer FROM testDatabase.Overeenkomst JOIN testDatabase.Vermist "
+                    + "ON VermistID=idVermist WHERE Gesloten = 0 ;");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("OvereenkomstID"));
-                bagage.setDatum(result.getString("Datum"));
-//                bagage.setDatum(result.get)
+                bagage.setDatum(result.getString("Overeenkomst.Datum"));
+                bagage.setLabelNummer(result.getInt("Labelnummer"));
                 overeenkomstData.add(bagage);
             }
             
-            result = database.executeQuery("SELECT * "
-                    + "FROM testDatabase.Overeenkomst WHERE gesloten = 1;");
+            result = database.executeQuery("SELECT OvereenkomstID, Overeenkomst.Datum, "
+                    + "Labelnummer, Vluchtnummer FROM testDatabase.Overeenkomst JOIN testDatabase.Vermist "
+                    + "ON VermistID=idVermist WHERE Gesloten = 1 ;");
             while (result.next()) {
                 Bagage bagage = new Bagage();
                 bagage.setId(result.getInt("OvereenkomstID"));
-                bagage.setDatum(result.getString("Datum"));
+                bagage.setDatum(result.getString("Overeenkomst.Datum"));
+                bagage.setLabelNummer(result.getInt("Labelnummer"));
+                bagage.setVluchtNr(result.getInt("Vluchtnummer"));
                 geslotenData.add(bagage);
             }   
 
@@ -136,6 +141,7 @@ public class LogBoekController {
                 "SELECT idGevonden FROM testDatabase.Gevonden;");
         ResultSet graphOvereenkomst = database.executeQuery(
                 "SELECT OvereenkomstID, Gesloten FROM testDatabase.Overeenkomst;");
+        
 
         try {
             while (graphVermist.next()) {
@@ -223,6 +229,18 @@ public class LogBoekController {
                 new PropertyValueFactory<Bagage, Integer>("id"));
         overeenkomstDatumKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, String>("datum"));
+        overeenkomstLabelNummerKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("labelNummer"));
+        
+        //gesloten
+        idKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("id"));
+        datumKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, String>("datum"));
+        labelnummerKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("labelNummer"));
+        vluchtnummerKolom.setCellValueFactory(
+                new PropertyValueFactory<Bagage, Integer>("VluchtNr"));
         
         createPieChart();
         gevondenTabel.setItems(gevondenData);
