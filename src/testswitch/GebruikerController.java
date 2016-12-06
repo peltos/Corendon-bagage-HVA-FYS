@@ -21,7 +21,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class GebruikerController implements Initializable {
 
-    //@FXML public Button refreshButton;
     @FXML public TableView<Gebruiker> gebruikerTableView;
     @FXML public TableColumn<Gebruiker, Integer> gebruikerIDKolom;
     @FXML public TableColumn<Gebruiker, String> naamKolom;
@@ -29,9 +28,13 @@ public class GebruikerController implements Initializable {
     @FXML public TableColumn<Gebruiker, Integer> telefoonnummerKolom;
     @FXML public TableColumn<Gebruiker, String> emailKolom;
     @FXML public TableColumn<Gebruiker, Integer> positieKolom;
-    @FXML public Button gebruikerToevoegenButton;
+    @FXML public Button gebruikerToevoegenButton, gebruikerVerwijderen, gebruikerEdit;
     
+    private static int selectedIdGebruiker;
     
+    public static int getSelectedIdGebruiker(){
+        return selectedIdGebruiker;
+    }
     
     private ObservableList<Gebruiker> data = FXCollections.observableArrayList();
     
@@ -66,19 +69,23 @@ public class GebruikerController implements Initializable {
 
     }
     
-    /*
-    @FXML
-    private void refreshButtonAction(ActionEvent event) {
-        System.out.println("Refresh button pressed.");
-        data.removeAll(data);
-        writeTableData();
-    }
-    */
-    
     @FXML
     private void gebruikerToevoegen(ActionEvent event) throws IOException {
-        System.out.println("gebruikerToevoegen running");
         MainNavigator.loadVista(MainNavigator.GEBRUIKER_TOEVOEGEN);
+    }
+    
+    @FXML
+    private void editGebruiker(){
+        MainNavigator.loadVista(MainNavigator.EDIT_GEBRUIKER);
+    }
+    
+    @FXML
+    private void getSelected(){
+        Gebruiker gebruiker = gebruikerTableView.getSelectionModel().getSelectedItem();
+        selectedIdGebruiker = gebruiker.getGebruikerID();
+        
+        gebruikerVerwijderen.setDisable(false);
+        gebruikerEdit.setDisable(false);
     }
     
     @FXML public TextField searchField;

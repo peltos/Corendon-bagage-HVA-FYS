@@ -30,6 +30,7 @@ public class MainNavigator {
     public static final String GEBRUIKER_TOEVOEGEN = "gebruikerToevoegen.fxml";
     public static final String EDIT_GEVONDEN = "editGevonden.fxml";
     public static final String EDIT_VERMIST = "editVermist.fxml";
+    public static final String EDIT_GEBRUIKER = "editGebruiker.fxml";
     public static final String WACHTWOORD_WIJZIGEN = "wachtwoordWijzigen.fxml";
     
     
