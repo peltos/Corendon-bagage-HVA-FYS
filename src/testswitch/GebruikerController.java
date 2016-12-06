@@ -15,29 +15,42 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 /**
  * @author Daan Dirker
  */
 public class GebruikerController implements Initializable {
 
-    @FXML public TableView<Gebruiker> gebruikerTableView;
-    @FXML public TableColumn<Gebruiker, Integer> gebruikerIDKolom;
-    @FXML public TableColumn<Gebruiker, String> naamKolom;
-    @FXML public TableColumn<Gebruiker, String> usernameKolom;
-    @FXML public TableColumn<Gebruiker, Integer> telefoonnummerKolom;
-    @FXML public TableColumn<Gebruiker, String> emailKolom;
-    @FXML public TableColumn<Gebruiker, Integer> positieKolom;
-    @FXML public Button gebruikerToevoegenButton, gebruikerVerwijderen, gebruikerEdit;
-    
+    @FXML
+    public TableView<Gebruiker> gebruikerTableView;
+    @FXML
+    public TableColumn<Gebruiker, Integer> gebruikerIDKolom;
+    @FXML
+    public TableColumn<Gebruiker, String> naamKolom;
+    @FXML
+    public TableColumn<Gebruiker, String> usernameKolom;
+    @FXML
+    public TableColumn<Gebruiker, Integer> telefoonnummerKolom;
+    @FXML
+    public TableColumn<Gebruiker, String> emailKolom;
+    @FXML
+    public TableColumn<Gebruiker, Integer> positieKolom;
+    @FXML
+    public Button gebruikerToevoegenButton, gebruikerVerwijderen, gebruikerEdit;
+
     private static int selectedIdGebruiker;
-    
-    public static int getSelectedIdGebruiker(){
+
+    public static int getSelectedIdGebruiker() {
         return selectedIdGebruiker;
     }
-    
+
     private ObservableList<Gebruiker> data = FXCollections.observableArrayList();
-    
+
     Database database = Main.getDatabase();
 
     @FXML
@@ -53,13 +66,13 @@ public class GebruikerController implements Initializable {
                 gebruiker.setVoornaam(result.getString("Voornaam"));
                 gebruiker.setTussenvoegsel(result.getString("Tussenvoegsel"));
                 gebruiker.setAchternaam(result.getString("Achternaam"));
-                gebruiker.samenvoegenNaam(gebruiker.getVoornaam(), 
+                gebruiker.samenvoegenNaam(gebruiker.getVoornaam(),
                         gebruiker.getTussenvoegsel(), gebruiker.getAchternaam());
-                gebruiker.setUsername(result.getString("Username"));               
+                gebruiker.setUsername(result.getString("Username"));
                 gebruiker.setTelefoonnummer(result.getInt("Telefoonnummer"));
                 gebruiker.setEmail(result.getString("Email"));
                 gebruiker.setPositie(result.getInt("Positie"));
-                
+
                 data.add(gebruiker);
             }
 
@@ -68,44 +81,45 @@ public class GebruikerController implements Initializable {
         }
 
     }
-    
+
     @FXML
     private void gebruikerToevoegen(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.GEBRUIKER_TOEVOEGEN);
     }
-    
+
     @FXML
-    private void editGebruiker(){
+    private void editGebruiker() {
         MainNavigator.loadVista(MainNavigator.EDIT_GEBRUIKER);
     }
-    
+
     @FXML
-    private void getSelected(){
+    private void getSelected() {
         Gebruiker gebruiker = gebruikerTableView.getSelectionModel().getSelectedItem();
         selectedIdGebruiker = gebruiker.getGebruikerID();
-        
+
         gebruikerVerwijderen.setDisable(false);
         gebruikerEdit.setDisable(false);
     }
-    
-    @FXML public TextField searchField;
-    
+
     @FXML
-    private void search(ActionEvent event) throws IOException{
+    public TextField searchField;
+
+    @FXML
+    private void search(ActionEvent event) throws IOException {
         data.removeAll(data);
         if (searchField.getText().equals("")) {
             writeTableData();
-        }else{
+        } else {
             try {
                 ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gebruikers "
-                        + "WHERE ID LIKE '"+ searchField.getText() +"' "
-                        + "OR Voornaam LIKE '"+ searchField.getText() +"' "
-                        + "OR Tussenvoegsel LIKE '"+ searchField.getText() +"' "
-                        + "OR Achternaam LIKE '"+ searchField.getText() +"' "
-                        + "OR Username LIKE '"+ searchField.getText() +"' "
-                        + "OR Positie LIKE '"+ searchField.getText() +"' "
-                        + "OR Telefoonnummer LIKE '"+ searchField.getText() +"' "
-                        + "OR Email LIKE '"+ searchField.getText() +"' ;");
+                        + "WHERE ID LIKE '" + searchField.getText() + "' "
+                        + "OR Voornaam LIKE '" + searchField.getText() + "' "
+                        + "OR Tussenvoegsel LIKE '" + searchField.getText() + "' "
+                        + "OR Achternaam LIKE '" + searchField.getText() + "' "
+                        + "OR Username LIKE '" + searchField.getText() + "' "
+                        + "OR Positie LIKE '" + searchField.getText() + "' "
+                        + "OR Telefoonnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Email LIKE '" + searchField.getText() + "' ;");
 
                 //Gaat net zo lang door, tot er geen records meer zijn
                 while (result.next()) {
@@ -114,13 +128,12 @@ public class GebruikerController implements Initializable {
                     gebruiker.setVoornaam(result.getString("Voornaam"));
                     gebruiker.setTussenvoegsel(result.getString("Tussenvoegsel"));
                     gebruiker.setAchternaam(result.getString("Achternaam"));
-                    gebruiker.samenvoegenNaam(gebruiker.getVoornaam(), 
+                    gebruiker.samenvoegenNaam(gebruiker.getVoornaam(),
                             gebruiker.getTussenvoegsel(), gebruiker.getAchternaam());
-                    gebruiker.setUsername(result.getString("Username"));               
+                    gebruiker.setUsername(result.getString("Username"));
                     gebruiker.setTelefoonnummer(result.getInt("Telefoonnummer"));
                     gebruiker.setEmail(result.getString("Email"));
                     gebruiker.setPositie(result.getInt("Positie"));
-
 
                     data.add(gebruiker);
 
@@ -130,10 +143,9 @@ public class GebruikerController implements Initializable {
 
             }
         }
-        
-        
+
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Kollomen worden gelinkt aan Atributen van de Person class
@@ -149,9 +161,35 @@ public class GebruikerController implements Initializable {
                 new PropertyValueFactory<Gebruiker, String>("email"));
         positieKolom.setCellValueFactory(
                 new PropertyValueFactory<Gebruiker, Integer>("positie"));
-                        
+
         gebruikerTableView.setItems(data);
         writeTableData();
+    }
+
+    public void PDFExport() throws IOException {
+        PDDocument document = new PDDocument();
+        PDPage page = new PDPage();
+        document.addPage(page);
+
+        // Create a new font object selecting one of the PDF base fonts
+        PDFont font = PDType1Font.HELVETICA_BOLD;
+
+        // Start a new content stream which will "hold" the to be created content
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+        // Define a text content stream using the selected font, moving the cursor and drawing the text "Hello World"
+        contentStream.beginText();
+        contentStream.setFont(font, 12);
+        contentStream.moveTextPositionByAmount(100, 700);
+        contentStream.showText("Hello World");
+        contentStream.endText();
+
+        // Make sure that the content stream is closed:
+        contentStream.close();
+
+        // Save the results and ensure that the document is properly closed:
+        document.save("Hello World.pdf");
+        document.close();
     }
 
 }
