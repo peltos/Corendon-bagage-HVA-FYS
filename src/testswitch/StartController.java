@@ -154,13 +154,10 @@ public class StartController implements Initializable {
         
         editVermist.setDisable(true);
         FXVermistDelete.setDisable(true);
-        VermistToevoegenButton.setDisable(true);
         
         if (bagage.getId() != null) {
             editGevonden.setDisable(false);
             FXGevondenDelete.setDisable(false);
-            gevondenToevoegenButton.setDisable(false);
-
         }
 
         boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
@@ -196,12 +193,10 @@ public class StartController implements Initializable {
  
         editGevonden.setDisable(true);
         FXGevondenDelete.setDisable(true);
-        gevondenToevoegenButton.setDisable(true);
         
         if (bagage.getId() != null){
             editVermist.setDisable(false);
             FXVermistDelete.setDisable(false);
-            VermistToevoegenButton.setDisable(false);
         }
 
         boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
