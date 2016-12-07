@@ -155,6 +155,10 @@ public class StartController implements Initializable {
         editVermist.setDisable(true);
         FXVermistDelete.setDisable(true);
         
+        if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
+            buttonOvereenkomst.setDisable(false);
+        }
+        
         if (bagage.getId() != null) {
             editGevonden.setDisable(false);
             FXGevondenDelete.setDisable(false);
@@ -193,6 +197,10 @@ public class StartController implements Initializable {
  
         editGevonden.setDisable(true);
         FXGevondenDelete.setDisable(true);
+        
+        if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
+            buttonOvereenkomst.setDisable(false);
+        }
         
         if (bagage.getId() != null){
             editVermist.setDisable(false);
