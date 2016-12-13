@@ -5,6 +5,7 @@
  */
 package testswitch.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -23,6 +25,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import testswitch.Bagage;
 import testswitch.Database;
@@ -160,6 +163,137 @@ public class OvereenkomstController implements Initializable {
         overeenkomstTableView.setItems(overeenkomstData);
         writeTableData();
     }
+    
+    @FXML
+    public TextField searchField;
+    
+    @FXML
+    private void search(ActionEvent event) throws IOException {
+
+        Bagage bagage = overeenkomstTableView.getSelectionModel().getSelectedItem();
+        gevondenDatum.setText(" ");
+        gevondenTijd.setText(" ");
+        gevondenLuchthaven.setText(" ");
+        gevondenID.setText(" ");
+        gevondenType.setText(" ");
+        gevondenMerk.setText(" ");
+        gevondenKleur.setText(" ");
+        gevondenBK.setText(" ");
+        gevondenLabelNr.setText(" ");
+        gevondenVluchtNr.setText(" ");
+        gevondenBestemming.setText(" ");
+
+        bagage = overeenkomstTableView.getSelectionModel().getSelectedItem();
+        vermisteDatum.setText(" ");
+        vermisteTijd.setText(" ");
+        vermisteLuchthaven.setText(" ");
+        vermisteID.setText(" ");
+        vermisteNaam.setText(" ");
+        vermisteAdres.setText(" ");
+        vermisteWoonplaats.setText(" ");
+        vermistePostcode.setText(" ");
+        vermisteLand.setText(" ");
+        vermisteTelefoon.setText(" ");
+        vermisteEmail.setText(" ");
+        vermisteType.setText(" ");
+        vermisteMerk.setText(" ");
+        vermisteKleur.setText(" ");
+        vermisteBK.setText(" ");
+        vermisteLabelNr.setText(" ");
+        vermisteVluchtNr.setText(" ");
+        vermisteBestemming.setText(" ");
+
+        overeenkomstData.removeAll(overeenkomstData);
+
+        if (searchField.getText().equals("")) {
+            writeTableData();
+        } else {
+            try {
+                ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Vermist "
+                        + "WHERE idVermist LIKE '" + searchField.getText() + "' "
+                        + "OR Tijd LIKE '" + searchField.getText() + "' "
+                        + "OR Datum LIKE '" + searchField.getText() + "' "
+                        + "OR Luchthaven LIKE '" + searchField.getText() + "' "
+                        + "OR Labelnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Vluchtnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Bestemming LIKE '" + searchField.getText() + "' "
+                        + "OR BagageType LIKE '" + searchField.getText() + "' "
+                        + "OR Merk LIKE '" + searchField.getText() + "' "
+                        + "OR Kleur LIKE '" + searchField.getText() + "' "
+                        + "OR BijzonderKenmerken LIKE '" + searchField.getText() + "' "
+                        + "OR Naam LIKE '" + searchField.getText() + "' "
+                        + "OR Adres LIKE '" + searchField.getText() + "' "
+                        + "OR Woonplaats LIKE '" + searchField.getText() + "' "
+                        + "OR Postcode LIKE '" + searchField.getText() + "' "
+                        + "OR Land LIKE '" + searchField.getText() + "' "
+                        + "OR Telefoon LIKE '" + searchField.getText() + "' "
+                        + "OR Email LIKE '" + searchField.getText() + "' "
+                        + "AND Visibility = 0;");
+
+                //Gaat net zo lang door, tot er geen records meer zijn
+                while (result.next()) {
+                    bagage = new Bagage();
+                    bagage.setId(result.getInt("idVermist"));
+                    bagage.setTijd(result.getString("Tijd"));
+                    bagage.setDatum(result.getString("Datum"));
+                    bagage.setLuchthaven(result.getString("Luchthaven"));
+                    bagage.setLabelNummer(result.getInt("Labelnummer"));
+                    bagage.setVluchtNr(result.getInt("Vluchtnummer"));
+                    bagage.setBestemming(result.getString("Bestemming"));
+                    bagage.setBagageType(result.getString("BagageType"));
+                    bagage.setMerk(result.getString("Merk"));
+                    bagage.setKleur(result.getString("Kleur"));
+                    bagage.setBijzondereKenmerken(result.getString("BijzonderKenmerken"));
+                    bagage.setNaam(result.getString("Naam"));
+                    bagage.setAdres(result.getString("Adres"));
+                    bagage.setWoonplaats(result.getString("Woonplaats"));
+                    bagage.setPostcode(result.getString("Postcode"));
+                    bagage.setLand(result.getString("Land"));
+                    bagage.setTelefoonnummer(result.getInt("Telefoon"));
+                    bagage.setEmail(result.getString("Email"));
+
+                    overeenkomstData.add(bagage);
+                }
+
+                result = database.executeQuery("SELECT * FROM testDatabase.Gevonden "
+                        + "WHERE idGevonden LIKE '" + searchField.getText() + "' "
+                        + "OR Tijd LIKE '" + searchField.getText() + "' "
+                        + "OR Datum LIKE '" + searchField.getText() + "' "
+                        + "OR Luchthaven LIKE '" + searchField.getText() + "' "
+                        + "OR Labelnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Vluchtnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Bestemming LIKE '" + searchField.getText() + "' "
+                        + "OR BagageType LIKE '" + searchField.getText() + "' "
+                        + "OR Merk LIKE '" + searchField.getText() + "' "
+                        + "OR Kleur LIKE '" + searchField.getText() + "' "
+                        + "OR BijzonderKenmerken LIKE '" + searchField.getText() + "' "
+                        + "AND Visibility = 0;");
+
+                while (result.next()) {
+                    bagage = new Bagage();
+
+                    bagage.setId(result.getInt("idGevonden"));
+                    bagage.setTijd(result.getString("Tijd"));
+                    bagage.setDatum(result.getString("Datum"));
+                    bagage.setLuchthaven(result.getString("Luchthaven"));
+                    bagage.setLabelNummer(result.getInt("Labelnummer"));
+                    bagage.setVluchtNr(result.getInt("Vluchtnummer"));
+                    bagage.setBestemming(result.getString("Bestemming"));
+                    bagage.setBagageType(result.getString("BagageType"));
+                    bagage.setMerk(result.getString("Merk"));
+                    bagage.setKleur(result.getString("Kleur"));
+                    bagage.setBijzondereKenmerken(result.getString("BijzonderKenmerken"));
+
+                    overeenkomstData.add(bagage);
+                }
+
+            } catch (SQLException ex) {
+
+            }
+        }
+
+    }
+    
     @FXML
     public CheckBox overeenkomstCheckBox;
     

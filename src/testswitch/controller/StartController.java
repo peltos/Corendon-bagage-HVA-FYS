@@ -286,7 +286,7 @@ public class StartController implements Initializable {
         gevondenVluchtNr.setText(" ");
         gevondenBestemming.setText(" ");
 
-        bagage = vermisteTabel.getSelectionModel().getSelectedItem();
+        bagage = gevondenTabel.getSelectionModel().getSelectedItem();
         vermisteDatum.setText(" ");
         vermisteTijd.setText(" ");
         vermisteLuchthaven.setText(" ");
@@ -313,6 +313,9 @@ public class StartController implements Initializable {
             writeTableData();
         } else {
             try {
+                ResultSet resultGevonden = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Gevonden ON Gevonden.idGevonden = Overeenkomst.GevondenID  WHERE Gesloten = 0;");
+                ResultSet resultVermist = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Vermist ON Vermist.idvermist = Overeenkomst.VermistID  WHERE Gesloten = 0;");
+                
                 ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Vermist "
                         + "WHERE idVermist LIKE '" + searchField.getText() + "' "
                         + "OR Tijd LIKE '" + searchField.getText() + "' "
