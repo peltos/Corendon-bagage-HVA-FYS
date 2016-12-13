@@ -44,8 +44,8 @@
         </TableView>
         <HBox styleClass="correndon-blue" GridPane.columnSpan="2" GridPane.rowIndex="1">
             <children>
-                <TextField promptText="Search" />
-                <Button mnemonicParsing="false" text="Search">
+                <TextField fx:id="searchField" promptText="Search" />
+                <Button mnemonicParsing="false" onAction="#search" text="Search">
                     <HBox.margin>
                         <Insets left="5.0" />
                     </HBox.margin>

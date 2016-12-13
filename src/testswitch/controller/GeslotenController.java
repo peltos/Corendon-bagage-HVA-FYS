@@ -5,6 +5,7 @@
  */
 package testswitch.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -19,6 +21,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import testswitch.Bagage;
 import testswitch.Database;
@@ -154,6 +157,138 @@ public class GeslotenController implements Initializable {
         geslotenTableView.setItems(geslotenData);
         writeTableData();
     }
+    
+    @FXML
+    public TextField searchField;
+    
+    @FXML
+    private void search(ActionEvent event) throws IOException {
+
+        Bagage bagage = geslotenTableView.getSelectionModel().getSelectedItem();
+        gevondenDatum.setText(" ");
+        gevondenTijd.setText(" ");
+        gevondenLuchthaven.setText(" ");
+        gevondenID.setText(" ");
+        gevondenType.setText(" ");
+        gevondenMerk.setText(" ");
+        gevondenKleur.setText(" ");
+        gevondenBK.setText(" ");
+        gevondenLabelNr.setText(" ");
+        gevondenVluchtNr.setText(" ");
+        gevondenBestemming.setText(" ");
+        vermisteDatum.setText(" ");
+        vermisteTijd.setText(" ");
+        vermisteLuchthaven.setText(" ");
+        vermisteID.setText(" ");
+        vermisteNaam.setText(" ");
+        vermisteAdres.setText(" ");
+        vermisteWoonplaats.setText(" ");
+        vermistePostcode.setText(" ");
+        vermisteLand.setText(" ");
+        vermisteTelefoon.setText(" ");
+        vermisteEmail.setText(" ");
+        vermisteType.setText(" ");
+        vermisteMerk.setText(" ");
+        vermisteKleur.setText(" ");
+        vermisteBK.setText(" ");
+        vermisteLabelNr.setText(" ");
+        vermisteVluchtNr.setText(" ");
+        vermisteBestemming.setText(" ");
+
+        geslotenData.removeAll(geslotenData);
+
+        if (searchField.getText().equals("")) {
+            writeTableData();
+        } else {
+            try {
+                ResultSet resultGevonden = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Gevonden ON Gevonden.idGevonden = Overeenkomst.GevondenID "
+                        + "WHERE idGevonden LIKE '" + searchField.getText() + "' "
+                        + "OR OvereenkomstID LIKE '" + searchField.getText() + "' "
+                        + "OR Overeenkomst.Datum LIKE '" + searchField.getText() + "' "
+                        + "OR Tijd LIKE '" + searchField.getText() + "' "
+                        + "OR Gevonden.Datum LIKE '" + searchField.getText() + "' "
+                        + "OR Luchthaven LIKE '" + searchField.getText() + "' "
+                        + "OR Labelnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Vluchtnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Bestemming LIKE '" + searchField.getText() + "' "
+                        + "OR BagageType LIKE '" + searchField.getText() + "' "
+                        + "OR Merk LIKE '" + searchField.getText() + "' "
+                        + "OR Kleur LIKE '" + searchField.getText() + "' "
+                        + "OR BijzonderKenmerken LIKE '" + searchField.getText() + "' "
+                        + "AND Visibility = 1;");
+                
+                ResultSet resultVermist = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Vermist ON Vermist.idvermist = Overeenkomst.VermistID "
+                        + "WHERE idVermist LIKE '" + searchField.getText() + "' "
+                        + "OR OvereenkomstID LIKE '" + searchField.getText() + "' "
+                        + "OR Overeenkomst.Datum LIKE '" + searchField.getText() + "' "
+                        + "OR Tijd LIKE '" + searchField.getText() + "' "
+                        + "OR Vermist.Datum LIKE '" + searchField.getText() + "' "
+                        + "OR Luchthaven LIKE '" + searchField.getText() + "' "
+                        + "OR Labelnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Vluchtnummer LIKE '" + searchField.getText() + "' "
+                        + "OR Bestemming LIKE '" + searchField.getText() + "' "
+                        + "OR BagageType LIKE '" + searchField.getText() + "' "
+                        + "OR Merk LIKE '" + searchField.getText() + "' "
+                        + "OR Kleur LIKE '" + searchField.getText() + "' "
+                        + "OR BijzonderKenmerken LIKE '" + searchField.getText() + "' "
+                        + "OR Naam LIKE '" + searchField.getText() + "' "
+                        + "OR Adres LIKE '" + searchField.getText() + "' "
+                        + "OR Woonplaats LIKE '" + searchField.getText() + "' "
+                        + "OR Postcode LIKE '" + searchField.getText() + "' "
+                        + "OR Land LIKE '" + searchField.getText() + "' "
+                        + "OR Telefoon LIKE '" + searchField.getText() + "' "
+                        + "OR Email LIKE '" + searchField.getText() + "' "
+                        + "AND Visibility = 1;");
+
+                //Gaat net zo lang door, tot er geen records meer zijn
+                while (resultGevonden.next() && resultVermist.next()) {
+                bagage = new Bagage();
+                bagage.setId(resultGevonden.getInt("OvereenkomstID"));
+                bagage.setDatum(resultGevonden.getString("Datum"));
+
+                bagage.setGId(resultGevonden.getInt("idGevonden"));
+                bagage.setGTijd(resultGevonden.getString("Tijd"));
+                bagage.setGDatum(resultGevonden.getString("Datum"));
+                bagage.setGLuchthaven(resultGevonden.getString("Luchthaven"));
+                bagage.setGLabelNummer(resultGevonden.getInt("Labelnummer"));
+                bagage.setGVluchtNr(resultGevonden.getInt("Vluchtnummer"));
+                bagage.setGBestemming(resultGevonden.getString("Bestemming"));
+                bagage.setGBagageType(resultGevonden.getString("BagageType")); 
+                bagage.setGMerk(resultGevonden.getString("Merk"));
+                bagage.setGKleur(resultGevonden.getString("Kleur"));
+                bagage.setGBijzondereKenmerken(resultGevonden.getString("BijzonderKenmerken"));
+
+                bagage.setVId(resultVermist.getInt("idVermist"));
+                
+                bagage.setTijd(resultVermist.getString("Tijd")); 
+                bagage.setDatum(resultVermist.getString("Datum"));
+                bagage.setLuchthaven(resultVermist.getString("Luchthaven"));
+                bagage.setLabelNummer(resultVermist.getInt("Labelnummer"));
+                bagage.setVluchtNr(resultVermist.getInt("Vluchtnummer"));
+                bagage.setBestemming(resultVermist.getString("Bestemming"));
+                bagage.setBagageType(resultVermist.getString("BagageType")); 
+                bagage.setMerk(resultVermist.getString("Merk"));
+                bagage.setKleur(resultVermist.getString("Kleur"));
+                bagage.setBijzondereKenmerken(resultVermist.getString("BijzonderKenmerken"));
+                bagage.setNaam(resultVermist.getString("Naam"));
+                bagage.setAdres(resultVermist.getString("Adres"));
+                bagage.setWoonplaats(resultVermist.getString("Woonplaats"));
+                bagage.setPostcode(resultVermist.getString("Postcode"));
+                bagage.setLand(resultVermist.getString("Land"));
+                bagage.setTelefoonnummer(resultVermist.getInt("Telefoon"));
+                bagage.setEmail(resultVermist.getString("Email"));
+                geslotenData.add(bagage);
+                
+            }
+
+            } catch (SQLException ex) {
+
+            }
+
+        }
+
+    }
+    
     @FXML
     public CheckBox geslotenCheckBox;
     
