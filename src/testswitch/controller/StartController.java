@@ -421,9 +421,9 @@ public class StartController implements Initializable {
         try {
             if (!gVCheckBox || !vVCheckBox) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Niet bevestigd");
-                alert.setHeaderText("Niet bevestigd");
-                alert.setContentText("Klik op de checkbox \"bevestigen\" om te bevestigen dat je het echt wil doen");
+                alert.setTitle("Not confirmed");
+                alert.setHeaderText("Not confirmed");
+                alert.setContentText("Click on the checkbox \"Confirm\" to confirm the match");
                 alert.showAndWait();
             } else {
                 statement.setString(1, gevondenBag.getId().toString());
