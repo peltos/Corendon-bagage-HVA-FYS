@@ -1,4 +1,4 @@
-package testswitch;
+package testswitch.controller;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -9,6 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import testswitch.Database;
+import testswitch.Main;
+import testswitch.MainNavigator;
 
 /**
  *

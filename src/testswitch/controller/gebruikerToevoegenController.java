@@ -1,4 +1,4 @@
-package testswitch;
+package testswitch.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -15,6 +15,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import testswitch.Database;
+import testswitch.Database;
+import testswitch.MD5;
+import testswitch.Main;
+import testswitch.MainNavigator;
 
 /**
  *

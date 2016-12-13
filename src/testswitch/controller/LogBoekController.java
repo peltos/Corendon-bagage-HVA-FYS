@@ -1,4 +1,4 @@
-package testswitch;
+package testswitch.controller;
 
 import java.awt.Color;
 import java.sql.Date;
@@ -17,6 +17,9 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
+import testswitch.Bagage;
+import testswitch.Database;
+import testswitch.Main;
 
 /**
  *

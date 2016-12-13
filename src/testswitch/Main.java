@@ -81,7 +81,7 @@ public class Main extends Application {
 
         Pane mainPane = (Pane) loader.load(Main.class.getResourceAsStream(MainNavigator.MAINMEDEWERKER));
 
-        MainController mainController = loader.getController();
+        testswitch.controller.MainController mainController = loader.getController();
         mainController.setRoot((BorderPane) mainPane);
 
         MainNavigator.setMainController(mainController);
@@ -95,7 +95,7 @@ public class Main extends Application {
 
         Pane mainPane = (Pane) loader.load(Main.class.getResourceAsStream(MainNavigator.MAINMANAGER));
 
-        MainController mainController = loader.getController();
+        testswitch.controller.MainController mainController = loader.getController();
         mainController.setRoot((BorderPane) mainPane);
 
         MainNavigator.setMainController(mainController);

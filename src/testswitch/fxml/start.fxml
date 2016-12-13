@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Text?>
 <?scenebuilder-stylesheet testswitch.vista.css?>
 
-<GridPane fx:id="startPanel" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.StartController">
+<GridPane fx:id="startPanel" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.controller.StartController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" />
         <ColumnConstraints hgrow="SOMETIMES" />

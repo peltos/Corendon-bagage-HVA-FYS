@@ -1,4 +1,4 @@
-package testswitch;
+package testswitch.controller;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -7,6 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import testswitch.Database;
+import testswitch.Main;
+import testswitch.MainNavigator;
 
 /**
  * @author Daan Dirker/Maarten Mes

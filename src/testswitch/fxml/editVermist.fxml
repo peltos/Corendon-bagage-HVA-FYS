@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="602.0" prefWidth="1129.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.VermistController">
+<GridPane prefHeight="602.0" prefWidth="1129.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.controller.EditVermistController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -22,7 +22,7 @@
     <children>
         <HBox prefHeight="35.0" prefWidth="200.0" styleClass="correndon-blue">
             <children>
-                <Label text="Add Lost Baggage">
+                <Label text="Edit Lost Baggage">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -70,12 +70,12 @@
                         <Label text="Country:" GridPane.rowIndex="7" />
                         <Label text="Phone Number:" GridPane.rowIndex="8" />
                         <Label text="E-mail:" GridPane.rowIndex="9" />
-                        <Button fx:id="vermisteButton" mnemonicParsing="false" onAction="#vermisteOpslaanDB" prefHeight="25.0" prefWidth="51.0" text="Save" GridPane.rowIndex="10">
+                        <Button fx:id="vermisteButton" mnemonicParsing="false" onAction="#writeToDB" prefHeight="25.0" prefWidth="51.0" text="Save" GridPane.rowIndex="10">
                             <GridPane.margin>
                                 <Insets top="5.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="vermistToevoegenCancelButton" mnemonicParsing="false" text="Cancel" GridPane.rowIndex="10">
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancel" text="Cancel" GridPane.rowIndex="10">
                             <GridPane.margin>
                                 <Insets left="70.0" top="5.0" />
                             </GridPane.margin>
@@ -120,11 +120,11 @@
                 <Label layoutX="448.0" layoutY="57.0" text="Type:" />
                 <Label layoutX="448.0" layoutY="92.0" text="Brand:" />
                 <Label layoutX="448.0" layoutY="127.0" text="Colour:" />
-                <Label layoutX="448.0" layoutY="167.0" prefHeight="21.0" prefWidth="176.0" text="Special Characteristics:" />
-                <TextField fx:id="FXVermisteType" layoutX="624.0" layoutY="52.0" />
-                <TextField fx:id="FXVermisteMerk" layoutX="624.0" layoutY="87.0" />
-                <TextField fx:id="FXVermisteKleur" layoutX="624.0" layoutY="122.0" />
-                <TextField fx:id="FXVermisteBijzondereKenmerken" layoutX="624.0" layoutY="167.0" prefHeight="91.0" prefWidth="200.0" />
+                <Label layoutX="448.0" layoutY="167.0" prefHeight="17.0" prefWidth="122.0" text="Special Characteristics:" />
+                <TextField fx:id="FXVermisteType" layoutX="585.0" layoutY="57.0" />
+                <TextField fx:id="FXVermisteMerk" layoutX="585.0" layoutY="92.0" />
+                <TextField fx:id="FXVermisteKleur" layoutX="585.0" layoutY="127.0" />
+                <TextField fx:id="FXVermisteBijzondereKenmerken" layoutX="585.0" layoutY="167.0" prefHeight="91.0" prefWidth="200.0" />
             </children>
         </AnchorPane>
     </children>

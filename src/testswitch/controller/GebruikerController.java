@@ -1,4 +1,4 @@
-package testswitch;
+package testswitch.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +25,10 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import testswitch.Database;
+import testswitch.Gebruiker;
+import testswitch.Main;
+import testswitch.MainNavigator;
 
 /**
  * @author A/M

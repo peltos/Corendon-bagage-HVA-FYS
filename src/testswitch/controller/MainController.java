@@ -1,4 +1,4 @@
-package testswitch;
+package testswitch.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -12,6 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import testswitch.Database;
+import testswitch.MD5;
+import testswitch.Main;
+import testswitch.MainNavigator;
 
 /**
  * Main controller class for the entire layout.

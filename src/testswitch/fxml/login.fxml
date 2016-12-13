@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?scenebuilder-stylesheet vista.css?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.controller.MainController">
     <children>
         <TextField fx:id="gebruikersnaam" layoutX="123.0" layoutY="102.0" onAction="#loginCheck" />
         <PasswordField fx:id="wachtwoord" layoutX="123.0" layoutY="160.0" onAction="#loginCheck" />

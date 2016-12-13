@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testswitch;
+package testswitch.controller;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -17,6 +17,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import testswitch.Database;
+import testswitch.Main;
+import testswitch.MainNavigator;
 
 /**
  *

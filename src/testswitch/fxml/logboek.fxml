@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?scenebuilder-stylesheet testswitch.vista.css?>
 
-<GridPane fx:id="startPanel" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.LogBoekController">
+<GridPane fx:id="startPanel" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testswitch.controller.LogBoekController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" />
         <ColumnConstraints hgrow="SOMETIMES" />
