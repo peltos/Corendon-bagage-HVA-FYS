@@ -74,11 +74,6 @@ public class MainController {
         
         ResultSet result = database.executeQuery("SELECT ID, username, password, "
                 + "positie FROM testDatabase.Gebruikers;");
-        
-        
-        
-        
-        
         try {
 
             while (result.next()) {
