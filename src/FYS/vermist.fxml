@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane prefHeight="602.0" prefWidth="1129.0" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FYS.controller.VermistController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <HBox prefHeight="35.0" prefWidth="200.0" styleClass="correndon-blue">
+            <children>
+                <Label text="Add Lost Baggage">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+        <AnchorPane prefHeight="757.0" prefWidth="908.0" GridPane.rowIndex="1">
+            <children>
+                <GridPane layoutX="20.0" layoutY="180.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="137.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="486.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label prefHeight="25.0" prefWidth="184.0" text="Traveler Information" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label text="Name:" GridPane.rowIndex="3" />
+                        <Label text="Address:" GridPane.rowIndex="4" />
+                        <Label text="Residence:" GridPane.rowIndex="5" />
+                        <Label layoutX="10.0" layoutY="115.0" text="Zip Code:" GridPane.rowIndex="6" />
+                        <TextField fx:id="FXVermisteWoonplaats" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="FXVermistePostcode" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="FXVermisteLand" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="FXVermisteTelefoon" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="FXVermisteEmail" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Label text="Country:" GridPane.rowIndex="7" />
+                        <Label text="Phone Number:" GridPane.rowIndex="8" />
+                        <Label text="E-mail:" GridPane.rowIndex="9" />
+                        <Button fx:id="vermisteButton" mnemonicParsing="false" onAction="#vermisteOpslaanDB" prefHeight="25.0" prefWidth="51.0" text="Save" GridPane.rowIndex="10">
+                            <GridPane.margin>
+                                <Insets top="5.0" />
+                            </GridPane.margin>
+                        </Button>
+                        <Button fx:id="vermistToevoegenCancelButton" mnemonicParsing="false" text="Cancel" GridPane.rowIndex="10">
+                            <GridPane.margin>
+                                <Insets left="70.0" top="5.0" />
+                            </GridPane.margin>
+                        </Button>
+                        <TextField fx:id="FXVermisteNaam" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="FXVermisteAdres" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                    </children>
+                </GridPane>
+                <GridPane layoutX="20.0" layoutY="20.0" prefWidth="337.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="137.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="486.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Label Number" GridPane.rowIndex="1" />
+                        <Label text="Flight Number" GridPane.rowIndex="2" />
+                        <Label text="Destination" GridPane.rowIndex="3" />
+                        <Label text="Airport" GridPane.rowIndex="4" />
+                        <TextField fx:id="FXVermisteLabelNummer" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="FXVermisteVluchtNummer" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="FXVermisteBestemming" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="FXVermisteLuchthaven" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label prefHeight="25.0" prefWidth="192.0" text="Baggage information" GridPane.columnSpan="2">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </GridPane>
+                <Label layoutX="448.0" layoutY="22.0" text="Extra Baggage Information">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label layoutX="448.0" layoutY="57.0" text="Type:" />
+                <Label layoutX="448.0" layoutY="92.0" text="Brand:" />
+                <Label layoutX="448.0" layoutY="127.0" text="Colour:" />
+                <Label layoutX="448.0" layoutY="167.0" prefHeight="21.0" prefWidth="176.0" text="Special Characteristics:" />
+                <TextField fx:id="FXVermisteType" layoutX="624.0" layoutY="52.0" />
+                <TextField fx:id="FXVermisteMerk" layoutX="624.0" layoutY="87.0" />
+                <TextField fx:id="FXVermisteKleur" layoutX="624.0" layoutY="122.0" />
+                <TextField fx:id="FXVermisteBijzondereKenmerken" layoutX="624.0" layoutY="167.0" prefHeight="91.0" prefWidth="200.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</GridPane>
