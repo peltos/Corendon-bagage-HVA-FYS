@@ -146,13 +146,13 @@ public class MainController {
     @FXML
     private void gevonden(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.GEVONDEN);
-        headerLabel.setText("Found");
+        headerLabel.setText("Add Found");
     }
 
     @FXML
     private void vermist(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.VERMIST);
-        headerLabel.setText("Lost");
+        headerLabel.setText("Add Lost");
     }
 
     @FXML
@@ -204,5 +204,3 @@ public class MainController {
     }
 
 }
-
-//dsadaff

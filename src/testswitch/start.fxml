@@ -340,7 +340,7 @@
         </HBox>
         <HBox prefHeight="100.0" prefWidth="200.0" styleClass="correndon-blue" GridPane.columnSpan="2">
             <children>
-                <Label text="unsolved">
+                <Label text="Unsolved">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
