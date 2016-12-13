@@ -60,7 +60,7 @@
    <bottom>
       <Pane styleClass="correndon-blue" BorderPane.alignment="CENTER">
          <children>
-          <Label fx:id="headerLabel" text="Open">
+          <Label fx:id="headerLabel" text="Unsolved">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding></Label>

@@ -151,13 +151,13 @@ public class MainController {
     @FXML
     private void gevonden(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.GEVONDEN);
-        headerLabel.setText("Found baggage");
+        headerLabel.setText("Found");
     }
 
     @FXML
     private void vermist(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.VERMIST);
-        headerLabel.setText("Lost Baggage");
+        headerLabel.setText("Lost");
     }
 
     @FXML

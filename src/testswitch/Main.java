@@ -28,7 +28,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Corendon Bagage Systeem");
+        stage.setTitle("Corendon Baggage System");
         stage.setScene(
                 createScene(
                         loadLogin()
