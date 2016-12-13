@@ -206,7 +206,7 @@ public class GebruikerController implements Initializable {
         Gebruiker userClass = gebruikerTableView.getSelectionModel().getSelectedItem();
         String query = String.format("DELETE FROM testDatabase.Gebruikers WHERE ID = %d", userClass.getGebruikerID()), 
                 deletionInfo = String.format("Are you sure you want to permanently remove this item?\n\n"
-                + "Delete Row: %s %s, %d", userClass.getVoornaam(), userClass.getAchternaam(), userClass.getGebruikerID());
+                + "Delete user: %s %s, %d", userClass.getVoornaam(), userClass.getAchternaam(), userClass.getGebruikerID());
         
         System.out.print("[QUERY]: " + query + " | " + userClass.getUsername() + "\n");
         
