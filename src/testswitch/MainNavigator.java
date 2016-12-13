@@ -16,22 +16,22 @@ public class MainNavigator {
      * Convenience constants for fxml layouts managed by the navigator.
      */
     
-    public static final String LOGIN = "testswitch.fxml.login";
-    public static final String MAINMEDEWERKER = "testswitch.fxml.mainMedewerker";
-    public static final String MAINMANAGER = "testswitch.fxml.mainManager";
-    public static final String START = "testswitch.fxml.start";
-    public static final String GEVONDEN = "testswitch.fxml.gevonden";
-    public static final String VERMIST = "testswitch.fxml.vermist";
-    public static final String OPEN = "testswitch.fxml.start";
-    public static final String OVEREENKOMST = "testswitch.fxml.overeenkomst";
-    public static final String GESLOTEN = "testswitch.fxml.gesloten";
-    public static final String LOGBOEK = "testswitch.fxml.logboek";
-    public static final String GEBRUIKER = "testswitch.fxml.gebruiker";
-    public static final String GEBRUIKER_TOEVOEGEN = "testswitch.fxml.gebruikerToevoegen";
-    public static final String EDIT_GEVONDEN = "testswitch.fxml.editGevonden";
-    public static final String EDIT_VERMIST = "testswitch.fxml.editVermist";
-    public static final String EDIT_GEBRUIKER = "testswitch.fxml.editGebruiker";
-    public static final String WACHTWOORD_WIJZIGEN = "testswitch.fxml.wachtwoordWijzigen";
+    public static final String LOGIN = "login.fxml";
+    public static final String MAINMEDEWERKER = "mainMedewerker.fxml";
+    public static final String MAINMANAGER = "mainManager.fxml";
+    public static final String START = "start.fxml";
+    public static final String GEVONDEN = "gevonden.fxml";
+    public static final String VERMIST = "vermist.fxml";
+    public static final String OPEN = "start.fxml";
+    public static final String OVEREENKOMST = "overeenkomst.fxml";
+    public static final String GESLOTEN = "gesloten.fxml";
+    public static final String LOGBOEK = "logboek.fxml";
+    public static final String GEBRUIKER = "gebruiker.fxml";
+    public static final String GEBRUIKER_TOEVOEGEN = "gebruikerToevoegen.fxml";
+    public static final String EDIT_GEVONDEN = "editGevonden.fxml";
+    public static final String EDIT_VERMIST = "editVermist.fxml";
+    public static final String EDIT_GEBRUIKER = "editGebruiker.fxml";
+    public static final String WACHTWOORD_WIJZIGEN = "wachtwoordWijzigen.fxml";
     
     
     
