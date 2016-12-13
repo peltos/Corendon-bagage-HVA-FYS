@@ -151,37 +151,37 @@ public class MainController {
     @FXML
     private void gevonden(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.GEVONDEN);
-        headerLabel.setText("Gevonden");
+        headerLabel.setText("Found baggage");
     }
 
     @FXML
     private void vermist(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.VERMIST);
-        headerLabel.setText("Vermiste");
+        headerLabel.setText("Lost Baggage");
     }
 
     @FXML
     private void open(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.OPEN);
-        headerLabel.setText("Open");
+        headerLabel.setText("Unsolved");
     }
 
     @FXML
     private void overeenkomst(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.OVEREENKOMST);
-        headerLabel.setText("Overeenkomst");
+        headerLabel.setText("Matches");
     }
 
     @FXML
     private void gesloten(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.GESLOTEN);
-        headerLabel.setText("Gesloten");
+        headerLabel.setText("Closed");
     }
 
     @FXML
     private void start(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.START);
-        headerLabel.setText("Open");
+        headerLabel.setText("Unsolved");
     }
 
     @FXML
