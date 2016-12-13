@@ -74,7 +74,7 @@
    <bottom>
       <HBox styleClass="correndon-blue" BorderPane.alignment="CENTER">
          <children>
-          <Label fx:id="headerLabel" maxWidth="1.7976931348623157E308" text="Open">
+          <Label fx:id="headerLabel" maxWidth="1.7976931348623157E308" text="Unsolved">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

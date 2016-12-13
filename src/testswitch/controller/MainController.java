@@ -151,60 +151,60 @@ public class MainController {
     @FXML
     private void gevonden(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.GEVONDEN);
-        headerLabel.setText("Gevonden");
+        headerLabel.setText("Found");
     }
 
     @FXML
     private void vermist(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.VERMIST);
-        headerLabel.setText("Vermiste");
+        headerLabel.setText("Lost");
     }
 
     @FXML
     private void open(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.OPEN);
-        headerLabel.setText("Open");
+        headerLabel.setText("Unsolved");
     }
 
     @FXML
     private void overeenkomst(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.OVEREENKOMST);
-        headerLabel.setText("Overeenkomst");
+        headerLabel.setText("Matches");
     }
 
     @FXML
     private void gesloten(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.GESLOTEN);
-        headerLabel.setText("Gesloten");
+        headerLabel.setText("Closed");
     }
 
     @FXML
     private void start(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.START);
-        headerLabel.setText("Open");
+        headerLabel.setText("Unsolved");
     }
 
     @FXML
     private void gebruikerToevoegen(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.GEBRUIKER_TOEVOEGEN);
-        headerLabel.setText("Gebruiker Toevoegen");
+        headerLabel.setText("Add User");
     }
 
     @FXML
     private void gebruiker(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.GEBRUIKER);
-        headerLabel.setText("Gebruiker");
+        headerLabel.setText("User");
     }
 
     @FXML
     private void logboek(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.LOGBOEK);
-        headerLabel.setText("Logboek");
+        headerLabel.setText("History");
     }
     @FXML
     private void wachtwoordWijzigen(ActionEvent event) throws IOException {
         MainNavigator.loadVista(MainNavigator.WACHTWOORD_WIJZIGEN);
-        headerLabel.setText("Wachtwoord Wijzigen");
+        headerLabel.setText("Change Password");
         
     }
 
