@@ -55,16 +55,6 @@ public class gebruikerToevoegenController {
         PreparedStatement statement = database.prepareStatement(query);
 
         try {
-//            if (FXVoornaam.getText().equals("") || FXAchternaam.getText().equals("")
-//                    || FXGebruikersnaam.getText().equals("")
-//                    || FXWachtwoord.getText().equals("")) {
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Statements missing");
-//                alert.setHeaderText("There seems to be a problem");
-//                alert.setContentText("Fields are missing");
-//                alert.showAndWait();
-//                return;
-//            }
 
             VoornaamError.setText("");
             AchternaamError.setText("");
@@ -116,7 +106,6 @@ public class gebruikerToevoegenController {
                 //Not an integer
             }
 
-            
              if (FXEmail.getText().equals("")) {
                 EmailError.setText(" Please enter your email.");
                 return;
@@ -129,8 +118,6 @@ public class gebruikerToevoegenController {
             } else {
                 statement.setInt(8, 0);
             }
-            
-            
 
             statement.executeUpdate();
 

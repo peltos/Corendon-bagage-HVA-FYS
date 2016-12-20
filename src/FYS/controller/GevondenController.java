@@ -104,13 +104,4 @@ public class GevondenController {
     }
 
 }
-/* Nog te fixen:
-Cancel button
 
-Not NULL bepalen
-
-DATETIME ipv DATE & TIME
-
-Algemeen:
-Start en Open zijn het zelfde
- */
