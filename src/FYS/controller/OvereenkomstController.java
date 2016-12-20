@@ -376,7 +376,8 @@ public class OvereenkomstController implements Initializable {
         MainNavigator.loadVista(MainNavigator.OVEREENKOMST);
 
     }
-
+    
+    @FXML
     public void CSV(ActionEvent event) throws IOException {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Excel file");
@@ -422,7 +423,7 @@ public class OvereenkomstController implements Initializable {
             DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             Date date = new Date();
 
-            CSVWriter excel = new CSVWriter("../ReportMatches-" + dateFormat.format(date) + ".csv");
+            CSVWriter excel = new CSVWriter("ReportMatches-" + dateFormat.format(date) + ".csv");
             excel.writeHeaders("MatchID", "DateFound", "IdFound", "DateFound", "TimeFound", "AirportFound",
                     "LabelnumberFound", "FlightnumberFound", "DestinationFound", "BagageTypeFound", "BrandFound",
                     "ColorFound", "SpecialCharFound", " ", "IdLost", "DateLost", "TimeLost", "AirportLost",

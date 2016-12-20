@@ -9,6 +9,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -23,15 +25,15 @@
         <ColumnConstraints hgrow="SOMETIMES" />
     </columnConstraints>
     <rowConstraints>
+        <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
         <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="25.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="300.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <TableView fx:id="geslotenTableView" onKeyReleased="#geslotenSelected" onMouseClicked="#geslotenSelected" prefHeight="422.0" prefWidth="1067.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+        <TableView fx:id="geslotenTableView" onKeyReleased="#geslotenSelected" onMouseClicked="#geslotenSelected" prefWidth="1067.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
             <columns>
                 <TableColumn fx:id="geslotenIdKolom" minWidth="-1.0" prefWidth="266.75" text="ID" />
                 <TableColumn fx:id="geslotenDatumKolom" minWidth="-1.0" prefWidth="266.75" text="Date" />
@@ -42,7 +44,7 @@
                 <Blend />
             </effect>
         </TableView>
-        <HBox styleClass="correndon-blue" GridPane.columnSpan="2" GridPane.rowIndex="1">
+        <HBox styleClass="correndon-blue" GridPane.rowIndex="1">
             <children>
                 <TextField fx:id="searchField" promptText="Search" />
                 <Button mnemonicParsing="false" onAction="#search" text="Search">
@@ -222,5 +224,21 @@
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
         </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" styleClass="correndon-blue" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Button mnemonicParsing="false" onAction="#CSV" text="Output to CSV">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@img/excel.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
     </children>
 </GridPane>

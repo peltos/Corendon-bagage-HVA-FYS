@@ -27,6 +27,12 @@ import FYS.Bagage;
 import FYS.Database;
 import FYS.Main;
 import FYS.MainNavigator;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Optional;
+import javafx.scene.control.ButtonType;
+import nl.hva.dmci.ict.fys.CSVWriter;
 
 /**
  *
@@ -320,6 +326,122 @@ public class GeslotenController implements Initializable {
             e.printStackTrace(System.err);
         }
         MainNavigator.loadVista(MainNavigator.GESLOTEN);
+
+    }
+    
+    @FXML
+    public void CSV(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Excel file");
+        alert.setHeaderText("Confirmation Excel file");
+        alert.setContentText("Are you sure you want to make a excel file?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            String[] OvereenkomstID = new String[1];
+            String[] oDatum = new String[1];
+
+            String[] idGevonden = new String[1];
+            String[] gTijd = new String[1];
+            String[] gDatum = new String[1];
+            String[] gLuchthaven = new String[1];
+            String[] gLabelnummer = new String[1];
+            String[] gVluchtnummer = new String[1];
+            String[] gBestemming = new String[1];
+            String[] gBagageType = new String[1];
+            String[] gMerk = new String[1];
+            String[] gKleur = new String[1];
+            String[] gBijzonderKenmerken = new String[1];
+
+            String[] idVermist = new String[1];
+            String[] vTijd = new String[1];
+            String[] vDatum = new String[1];
+            String[] vLuchthaven = new String[1];
+            String[] vLabelnummer = new String[1];
+            String[] vVluchtnummer = new String[1];
+            String[] vBestemming = new String[1];
+            String[] vBagageType = new String[1];
+            String[] vMerk = new String[1];
+            String[] vKleur = new String[1];
+            String[] vBijzonderKenmerken = new String[1];
+            String[] vNaam = new String[1];
+            String[] vAdres = new String[1];
+            String[] vWoonplaats = new String[1];
+            String[] vPostcode = new String[1];
+            String[] vLand = new String[1];
+            String[] vTelefoon = new String[1];
+            String[] vEmail = new String[1];
+
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            Date date = new Date();
+
+            CSVWriter excel = new CSVWriter("ReportClosed-" + dateFormat.format(date) + ".csv");
+            excel.writeHeaders("MatchID", "DateFound", "IdFound", "DateFound", "TimeFound", "AirportFound",
+                    "LabelnumberFound", "FlightnumberFound", "DestinationFound", "BagageTypeFound", "BrandFound",
+                    "ColorFound", "SpecialCharFound", " ", "IdLost", "DateLost", "TimeLost", "AirportLost",
+                    "LabelnumberLost", "FlightnumberLost", "DestinationLost", "BagageTypeLost",
+                    "BrandLost", "ColorLost", "Name", "Adress", "Residence", "ZipCode", "Country", "PhoneNumber",
+                    "Email", "SpecialCharlost");
+
+            try {
+                ResultSet resultGevonden = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Gevonden ON Gevonden.idGevonden = Overeenkomst.GevondenID  WHERE Gesloten = 1;");
+                ResultSet resultVermist = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Vermist ON Vermist.idvermist = Overeenkomst.VermistID  WHERE Gesloten = 1;");
+
+                //Gaat net zo lang door, tot er geen records meer zijn
+                for (int i = 0; i < OvereenkomstID.length; i++) {
+                    while (resultGevonden.next() && resultVermist.next()) {
+                        OvereenkomstID[i] = resultGevonden.getString("OvereenkomstID");
+                        oDatum[i] = resultGevonden.getString("Datum");
+
+                        idGevonden[i] = resultGevonden.getString("idGevonden");
+                        gTijd[i] = resultGevonden.getString("Tijd");
+                        gDatum[i] = resultGevonden.getString("Datum");
+                        gLuchthaven[i] = resultGevonden.getString("Luchthaven");
+                        gLabelnummer[i] = resultGevonden.getString("Labelnummer");
+                        gVluchtnummer[i] = resultGevonden.getString("Vluchtnummer");
+                        gBestemming[i] = resultGevonden.getString("Bestemming");
+                        gBagageType[i] = resultGevonden.getString("BagageType");
+                        gMerk[i] = resultGevonden.getString("Merk");
+                        gKleur[i] = resultGevonden.getString("Kleur");
+                        gBijzonderKenmerken[i] = resultGevonden.getString("BijzonderKenmerken");
+
+                        idVermist[i] = resultVermist.getString("idVermist");
+                        vDatum[i] = resultVermist.getString("Datum");
+                        vTijd[i] = resultVermist.getString("Tijd");
+                        vLuchthaven[i] = resultVermist.getString("Luchthaven");
+                        vLabelnummer[i] = resultVermist.getString("Labelnummer");
+                        vVluchtnummer[i] = resultVermist.getString("Vluchtnummer");
+                        vBestemming[i] = resultVermist.getString("Bestemming");
+                        vBagageType[i] = resultVermist.getString("BagageType");
+                        vMerk[i] = resultVermist.getString("Merk");
+                        vKleur[i] = resultVermist.getString("Kleur");
+                        vBijzonderKenmerken[i] = resultVermist.getString("BijzonderKenmerken");
+                        vNaam[i] = resultVermist.getString("Naam");
+                        vAdres[i] = resultVermist.getString("Adres");
+                        vWoonplaats[i] = resultVermist.getString("Woonplaats");
+                        vPostcode[i] = resultVermist.getString("Postcode");
+                        vLand[i] = resultVermist.getString("Land");
+                        vTelefoon[i] = resultVermist.getString("Telefoon");
+                        vEmail[i] = resultVermist.getString("Email");
+
+                        excel.writeData(OvereenkomstID[i], oDatum[i], idGevonden[i], gTijd[i],
+                                gDatum[i], gLuchthaven[i], gLabelnummer[i], gVluchtnummer[i], gBestemming[i],
+                                gBagageType[i], gMerk[i], gKleur[i], gBijzonderKenmerken[i], " ",
+                                idVermist[i], vDatum[i], vTijd[i], vLuchthaven[i], vLabelnummer[i],
+                                vVluchtnummer[i], vBestemming[i], vBagageType[i], vMerk[i], vKleur[i],
+                                vNaam[i], vAdres[i], vWoonplaats[i], vPostcode[i], vLand[i], vTelefoon[i],
+                                vEmail[i], vBijzonderKenmerken[i]);
+
+                    }
+                }
+                excel.close();
+
+            } catch (SQLException ex) {
+
+            }
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
 
     }
 }

@@ -19,7 +19,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
@@ -29,23 +28,37 @@ import FYS.Bagage;
 import FYS.Database;
 import FYS.Main;
 import FYS.MainNavigator;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javafx.scene.image.ImageView;
+import nl.hva.dmci.ict.fys.CSVWriter;
 
 /**
  * @author Alexander
  */
 public class StartController implements Initializable {
 
-    @FXML Button editGevonden;
-    @FXML Button FXGevondenDelete;
-    @FXML Button gevondenToevoegenButton;
+    @FXML
+    Button editGevonden;
+    @FXML
+    Button FXGevondenDelete;
+    @FXML
+    Button gevondenToevoegenButton;
 
-    @FXML Button editVermist;
-    @FXML Button FXVermistDelete;
-    @FXML Button VermistToevoegenButton;
+    @FXML
+    Button editVermist;
+    @FXML
+    Button FXVermistDelete;
+    @FXML
+    Button VermistToevoegenButton;
 
-    @FXML public CheckBox vermisteCheckBox;
-    @FXML public CheckBox gevondenCheckBox;
-    @FXML public Button buttonOvereenkomst;
+    @FXML
+    public CheckBox vermisteCheckBox;
+    @FXML
+    public CheckBox gevondenCheckBox;
+    @FXML
+    public Button buttonOvereenkomst;
 
     //Gevonden bagage
     @FXML
@@ -84,10 +97,11 @@ public class StartController implements Initializable {
     public static int getSelectedIdGevonden() {
         return selectedIdGevonden;
     }
+
     public static int getSelectedIdVermist() {
         return selectedIdVermist;
     }
-    
+
     Database database = Main.getDatabase();
 
     @FXML
@@ -155,14 +169,14 @@ public class StartController implements Initializable {
 
         Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
         selectedIdGevonden = bagage.getId();
-        
+
         editVermist.setDisable(true);
         FXVermistDelete.setDisable(true);
-        
+
         if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
             buttonOvereenkomst.setDisable(false);
         }
-        
+
         if (bagage.getId() != null) {
             editGevonden.setDisable(false);
             FXGevondenDelete.setDisable(false);
@@ -195,18 +209,18 @@ public class StartController implements Initializable {
 
     @FXML
     private void vermisteSelected() {
-        
+
         Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
         selectedIdVermist = bagage.getId();
- 
+
         editGevonden.setDisable(true);
         FXGevondenDelete.setDisable(true);
-        
+
         if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
             buttonOvereenkomst.setDisable(false);
         }
-        
-        if (bagage.getId() != null){
+
+        if (bagage.getId() != null) {
             editVermist.setDisable(false);
             FXVermistDelete.setDisable(false);
         }
@@ -216,7 +230,7 @@ public class StartController implements Initializable {
         if (bSelected == true) {
             vermisteCheckBox.setSelected(false);
         }
-        
+
         vermisteDatum.setText(bagage.getDatum());
         vermisteTijd.setText(bagage.getTijd());
         vermisteLuchthaven.setText(bagage.getLuchthaven());
@@ -315,7 +329,7 @@ public class StartController implements Initializable {
             try {
                 ResultSet resultGevonden = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Gevonden ON Gevonden.idGevonden = Overeenkomst.GevondenID  WHERE Gesloten = 0;");
                 ResultSet resultVermist = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Vermist ON Vermist.idvermist = Overeenkomst.VermistID  WHERE Gesloten = 0;");
-                
+
                 ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Vermist "
                         + "WHERE idVermist LIKE '" + searchField.getText() + "' "
                         + "OR Tijd LIKE '" + searchField.getText() + "' "
@@ -401,7 +415,8 @@ public class StartController implements Initializable {
 
     }
 
-    @FXML private void OvereenkomstDB() throws SQLException {
+    @FXML
+    private void OvereenkomstDB() throws SQLException {
         boolean gVCheckBox = gevondenCheckBox.isSelected(), vVCheckBox = vermisteCheckBox.isSelected(); // get selected table
 
         Bagage vermisteBag = vermisteTabel.getSelectionModel().getSelectedItem(); // 
@@ -452,89 +467,235 @@ public class StartController implements Initializable {
 
     }
 
-    @FXML private void DeleteGevondenBagage() 
-    {
+    @FXML
+    private void DeleteGevondenBagage() {
         Bagage gevondenBag = gevondenTabel.getSelectionModel().getSelectedItem();
-        String query = String.format("DELETE FROM testDatabase.Gevonden WHERE idGevonden = %d", gevondenBag.getId()), 
+        String query = String.format("DELETE FROM testDatabase.Gevonden WHERE idGevonden = %d", gevondenBag.getId()),
                 deletionInfo = String.format("Are you sure you want to permanently remove this item?\n\n"
-                + "Destination - %s\nBrand - %s\nType - %s\n", gevondenBag.getBestemming(), gevondenBag.getMerk(), gevondenBag.getBagageType());
-        
+                        + "Destination - %s\nBrand - %s\nType - %s\n", gevondenBag.getBestemming(), gevondenBag.getMerk(), gevondenBag.getBagageType());
+
         System.out.print("[QUERY]: " + query + "\n");
-        
+
         Alert alertMessageBox = new Alert(AlertType.CONFIRMATION);
-        
+
         alertMessageBox.setTitle("Confirm Deletion");
         alertMessageBox.setContentText(deletionInfo);
-        
+
         ButtonType OKButton = new ButtonType("OK.", ButtonData.OK_DONE);
         ButtonType CancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
         alertMessageBox.getButtonTypes().setAll(CancelButton, OKButton);
-        
+
         Optional<ButtonType> result = alertMessageBox.showAndWait();
-          
-          try
-          {
-              if (result.get() == OKButton)
-              {
-                  PreparedStatement statement = database.prepareStatement(query);
-                  gevondenTabel.getItems().removeAll(gevondenTabel.getSelectionModel().getSelectedItems());
-                  statement.executeUpdate();
-              } else if (result.get() == CancelButton) {
-                    System.out.println("[USERINPUT]: Canceled");
+
+        try {
+            if (result.get() == OKButton) {
+                PreparedStatement statement = database.prepareStatement(query);
+                gevondenTabel.getItems().removeAll(gevondenTabel.getSelectionModel().getSelectedItems());
+                statement.executeUpdate();
+            } else if (result.get() == CancelButton) {
+                System.out.println("[USERINPUT]: Canceled");
             }
-        } catch (Exception e) { e.printStackTrace(System.err); }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
 
     }
-    
-     @FXML private void DeleteVermisteBagage()
-     {
+
+    @FXML
+    private void DeleteVermisteBagage() {
         Bagage vermisteBagage = vermisteTabel.getSelectionModel().getSelectedItem();
-        String query = String.format("DELETE FROM testDatabase.Vermist WHERE idVermist = %d", vermisteBagage.getId()), 
+        String query = String.format("DELETE FROM testDatabase.Vermist WHERE idVermist = %d", vermisteBagage.getId()),
                 deletionInfo = String.format("Are you sure you want to permanently remove this item?\n\n"
-                + "Destination - %s\nBrand - %s\nType - %s\n", vermisteBagage.getBestemming(), vermisteBagage.getMerk(), vermisteBagage.getBagageType());
-        
+                        + "Destination - %s\nBrand - %s\nType - %s\n", vermisteBagage.getBestemming(), vermisteBagage.getMerk(), vermisteBagage.getBagageType());
+
         System.out.print("[QUERY]: " + query + "\n");
-        
+
         Alert alertMessageBox = new Alert(AlertType.CONFIRMATION);
-        
+
         alertMessageBox.setTitle("Confirm Deletion");
         alertMessageBox.setContentText(deletionInfo);
-        
+
         ButtonType OKButton = new ButtonType("OK.", ButtonData.OK_DONE);
         ButtonType CancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
         alertMessageBox.getButtonTypes().setAll(CancelButton, OKButton);
-        
-        Optional<ButtonType> result = alertMessageBox.showAndWait();
-          
-          try
-          {
-              if (result.get() == OKButton)
-              {
-                  PreparedStatement statement = database.prepareStatement(query);
-                  vermisteTabel.getItems().removeAll(vermisteTabel.getSelectionModel().getSelectedItems());
-                  statement.executeUpdate();
-              } else if (result.get() == CancelButton) {
-                    System.out.println("[USERINPUT]: Canceled");
-            }
-        } catch (Exception e) { e.printStackTrace(System.err); }
-     }
 
-    @FXML private void gevondenToevoegen(ActionEvent event) {
+        Optional<ButtonType> result = alertMessageBox.showAndWait();
+
+        try {
+            if (result.get() == OKButton) {
+                PreparedStatement statement = database.prepareStatement(query);
+                vermisteTabel.getItems().removeAll(vermisteTabel.getSelectionModel().getSelectedItems());
+                statement.executeUpdate();
+            } else if (result.get() == CancelButton) {
+                System.out.println("[USERINPUT]: Canceled");
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
+    }
+
+    @FXML
+    private void gevondenToevoegen(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.GEVONDEN);
 
     }
 
-    @FXML private void vermistToevoegen(ActionEvent event) {
+    @FXML
+    private void vermistToevoegen(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.VERMIST);
     }
 
-    @FXML private void editGevonden(ActionEvent event) {
+    @FXML
+    private void editGevonden(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.EDIT_GEVONDEN);
     }
-    
+
     @FXML
     private void editVermist(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.EDIT_VERMIST);
     }
 
+    @FXML
+    public void CSVGevonden(ActionEvent event) throws IOException {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation CSV file");
+        alert.setHeaderText("Confirmation CSV file");
+        alert.setContentText("Are you sure you want to make a CSV file?");
+
+        Optional<ButtonType> resultAlert = alert.showAndWait();
+        if (resultAlert.get() == ButtonType.OK) {
+            String[] idGevonden = new String[1];
+            String[] gTijd = new String[1];
+            String[] gDatum = new String[1];
+            String[] gLuchthaven = new String[1];
+            String[] gLabelnummer = new String[1];
+            String[] gVluchtnummer = new String[1];
+            String[] gBestemming = new String[1];
+            String[] gBagageType = new String[1];
+            String[] gMerk = new String[1];
+            String[] gKleur = new String[1];
+            String[] gBijzonderKenmerken = new String[1];
+
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            Date date = new Date();
+
+            CSVWriter excel = new CSVWriter("ReportFound-" + dateFormat.format(date) + ".csv");
+            excel.writeHeaders("MatchID", "DateFound", "IdFound", "DateFound", "TimeFound", "AirportFound",
+                    "LabelnumberFound", "FlightnumberFound", "DestinationFound", "BagageTypeFound", "BrandFound",
+                    "ColorFound", "SpecialCharFound");
+
+            try {
+                ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gevonden WHERE Visibility = 0;");
+                //Gaat net zo lang door, tot er geen records meer zijn
+                for (int i = 0; i < idGevonden.length; i++) {
+                    while (result.next()) {
+                        idGevonden[i] = result.getString("idGevonden");
+                        gTijd[i] = result.getString("Tijd");
+                        gDatum[i] = result.getString("Datum");
+                        gLuchthaven[i] = result.getString("Luchthaven");
+                        gLabelnummer[i] = result.getString("Labelnummer");
+                        gVluchtnummer[i] = result.getString("Vluchtnummer");
+                        gBestemming[i] = result.getString("Bestemming");
+                        gBagageType[i] = result.getString("BagageType");
+                        gMerk[i] = result.getString("Merk");
+                        gKleur[i] = result.getString("Kleur");
+                        gBijzonderKenmerken[i] = result.getString("BijzonderKenmerken");
+
+                        excel.writeData(idGevonden[i], gTijd[i],
+                                gDatum[i], gLuchthaven[i], gLabelnummer[i], gVluchtnummer[i], gBestemming[i],
+                                gBagageType[i], gMerk[i], gKleur[i], gBijzonderKenmerken[i]);
+
+                    }
+                }
+                excel.close();
+
+            } catch (SQLException ex) {
+
+            }
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+
+    }
+    
+    @FXML
+    public void CSVVermist(ActionEvent event) throws IOException {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation CSV file");
+        alert.setHeaderText("Confirmation CSV file");
+        alert.setContentText("Are you sure you want to make a CSV file?");
+
+        Optional<ButtonType> resultAlert = alert.showAndWait();
+        if (resultAlert.get() == ButtonType.OK) {
+
+            String[] idVermist = new String[1];
+            String[] vTijd = new String[1];
+            String[] vDatum = new String[1];
+            String[] vLuchthaven = new String[1];
+            String[] vLabelnummer = new String[1];
+            String[] vVluchtnummer = new String[1];
+            String[] vBestemming = new String[1];
+            String[] vBagageType = new String[1];
+            String[] vMerk = new String[1];
+            String[] vKleur = new String[1];
+            String[] vBijzonderKenmerken = new String[1];
+            String[] vNaam = new String[1];
+            String[] vAdres = new String[1];
+            String[] vWoonplaats = new String[1];
+            String[] vPostcode = new String[1];
+            String[] vLand = new String[1];
+            String[] vTelefoon = new String[1];
+            String[] vEmail = new String[1];
+
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            Date date = new Date();
+
+            CSVWriter excel = new CSVWriter("ReportLost-" + dateFormat.format(date) + ".csv");
+            excel.writeHeaders("IdLost", "DateLost", "TimeLost", "AirportLost",
+                    "LabelnumberLost", "FlightnumberLost", "DestinationLost", "BagageTypeLost",
+                    "BrandLost", "ColorLost", "Name", "Adress", "Residence", "ZipCode", "Country", "PhoneNumber",
+                    "Email", "SpecialCharlost");
+
+            try {
+                ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Vermist WHERE Visibility = 0;");
+                //Gaat net zo lang door, tot er geen records meer zijn
+                for (int i = 0; i < idVermist.length; i++) {
+                    while (result.next()) {
+
+                        idVermist[i] = result.getString("idVermist");
+                        vDatum[i] = result.getString("Datum");
+                        vTijd[i] = result.getString("Tijd");
+                        vLuchthaven[i] = result.getString("Luchthaven");
+                        vLabelnummer[i] = result.getString("Labelnummer");
+                        vVluchtnummer[i] = result.getString("Vluchtnummer");
+                        vBestemming[i] = result.getString("Bestemming");
+                        vBagageType[i] = result.getString("BagageType");
+                        vMerk[i] = result.getString("Merk");
+                        vKleur[i] = result.getString("Kleur");
+                        vBijzonderKenmerken[i] = result.getString("BijzonderKenmerken");
+                        vNaam[i] = result.getString("Naam");
+                        vAdres[i] = result.getString("Adres");
+                        vWoonplaats[i] = result.getString("Woonplaats");
+                        vPostcode[i] = result.getString("Postcode");
+                        vLand[i] = result.getString("Land");
+                        vTelefoon[i] = result.getString("Telefoon");
+                        vEmail[i] = result.getString("Email");
+
+                        excel.writeData(idVermist[i], vDatum[i], vTijd[i], vLuchthaven[i], vLabelnummer[i],
+                                vVluchtnummer[i], vBestemming[i], vBagageType[i], vMerk[i], vKleur[i],
+                                vNaam[i], vAdres[i], vWoonplaats[i], vPostcode[i], vLand[i], vTelefoon[i],
+                                vEmail[i], vBijzonderKenmerken[i]);
+
+                    }
+                }
+                excel.close();
+
+            } catch (SQLException ex) {
+
+            }
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+
+    }
 }

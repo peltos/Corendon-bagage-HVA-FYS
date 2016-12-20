@@ -27,12 +27,12 @@
         <ColumnConstraints hgrow="SOMETIMES" />
     </columnConstraints>
     <rowConstraints>
+        <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
         <RowConstraints vgrow="SOMETIMES" />
         <RowConstraints vgrow="SOMETIMES" />
         <RowConstraints vgrow="SOMETIMES" />
         <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -83,6 +83,18 @@
                                 <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                             </padding>
                         </Button>
+                  <Button layoutX="406.0" layoutY="1.0" mnemonicParsing="false" onAction="#CSVVermist">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@img/excel.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                  </Button>
                     </children>
                     <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
@@ -150,6 +162,18 @@
                                 <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                             </padding>
                         </Button>
+                  <Button layoutX="410.0" mnemonicParsing="false" onAction="#CSVGevonden">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0">
+                           <image>
+                              <Image url="@img/excel.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                  </Button>
                     </children>
                     <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
