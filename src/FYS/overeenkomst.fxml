@@ -200,6 +200,11 @@
         </CheckBox>
         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
             <children>
+            <Button mnemonicParsing="false" onAction="#CSV" text="Output to excel">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Button>
                 <Button mnemonicParsing="false" onAction="#GeslotenDB" text="Send To Closed">
                     <HBox.margin>
                         <Insets right="5.0" />

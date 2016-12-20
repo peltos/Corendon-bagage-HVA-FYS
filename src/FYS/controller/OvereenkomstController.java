@@ -10,7 +10,6 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,9 +17,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -31,30 +27,40 @@ import FYS.Bagage;
 import FYS.Database;
 import FYS.Main;
 import FYS.MainNavigator;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import nl.hva.dmci.ict.fys.CSVWriter;
 
 /**
  *
  * @author Daan
  */
 public class OvereenkomstController implements Initializable {
-    
-    @FXML public TableView<Bagage> overeenkomstTableView;
-    @FXML public TableColumn<Bagage, Integer> overeenkomstIdKolom;
-    @FXML public TableColumn<Bagage, String> overeenkomstDatumKolom;
-    @FXML public TableColumn<Bagage, Integer> overeenkomstLabelNummerKolom;
-    @FXML public TableColumn<Bagage, String> overeenkomstBagageTypeKolom;
-    
+
+    @FXML
+    public TableView<Bagage> overeenkomstTableView;
+    @FXML
+    public TableColumn<Bagage, Integer> overeenkomstIdKolom;
+    @FXML
+    public TableColumn<Bagage, String> overeenkomstDatumKolom;
+    @FXML
+    public TableColumn<Bagage, Integer> overeenkomstLabelNummerKolom;
+    @FXML
+    public TableColumn<Bagage, String> overeenkomstBagageTypeKolom;
+
     private ObservableList<Bagage> overeenkomstData = FXCollections.observableArrayList();
-    
+
     Database database = Main.getDatabase();
-    
+
     @FXML
     private void writeTableData() {
 
         try {
             ResultSet resultGevonden = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Gevonden ON Gevonden.idGevonden = Overeenkomst.GevondenID  WHERE Gesloten = 0;");
             ResultSet resultVermist = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Vermist ON Vermist.idvermist = Overeenkomst.VermistID  WHERE Gesloten = 0;");
-            
 
             //Gaat net zo lang door, tot er geen records meer zijn
             while (resultGevonden.next() && resultVermist.next()) {
@@ -69,20 +75,20 @@ public class OvereenkomstController implements Initializable {
                 bagage.setGLabelNummer(resultGevonden.getInt("Labelnummer"));
                 bagage.setGVluchtNr(resultGevonden.getInt("Vluchtnummer"));
                 bagage.setGBestemming(resultGevonden.getString("Bestemming"));
-                bagage.setGBagageType(resultGevonden.getString("BagageType")); 
+                bagage.setGBagageType(resultGevonden.getString("BagageType"));
                 bagage.setGMerk(resultGevonden.getString("Merk"));
                 bagage.setGKleur(resultGevonden.getString("Kleur"));
                 bagage.setGBijzondereKenmerken(resultGevonden.getString("BijzonderKenmerken"));
 
                 bagage.setVId(resultVermist.getInt("idVermist"));
-                
-                bagage.setTijd(resultVermist.getString("Tijd")); 
+
+                bagage.setTijd(resultVermist.getString("Tijd"));
                 bagage.setDatum(resultVermist.getString("Datum"));
                 bagage.setLuchthaven(resultVermist.getString("Luchthaven"));
                 bagage.setLabelNummer(resultVermist.getInt("Labelnummer"));
                 bagage.setVluchtNr(resultVermist.getInt("Vluchtnummer"));
                 bagage.setBestemming(resultVermist.getString("Bestemming"));
-                bagage.setBagageType(resultVermist.getString("BagageType")); 
+                bagage.setBagageType(resultVermist.getString("BagageType"));
                 bagage.setMerk(resultVermist.getString("Merk"));
                 bagage.setKleur(resultVermist.getString("Kleur"));
                 bagage.setBijzondereKenmerken(resultVermist.getString("BijzonderKenmerken"));
@@ -94,29 +100,30 @@ public class OvereenkomstController implements Initializable {
                 bagage.setTelefoonnummer(resultVermist.getInt("Telefoon"));
                 bagage.setEmail(resultVermist.getString("Email"));
                 overeenkomstData.add(bagage);
-                
 
             }
-            
+
         } catch (SQLException ex) {
 
         }
 
     }
-    @FXML public Label gevondenDatum, gevondenTijd, gevondenLuchthaven, gevondenID,
+    @FXML
+    public Label gevondenDatum, gevondenTijd, gevondenLuchthaven, gevondenID,
             gevondenType, gevondenMerk, gevondenKleur, gevondenBK, gevondenLabelNr,
             gevondenVluchtNr, gevondenBestemming;
-    
-    @FXML public Label vermisteDatum, vermisteTijd, vermisteLuchthaven, vermisteID,
+
+    @FXML
+    public Label vermisteDatum, vermisteTijd, vermisteLuchthaven, vermisteID,
             vermisteNaam, vermisteAdres, vermisteWoonplaats, vermistePostcode,
             vermisteLand, vermisteTelefoon, vermisteEmail, vermisteType, vermisteMerk,
             vermisteKleur, vermisteBK, vermisteLabelNr, vermisteVluchtNr, vermisteBestemming;
 
     @FXML
     private void overeenkomstSelected() {
-        
+
         Bagage bagage = overeenkomstTableView.getSelectionModel().getSelectedItem();
-        
+
         gevondenDatum.setText(bagage.getGDatum());
         gevondenTijd.setText(bagage.getGTijd());
         gevondenLuchthaven.setText(bagage.getGLuchthaven());
@@ -128,7 +135,7 @@ public class OvereenkomstController implements Initializable {
         gevondenLabelNr.setText(String.valueOf(bagage.getGLabelNummer()));
         gevondenVluchtNr.setText(String.valueOf(bagage.getGVluchtNr()));
         gevondenBestemming.setText(bagage.getGBestemming());
-        
+
         vermisteDatum.setText(bagage.getDatum());
         vermisteTijd.setText(bagage.getTijd());
         vermisteLuchthaven.setText(bagage.getLuchthaven());
@@ -147,8 +154,8 @@ public class OvereenkomstController implements Initializable {
         vermisteLabelNr.setText(String.valueOf(bagage.getLabelNummer()));
         vermisteVluchtNr.setText(String.valueOf(bagage.getVluchtNr()));
         vermisteBestemming.setText(bagage.getBestemming());
-    } 
-    
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         overeenkomstIdKolom.setCellValueFactory(
@@ -159,14 +166,14 @@ public class OvereenkomstController implements Initializable {
                 new PropertyValueFactory<Bagage, Integer>("labelNummer"));
         overeenkomstBagageTypeKolom.setCellValueFactory(
                 new PropertyValueFactory<Bagage, String>("bagageType"));
-        
+
         overeenkomstTableView.setItems(overeenkomstData);
         writeTableData();
     }
-    
+
     @FXML
     public TextField searchField;
-    
+
     @FXML
     private void search(ActionEvent event) throws IOException {
 
@@ -222,7 +229,7 @@ public class OvereenkomstController implements Initializable {
                         + "OR Kleur LIKE '" + searchField.getText() + "' "
                         + "OR BijzonderKenmerken LIKE '" + searchField.getText() + "' "
                         + "AND Visibility = 0;");
-                
+
                 ResultSet resultVermist = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Vermist ON Vermist.idvermist = Overeenkomst.VermistID "
                         + "WHERE idVermist LIKE '" + searchField.getText() + "' "
                         + "OR OvereenkomstID LIKE '" + searchField.getText() + "' "
@@ -248,45 +255,44 @@ public class OvereenkomstController implements Initializable {
 
                 //Gaat net zo lang door, tot er geen records meer zijn
                 while (resultGevonden.next() && resultVermist.next()) {
-                bagage = new Bagage();
-                bagage.setId(resultGevonden.getInt("OvereenkomstID"));
-                bagage.setDatum(resultGevonden.getString("Datum"));
+                    bagage = new Bagage();
+                    bagage.setId(resultGevonden.getInt("OvereenkomstID"));
+                    bagage.setDatum(resultGevonden.getString("Datum"));
 
-                bagage.setGId(resultGevonden.getInt("idGevonden"));
-                bagage.setGTijd(resultGevonden.getString("Tijd"));
-                bagage.setGDatum(resultGevonden.getString("Datum"));
-                bagage.setGLuchthaven(resultGevonden.getString("Luchthaven"));
-                bagage.setGLabelNummer(resultGevonden.getInt("Labelnummer"));
-                bagage.setGVluchtNr(resultGevonden.getInt("Vluchtnummer"));
-                bagage.setGBestemming(resultGevonden.getString("Bestemming"));
-                bagage.setGBagageType(resultGevonden.getString("BagageType")); 
-                bagage.setGMerk(resultGevonden.getString("Merk"));
-                bagage.setGKleur(resultGevonden.getString("Kleur"));
-                bagage.setGBijzondereKenmerken(resultGevonden.getString("BijzonderKenmerken"));
+                    bagage.setGId(resultGevonden.getInt("idGevonden"));
+                    bagage.setGTijd(resultGevonden.getString("Tijd"));
+                    bagage.setGDatum(resultGevonden.getString("Datum"));
+                    bagage.setGLuchthaven(resultGevonden.getString("Luchthaven"));
+                    bagage.setGLabelNummer(resultGevonden.getInt("Labelnummer"));
+                    bagage.setGVluchtNr(resultGevonden.getInt("Vluchtnummer"));
+                    bagage.setGBestemming(resultGevonden.getString("Bestemming"));
+                    bagage.setGBagageType(resultGevonden.getString("BagageType"));
+                    bagage.setGMerk(resultGevonden.getString("Merk"));
+                    bagage.setGKleur(resultGevonden.getString("Kleur"));
+                    bagage.setGBijzondereKenmerken(resultGevonden.getString("BijzonderKenmerken"));
 
-                bagage.setVId(resultVermist.getInt("idVermist"));
-                
-                bagage.setTijd(resultVermist.getString("Tijd")); 
-                bagage.setDatum(resultVermist.getString("Datum"));
-                bagage.setLuchthaven(resultVermist.getString("Luchthaven"));
-                bagage.setLabelNummer(resultVermist.getInt("Labelnummer"));
-                bagage.setVluchtNr(resultVermist.getInt("Vluchtnummer"));
-                bagage.setBestemming(resultVermist.getString("Bestemming"));
-                bagage.setBagageType(resultVermist.getString("BagageType")); 
-                bagage.setMerk(resultVermist.getString("Merk"));
-                bagage.setKleur(resultVermist.getString("Kleur"));
-                bagage.setBijzondereKenmerken(resultVermist.getString("BijzonderKenmerken"));
-                bagage.setNaam(resultVermist.getString("Naam"));
-                bagage.setAdres(resultVermist.getString("Adres"));
-                bagage.setWoonplaats(resultVermist.getString("Woonplaats"));
-                bagage.setPostcode(resultVermist.getString("Postcode"));
-                bagage.setLand(resultVermist.getString("Land"));
-                bagage.setTelefoonnummer(resultVermist.getInt("Telefoon"));
-                bagage.setEmail(resultVermist.getString("Email"));
-                overeenkomstData.add(bagage);
-                
+                    bagage.setVId(resultVermist.getInt("idVermist"));
 
-            }
+                    bagage.setTijd(resultVermist.getString("Tijd"));
+                    bagage.setDatum(resultVermist.getString("Datum"));
+                    bagage.setLuchthaven(resultVermist.getString("Luchthaven"));
+                    bagage.setLabelNummer(resultVermist.getInt("Labelnummer"));
+                    bagage.setVluchtNr(resultVermist.getInt("Vluchtnummer"));
+                    bagage.setBestemming(resultVermist.getString("Bestemming"));
+                    bagage.setBagageType(resultVermist.getString("BagageType"));
+                    bagage.setMerk(resultVermist.getString("Merk"));
+                    bagage.setKleur(resultVermist.getString("Kleur"));
+                    bagage.setBijzondereKenmerken(resultVermist.getString("BijzonderKenmerken"));
+                    bagage.setNaam(resultVermist.getString("Naam"));
+                    bagage.setAdres(resultVermist.getString("Adres"));
+                    bagage.setWoonplaats(resultVermist.getString("Woonplaats"));
+                    bagage.setPostcode(resultVermist.getString("Postcode"));
+                    bagage.setLand(resultVermist.getString("Land"));
+                    bagage.setTelefoonnummer(resultVermist.getInt("Telefoon"));
+                    bagage.setEmail(resultVermist.getString("Email"));
+                    overeenkomstData.add(bagage);
+
+                }
 
             } catch (SQLException ex) {
 
@@ -295,19 +301,19 @@ public class OvereenkomstController implements Initializable {
         }
 
     }
-    
+
     @FXML
     public CheckBox overeenkomstCheckBox;
-    
+
     @FXML
     private void OvereenkomstDB() throws SQLException {
         boolean gVCheckBox = overeenkomstCheckBox.isSelected();
 
         Bagage overeenkomstBag = overeenkomstTableView.getSelectionModel().getSelectedItem();
 
-        String query = "DELETE FROM `testDatabase`.`Overeenkomst` WHERE `OvereenkomstID`="+overeenkomstBag.getId()+";";
-        String queryGevonden = "UPDATE `testDatabase`.`Gevonden` SET `Visibility`='0' WHERE `idGevonden`="+ overeenkomstBag.getGId() +";";
-        String queryVermist = "UPDATE `testDatabase`.`Vermist` SET `Visibility`='0' WHERE `idVermist`="+ overeenkomstBag.getVId() +";";
+        String query = "DELETE FROM `testDatabase`.`Overeenkomst` WHERE `OvereenkomstID`=" + overeenkomstBag.getId() + ";";
+        String queryGevonden = "UPDATE `testDatabase`.`Gevonden` SET `Visibility`='0' WHERE `idGevonden`=" + overeenkomstBag.getGId() + ";";
+        String queryVermist = "UPDATE `testDatabase`.`Vermist` SET `Visibility`='0' WHERE `idVermist`=" + overeenkomstBag.getVId() + ";";
 
         PreparedStatement statement = database.prepareStatement(query);
         PreparedStatement statementGevonden = database.prepareStatement(queryGevonden);
@@ -321,7 +327,7 @@ public class OvereenkomstController implements Initializable {
                 alert.setContentText("Click on the checkbox \"Confirm\" to confirm the match");
                 alert.showAndWait();
             } else {
-                    
+
                 statement.executeUpdate();
                 statementGevonden.executeUpdate();
                 statementVermist.executeUpdate();
@@ -331,9 +337,9 @@ public class OvereenkomstController implements Initializable {
             e.printStackTrace(System.err);
         }
         MainNavigator.loadVista(MainNavigator.OVEREENKOMST);
-        
 
     }
+
     @FXML
     private void GeslotenDB() throws SQLException {
         boolean gVCheckBox = overeenkomstCheckBox.isSelected();
@@ -345,7 +351,7 @@ public class OvereenkomstController implements Initializable {
 
         Database database = new Database(DB_NAME, DB_SERVER, DB_ACCOUNT, DB_PASSWORD);
 
-        String query = "UPDATE `testDatabase`.`Overeenkomst` SET `Gesloten`='1' WHERE `OvereenkomstID`="+ overeenkomstBag.getId() +";";
+        String query = "UPDATE `testDatabase`.`Overeenkomst` SET `Gesloten`='1' WHERE `OvereenkomstID`=" + overeenkomstBag.getId() + ";";
 
         PreparedStatement statement = database.prepareStatement(query);
 
@@ -357,9 +363,9 @@ public class OvereenkomstController implements Initializable {
                 alert.setContentText("Click on the checkbox \"Confirm\" to confirm the match");
                 alert.showAndWait();
             } else {
-                    
-                statement.executeUpdate();  
-                
+
+                statement.executeUpdate();
+
                 overeenkomstCheckBox.setSelected(false);
             }
 
@@ -369,6 +375,113 @@ public class OvereenkomstController implements Initializable {
         MainNavigator.loadVista(MainNavigator.OVEREENKOMST);
 
     }
+
+    public void CSV(ActionEvent event) throws IOException {
+        String[] OvereenkomstID = new String[1];
+        String[] oDatum = new String[1];
+
+        String[] idGevonden = new String[1];
+        String[] gTijd = new String[1];
+        String[] gDatum = new String[1];
+        String[] gLuchthaven = new String[1];
+        String[] gLabelnummer = new String[1];
+        String[] gVluchtnummer = new String[1];
+        String[] gBestemming = new String[1];
+        String[] gBagageType = new String[1];
+        String[] gMerk = new String[1];
+        String[] gKleur = new String[1];
+        String[] gBijzonderKenmerken = new String[1];
+
+        String[] idVermist = new String[1];
+        String[] vTijd = new String[1];
+        String[] vDatum = new String[1];
+        String[] vLuchthaven = new String[1];
+        String[] vLabelnummer = new String[1];
+        String[] vVluchtnummer = new String[1];
+        String[] vBestemming = new String[1];
+        String[] vBagageType = new String[1];
+        String[] vMerk = new String[1];
+        String[] vKleur = new String[1];
+        String[] vBijzonderKenmerken = new String[1];
+        String[] vNaam = new String[1];
+        String[] vAdres = new String[1];
+        String[] vWoonplaats = new String[1];
+        String[] vPostcode = new String[1];
+        String[] vLand = new String[1];
+        String[] vTelefoon = new String[1];
+        String[] vEmail = new String[1];
+        
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = new Date();
+        
+        CSVWriter excel = new CSVWriter("ReportMatches-" + dateFormat.format(date) + ".csv");
+        excel.writeHeaders("MatchID","DateFound","IdFound","DateFound","TimeFound","AirportFound",
+        "LabelnumberFound","FlightnumberFound","DestinationFound","BagageTypeFound","BrandFound",
+        "ColorFound","SpecialCharFound", " ","IdLost", "DateLost", "TimeLost", "AirportLost", 
+        "LabelnumberLost", "FlightnumberLost", "DestinationLost", "BagageTypeLost",
+        "BrandLost", "ColorLost", "Name", "Adress", "Residence", "ZipCode", "Country", "PhoneNumber", 
+        "Email", "SpecialCharlost" );
+       
+
+        try {
+            ResultSet resultGevonden = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Gevonden ON Gevonden.idGevonden = Overeenkomst.GevondenID  WHERE Gesloten = 0;");
+            ResultSet resultVermist = database.executeQuery("SELECT * FROM testDatabase.Overeenkomst LEFT JOIN testDatabase.Vermist ON Vermist.idvermist = Overeenkomst.VermistID  WHERE Gesloten = 0;");
+
+            //Gaat net zo lang door, tot er geen records meer zijn
+            for (int i = 0; i < OvereenkomstID.length; i++) {
+                while (resultGevonden.next() && resultVermist.next()) {
+                    OvereenkomstID[i] = resultGevonden.getString("OvereenkomstID");
+                    oDatum[i] = resultGevonden.getString("Datum");
+
+                    idGevonden[i] = resultGevonden.getString("idGevonden");
+                    gTijd[i] = resultGevonden.getString("Tijd");
+                    gDatum[i] = resultGevonden.getString("Datum");
+                    gLuchthaven[i] = resultGevonden.getString("Luchthaven");
+                    gLabelnummer[i] = resultGevonden.getString("Labelnummer");
+                    gVluchtnummer[i] = resultGevonden.getString("Vluchtnummer");
+                    gBestemming[i] = resultGevonden.getString("Bestemming");
+                    gBagageType[i] = resultGevonden.getString("BagageType");
+                    gMerk[i] = resultGevonden.getString("Merk");
+                    gKleur[i] = resultGevonden.getString("Kleur");
+                    gBijzonderKenmerken[i] = resultGevonden.getString("BijzonderKenmerken");
+
+                    idVermist[i] = resultVermist.getString("idVermist");
+                    vDatum[i] = resultVermist.getString("Datum");
+                    vTijd[i] = resultVermist.getString("Tijd");
+                    vLuchthaven[i] = resultVermist.getString("Luchthaven");
+                    vLabelnummer[i] = resultVermist.getString("Labelnummer");
+                    vVluchtnummer[i] = resultVermist.getString("Vluchtnummer");
+                    vBestemming[i] = resultVermist.getString("Bestemming");
+                    vBagageType[i] = resultVermist.getString("BagageType");
+                    vMerk[i] = resultVermist.getString("Merk");
+                    vKleur[i] = resultVermist.getString("Kleur");
+                    vBijzonderKenmerken[i] = resultVermist.getString("BijzonderKenmerken");
+                    vNaam[i] = resultVermist.getString("Naam");
+                    vAdres[i] = resultVermist.getString("Adres");
+                    vWoonplaats[i] = resultVermist.getString("Woonplaats");
+                    vPostcode[i] = resultVermist.getString("Postcode");
+                    vLand[i] = resultVermist.getString("Land");
+                    vTelefoon[i] = resultVermist.getString("Telefoon");
+                    vEmail[i] = resultVermist.getString("Email");
+                    
+                    excel.writeData(OvereenkomstID[i],oDatum[i],idGevonden[i],gTijd[i],
+                    gDatum[i],gLuchthaven[i],gLabelnummer[i],gVluchtnummer[i],gBestemming[i],
+                    gBagageType[i],gMerk[i],gKleur[i],gBijzonderKenmerken[i], " ",
+                    idVermist[i],vDatum[i],vTijd[i],vLuchthaven[i],vLabelnummer[i],
+                    vVluchtnummer[i],vBestemming[i],vBagageType[i],vMerk[i],vKleur[i],
+                    vNaam[i],vAdres[i],vWoonplaats[i],vPostcode[i],vLand[i],vTelefoon[i],
+                    vEmail[i],vBijzonderKenmerken[i]);
+
+                }
+            }
+
+        } catch (SQLException ex) {
+
+        }
+
+        
+
+        
+        
+    }
 }
-
-
