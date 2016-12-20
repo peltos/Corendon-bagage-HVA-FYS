@@ -23,7 +23,7 @@ public class Gebruiker {
     private final SimpleStringProperty username = new SimpleStringProperty();
     private final SimpleIntegerProperty telefoonnummer = new SimpleIntegerProperty();
     private final SimpleStringProperty email = new SimpleStringProperty();
-    private final SimpleIntegerProperty positie = new SimpleIntegerProperty();
+    private final SimpleStringProperty positie = new SimpleStringProperty();
     private final SimpleStringProperty adres = new SimpleStringProperty();
     private final SimpleStringProperty woonplaats = new SimpleStringProperty();
     private final SimpleStringProperty postcode = new SimpleStringProperty();
@@ -63,7 +63,7 @@ public class Gebruiker {
     public void setNaam(String naam){
         this.naam.set(naam);
     }
-    public void setPositie(int positie){
+    public void setPositie(String positie){
         this.positie.set(positie);
     }
     public void setAdres(String adres){
@@ -101,7 +101,7 @@ public class Gebruiker {
     public String getEmail(){
         return email.get();
     }
-    public Integer getPositie(){
+    public String getPositie(){
         return positie.get();
     }
     public String getNaam(){

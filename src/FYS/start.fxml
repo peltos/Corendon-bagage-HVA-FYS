@@ -30,8 +30,8 @@
         <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
         <RowConstraints vgrow="SOMETIMES" />
         <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="25.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="300.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="35.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>

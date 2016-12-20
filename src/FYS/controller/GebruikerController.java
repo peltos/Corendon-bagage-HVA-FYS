@@ -80,7 +80,11 @@ public class GebruikerController implements Initializable {
                 gebruiker.setUsername(result.getString("Username"));
                 gebruiker.setTelefoonnummer(result.getInt("Telefoonnummer"));
                 gebruiker.setEmail(result.getString("Email"));
-                gebruiker.setPositie(result.getInt("Positie"));
+                if (result.getInt("Positie") == 1) {
+                    gebruiker.setPositie("Manager");
+                } else if (result.getInt("Positie") == 0) {
+                    gebruiker.setPositie("Medewerker");
+                }
 
                 data.add(gebruiker);
             }
@@ -142,7 +146,11 @@ public class GebruikerController implements Initializable {
                     gebruiker.setUsername(result.getString("Username"));
                     gebruiker.setTelefoonnummer(result.getInt("Telefoonnummer"));
                     gebruiker.setEmail(result.getString("Email"));
-                    gebruiker.setPositie(result.getInt("Positie"));
+                    if (result.getInt("Positie") == 1) {
+                        gebruiker.setPositie("Manager");
+                    } else if (result.getInt("Positie") == 0) {
+                        gebruiker.setPositie("Medewerker");
+                    }
 
                     data.add(gebruiker);
 
@@ -200,38 +208,38 @@ public class GebruikerController implements Initializable {
         document.save("Hello World.pdf");
         document.close();
     }
-    
-    @FXML private void DeleteUser()
-    {
+
+    @FXML
+    private void DeleteUser() {
         Gebruiker userClass = gebruikerTableView.getSelectionModel().getSelectedItem();
-        String query = String.format("DELETE FROM testDatabase.Gebruikers WHERE ID = %d", userClass.getGebruikerID()), 
+        String query = String.format("DELETE FROM testDatabase.Gebruikers WHERE ID = %d", userClass.getGebruikerID()),
                 deletionInfo = String.format("Are you sure you want to permanently remove this item?\n\n"
-                + "Delete user: %s %s, %d", userClass.getVoornaam(), userClass.getAchternaam(), userClass.getGebruikerID());
-        
+                        + "Delete user: %s %s, %d", userClass.getVoornaam(), userClass.getAchternaam(), userClass.getGebruikerID());
+
         System.out.print("[QUERY]: " + query + " | " + userClass.getUsername() + "\n");
-        
+
         Alert alertMessageBox = new Alert(Alert.AlertType.CONFIRMATION);
-        
+
         alertMessageBox.setTitle("Confirm Deletion");
         alertMessageBox.setContentText(deletionInfo);
-        
+
         ButtonType OKButton = new ButtonType("OK.", ButtonBar.ButtonData.OK_DONE);
         ButtonType CancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         alertMessageBox.getButtonTypes().setAll(CancelButton, OKButton);
-        
+
         Optional<ButtonType> result = alertMessageBox.showAndWait();
-          
-          try
-          {
-              if (result.get() == OKButton)
-              {
-                  PreparedStatement statement = database.prepareStatement(query);
-                  gebruikerTableView.getItems().removeAll(gebruikerTableView.getSelectionModel().getSelectedItems());
-                  statement.executeUpdate();
-              } else if (result.get() == CancelButton) {
-                    System.out.println("[USERINPUT]: Canceled");
+
+        try {
+            if (result.get() == OKButton) {
+                PreparedStatement statement = database.prepareStatement(query);
+                gebruikerTableView.getItems().removeAll(gebruikerTableView.getSelectionModel().getSelectedItems());
+                statement.executeUpdate();
+            } else if (result.get() == CancelButton) {
+                System.out.println("[USERINPUT]: Canceled");
             }
-        } catch (Exception e) { e.printStackTrace(System.err); }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
     }
 
 }
