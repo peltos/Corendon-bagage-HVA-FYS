@@ -28,6 +28,8 @@ import FYS.Bagage;
 import FYS.Database;
 import FYS.Main;
 import FYS.MainNavigator;
+import FYS.pdf.Form;
+import com.itextpdf.text.DocumentException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -172,6 +174,7 @@ public class StartController implements Initializable {
 
         editVermist.setDisable(true);
         FXVermistDelete.setDisable(true);
+        createFoundPdf.setDisable(false);
 
         if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
             buttonOvereenkomst.setDisable(false);
@@ -215,6 +218,7 @@ public class StartController implements Initializable {
 
         editGevonden.setDisable(true);
         FXGevondenDelete.setDisable(true);
+        createLostPdf.setDisable(false);
 
         if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
             buttonOvereenkomst.setDisable(false);
@@ -533,6 +537,26 @@ public class StartController implements Initializable {
             e.printStackTrace(System.err);
         }
     }
+    
+    @FXML Button createLostPdf, createFoundPdf;
+    
+    @FXML
+    private void createLostPdf() throws IOException, DocumentException{
+        Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
+        selectedIdVermist = bagage.getId();
+        
+        Form form = new Form();
+        form.createMissing("pdf/vermist.pdf", selectedIdVermist);
+    }
+    
+    @FXML
+    private void createFoundPdf() throws IOException, DocumentException{
+        Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
+        selectedIdGevonden = bagage.getId();
+        
+        Form form = new Form();
+        form.createFound("pdf/gevonden.pdf", selectedIdGevonden);
+    }
 
     @FXML
     private void gevondenToevoegen(ActionEvent event) {
@@ -698,4 +722,5 @@ public class StartController implements Initializable {
         }
 
     }
+    
 }
