@@ -115,38 +115,40 @@ public class GeslotenController implements Initializable {
     @FXML
     private void geslotenSelected() {
         
-        Bagage bagage = geslotenTableView.getSelectionModel().getSelectedItem();
-        
-        gevondenDatum.setText(bagage.getGDatum());
-        gevondenTijd.setText(bagage.getGTijd());
-        gevondenLuchthaven.setText(bagage.getGLuchthaven());
-        gevondenID.setText(String.valueOf(bagage.getGId()));
-        gevondenType.setText(bagage.getGBagageType());
-        gevondenMerk.setText(bagage.getGMerk());
-        gevondenKleur.setText(bagage.getGKleur());
-        gevondenBK.setText(bagage.getGBijzondereKenmerken());
-        gevondenLabelNr.setText(String.valueOf(bagage.getGLabelNummer()));
-        gevondenVluchtNr.setText(String.valueOf(bagage.getGVluchtNr()));
-        gevondenBestemming.setText(bagage.getGBestemming());
-        
-        vermisteDatum.setText(bagage.getDatum());
-        vermisteTijd.setText(bagage.getTijd());
-        vermisteLuchthaven.setText(bagage.getLuchthaven());
-        vermisteID.setText(String.valueOf(bagage.getId()));
-        vermisteNaam.setText(bagage.getNaam());
-        vermisteAdres.setText(bagage.getAdres());
-        vermisteWoonplaats.setText(bagage.getWoonplaats());
-        vermistePostcode.setText(bagage.getPostcode());
-        vermisteLand.setText(bagage.getLand());
-        vermisteTelefoon.setText(String.valueOf(bagage.getTelefoonnummer()));
-        vermisteEmail.setText(bagage.getEmail());
-        vermisteType.setText(bagage.getBagageType());
-        vermisteMerk.setText(bagage.getMerk());
-        vermisteKleur.setText(bagage.getKleur());
-        vermisteBK.setText(bagage.getBijzondereKenmerken());
-        vermisteLabelNr.setText(String.valueOf(bagage.getLabelNummer()));
-        vermisteVluchtNr.setText(String.valueOf(bagage.getVluchtNr()));
-        vermisteBestemming.setText(bagage.getBestemming());
+        if (geslotenTableView.getSelectionModel().getSelectedItem() != null) {
+            Bagage bagage = geslotenTableView.getSelectionModel().getSelectedItem();
+
+            gevondenDatum.setText(bagage.getGDatum());
+            gevondenTijd.setText(bagage.getGTijd());
+            gevondenLuchthaven.setText(bagage.getGLuchthaven());
+            gevondenID.setText(String.valueOf(bagage.getGId()));
+            gevondenType.setText(bagage.getGBagageType());
+            gevondenMerk.setText(bagage.getGMerk());
+            gevondenKleur.setText(bagage.getGKleur());
+            gevondenBK.setText(bagage.getGBijzondereKenmerken());
+            gevondenLabelNr.setText(String.valueOf(bagage.getGLabelNummer()));
+            gevondenVluchtNr.setText(String.valueOf(bagage.getGVluchtNr()));
+            gevondenBestemming.setText(bagage.getGBestemming());
+
+            vermisteDatum.setText(bagage.getDatum());
+            vermisteTijd.setText(bagage.getTijd());
+            vermisteLuchthaven.setText(bagage.getLuchthaven());
+            vermisteID.setText(String.valueOf(bagage.getId()));
+            vermisteNaam.setText(bagage.getNaam());
+            vermisteAdres.setText(bagage.getAdres());
+            vermisteWoonplaats.setText(bagage.getWoonplaats());
+            vermistePostcode.setText(bagage.getPostcode());
+            vermisteLand.setText(bagage.getLand());
+            vermisteTelefoon.setText(String.valueOf(bagage.getTelefoonnummer()));
+            vermisteEmail.setText(bagage.getEmail());
+            vermisteType.setText(bagage.getBagageType());
+            vermisteMerk.setText(bagage.getMerk());
+            vermisteKleur.setText(bagage.getKleur());
+            vermisteBK.setText(bagage.getBijzondereKenmerken());
+            vermisteLabelNr.setText(String.valueOf(bagage.getLabelNummer()));
+            vermisteVluchtNr.setText(String.valueOf(bagage.getVluchtNr()));
+            vermisteBestemming.setText(bagage.getBestemming());
+        }
     } 
     
     @Override

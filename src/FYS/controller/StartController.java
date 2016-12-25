@@ -169,39 +169,41 @@ public class StartController implements Initializable {
     @FXML
     private void gevondenSelected() {
 
-        Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
-        selectedIdGevonden = bagage.getId();
+        if (gevondenTabel.getSelectionModel().getSelectedItem() != null) {
+            Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
+            selectedIdGevonden = bagage.getId();
 
-        editVermist.setDisable(true);
-        FXVermistDelete.setDisable(true);
-        createFoundPdf.setDisable(false);
+            editVermist.setDisable(true);
+            FXVermistDelete.setDisable(true);
+            createFoundPdf.setDisable(false);
 
-        if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
-            buttonOvereenkomst.setDisable(false);
+            if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
+                buttonOvereenkomst.setDisable(false);
+            }
+
+            if (bagage.getId() != null) {
+                editGevonden.setDisable(false);
+                FXGevondenDelete.setDisable(false);
+            }
+
+            boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
+
+            if (bSelected == true) {
+                gevondenCheckBox.setSelected(false);
+            }
+
+            gevondenDatum.setText(bagage.getDatum());
+            gevondenTijd.setText(bagage.getTijd());
+            gevondenLuchthaven.setText(bagage.getLuchthaven());
+            gevondenID.setText(String.valueOf(bagage.getId()));
+            gevondenType.setText(bagage.getBagageType());
+            gevondenMerk.setText(bagage.getMerk());
+            gevondenKleur.setText(bagage.getKleur());
+            gevondenBK.setText(bagage.getBijzondereKenmerken());
+            gevondenLabelNr.setText(String.valueOf(bagage.getLabelNummer()));
+            gevondenVluchtNr.setText(String.valueOf(bagage.getVluchtNr()));
+            gevondenBestemming.setText(bagage.getBestemming());
         }
-
-        if (bagage.getId() != null) {
-            editGevonden.setDisable(false);
-            FXGevondenDelete.setDisable(false);
-        }
-
-        boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
-
-        if (bSelected == true) {
-            gevondenCheckBox.setSelected(false);
-        }
-
-        gevondenDatum.setText(bagage.getDatum());
-        gevondenTijd.setText(bagage.getTijd());
-        gevondenLuchthaven.setText(bagage.getLuchthaven());
-        gevondenID.setText(String.valueOf(bagage.getId()));
-        gevondenType.setText(bagage.getBagageType());
-        gevondenMerk.setText(bagage.getMerk());
-        gevondenKleur.setText(bagage.getKleur());
-        gevondenBK.setText(bagage.getBijzondereKenmerken());
-        gevondenLabelNr.setText(String.valueOf(bagage.getLabelNummer()));
-        gevondenVluchtNr.setText(String.valueOf(bagage.getVluchtNr()));
-        gevondenBestemming.setText(bagage.getBestemming());
     }
 
     @FXML
@@ -213,46 +215,48 @@ public class StartController implements Initializable {
     @FXML
     private void vermisteSelected() {
 
-        Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
-        selectedIdVermist = bagage.getId();
+        if (vermisteTabel.getSelectionModel().getSelectedItem() != null) {
+            Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
+            selectedIdVermist = bagage.getId();
 
-        editGevonden.setDisable(true);
-        FXGevondenDelete.setDisable(true);
-        createLostPdf.setDisable(false);
+            editGevonden.setDisable(true);
+            FXGevondenDelete.setDisable(true);
+            createLostPdf.setDisable(false);
 
-        if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
-            buttonOvereenkomst.setDisable(false);
+            if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
+                buttonOvereenkomst.setDisable(false);
+            }
+
+            if (bagage.getId() != null) {
+                editVermist.setDisable(false);
+                FXVermistDelete.setDisable(false);
+            }
+
+            boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
+
+            if (bSelected == true) {
+                vermisteCheckBox.setSelected(false);
+            }
+
+            vermisteDatum.setText(bagage.getDatum());
+            vermisteTijd.setText(bagage.getTijd());
+            vermisteLuchthaven.setText(bagage.getLuchthaven());
+            vermisteID.setText(String.valueOf(bagage.getId()));
+            vermisteNaam.setText(bagage.getNaam());
+            vermisteAdres.setText(bagage.getAdres());
+            vermisteWoonplaats.setText(bagage.getWoonplaats());
+            vermistePostcode.setText(bagage.getPostcode());
+            vermisteLand.setText(bagage.getLand());
+            vermisteTelefoon.setText(String.valueOf(bagage.getTelefoonnummer()));
+            vermisteEmail.setText(bagage.getEmail());
+            vermisteType.setText(bagage.getBagageType());
+            vermisteMerk.setText(bagage.getMerk());
+            vermisteKleur.setText(bagage.getKleur());
+            vermisteBK.setText(bagage.getBijzondereKenmerken());
+            vermisteLabelNr.setText(String.valueOf(bagage.getLabelNummer()));
+            vermisteVluchtNr.setText(String.valueOf(bagage.getVluchtNr()));
+            vermisteBestemming.setText(bagage.getBestemming());
         }
-
-        if (bagage.getId() != null) {
-            editVermist.setDisable(false);
-            FXVermistDelete.setDisable(false);
-        }
-
-        boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
-
-        if (bSelected == true) {
-            vermisteCheckBox.setSelected(false);
-        }
-
-        vermisteDatum.setText(bagage.getDatum());
-        vermisteTijd.setText(bagage.getTijd());
-        vermisteLuchthaven.setText(bagage.getLuchthaven());
-        vermisteID.setText(String.valueOf(bagage.getId()));
-        vermisteNaam.setText(bagage.getNaam());
-        vermisteAdres.setText(bagage.getAdres());
-        vermisteWoonplaats.setText(bagage.getWoonplaats());
-        vermistePostcode.setText(bagage.getPostcode());
-        vermisteLand.setText(bagage.getLand());
-        vermisteTelefoon.setText(String.valueOf(bagage.getTelefoonnummer()));
-        vermisteEmail.setText(bagage.getEmail());
-        vermisteType.setText(bagage.getBagageType());
-        vermisteMerk.setText(bagage.getMerk());
-        vermisteKleur.setText(bagage.getKleur());
-        vermisteBK.setText(bagage.getBijzondereKenmerken());
-        vermisteLabelNr.setText(String.valueOf(bagage.getLabelNummer()));
-        vermisteVluchtNr.setText(String.valueOf(bagage.getVluchtNr()));
-        vermisteBestemming.setText(bagage.getBestemming());
     }
 
     @Override
