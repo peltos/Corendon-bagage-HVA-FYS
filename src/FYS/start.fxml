@@ -95,10 +95,17 @@
                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="createLostPdf" disable="true" layoutX="371.0" layoutY="1.0" mnemonicParsing="false" onAction="#createLostPdf" text="Pdf">
+                  <Button fx:id="createLostPdf" disable="true" layoutX="371.0" layoutY="1.0" mnemonicParsing="false" onAction="#createLostPdf">
                      <padding>
                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                      </padding>
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0">
+                           <image>
+                              <Image url="@img/pdf.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                     </children>
                     <VBox.margin>
@@ -179,10 +186,17 @@
                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="createFoundPdf" disable="true" layoutX="376.0" mnemonicParsing="false" onAction="#createFoundPdf" text="Pdf">
+                  <Button fx:id="createFoundPdf" disable="true" layoutX="376.0" mnemonicParsing="false" onAction="#createFoundPdf">
                      <padding>
                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                      </padding>
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0">
+                           <image>
+                              <Image url="@img/pdf.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                     </children>
                     <VBox.margin>
