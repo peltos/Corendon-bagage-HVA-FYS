@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="startPanel" styleClass="corr" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FYS.controller.GebruikerController">
+<GridPane fx:id="startPanel" styleClass="corr" stylesheets="@vista.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FYS.controller.GebruikerController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" />
     </columnConstraints>
@@ -75,7 +75,10 @@
         </AnchorPane>
         <HBox alignment="TOP_RIGHT" GridPane.rowIndex="3">
             <children>
-                <Button fx:id="gebruikerToevoegenButton" mnemonicParsing="false" onAction="#gebruikerToevoegen" text="Add User" />
+                <Button fx:id="gebruikerToevoegenButton" mnemonicParsing="false" onAction="#gebruikerToevoegen" text="Add User">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Button>
             <Button fx:id="gebruikerEdit" disable="true" mnemonicParsing="false" onAction="#editGebruiker" onMouseClicked="#getSelected" text="Edit">
                <opaqueInsets>
                   <Insets />
@@ -86,7 +89,6 @@
                         <Insets left="5.0" />
                     </HBox.margin>
                 </Button>
-            <Button mnemonicParsing="false" onAction="#PDFExport" text="PDF" />
             </children>
             <GridPane.margin>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

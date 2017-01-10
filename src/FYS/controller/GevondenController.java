@@ -97,7 +97,7 @@ public class GevondenController {
         }
         MainNavigator.loadVista(MainNavigator.START);
     }
-
+    
     @FXML
     private void gevondenToevoegenCancel(ActionEvent event) {
         MainNavigator.loadVista(MainNavigator.START);
