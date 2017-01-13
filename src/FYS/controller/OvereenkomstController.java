@@ -29,6 +29,7 @@ import FYS.Main;
 import FYS.MainNavigator;
 import FYS.pdf.Form;
 import com.itextpdf.text.DocumentException;
+import java.io.File;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -36,6 +37,8 @@ import java.util.Optional;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import nl.hva.dmci.ict.fys.CSVWriter;
 
 /**
@@ -131,10 +134,18 @@ public class OvereenkomstController implements Initializable {
     
     @FXML
     private void createMatchesPDF() throws IOException, DocumentException{
-        Bagage bagage = overeenkomstTableView.getSelectionModel().getSelectedItem();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save file");
+        fileChooser.setInitialFileName("Matches.pdf");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF Files (*.pdf)", "*.pdf");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File savedFile = fileChooser.showSaveDialog(new Stage());
         
-        Form form = new Form();
-        form.createMatchedPDF("pdf/Matches.pdf", bagage.getId());
+        if (savedFile != null) {
+            Bagage bagage = overeenkomstTableView.getSelectionModel().getSelectedItem();
+            Form form = new Form();
+            form.createMatchedPDF(savedFile.getPath(), bagage.getId());
+        }
     }
 
     @FXML

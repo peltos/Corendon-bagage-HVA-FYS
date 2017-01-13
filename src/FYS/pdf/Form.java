@@ -14,10 +14,13 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  *
@@ -48,10 +51,11 @@ public class Form {
             //Gaat net zo lang door, tot er geen records meer zijn
 
             while (vermist.next()) {
+                
                 PdfWriter.getInstance(document, new FileOutputStream(dest));
-
+                
                 document.open();
-
+                
                 Image logo = Image.getInstance(IMG);
                 logo.setIndentationLeft(50f);
                 logo.setSpacingAfter(10f);
@@ -110,7 +114,7 @@ public class Form {
                 createdBy.setSpacingBefore(20f);
                 createdBy.setIndentationLeft(50f);
                 document.add(createdBy);
-
+                
                 document.close();
 
                 System.out.println("Saved in: " + dest);
@@ -333,5 +337,7 @@ public class Form {
         document.close();
 
     }
+    
+    
 
 }

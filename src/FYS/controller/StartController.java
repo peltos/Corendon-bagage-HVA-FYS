@@ -30,10 +30,13 @@ import FYS.Main;
 import FYS.MainNavigator;
 import FYS.pdf.Form;
 import com.itextpdf.text.DocumentException;
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import nl.hva.dmci.ict.fys.CSVWriter;
 
 /**
@@ -558,20 +561,34 @@ public class StartController implements Initializable {
     
     @FXML
     private void createLostPdf() throws IOException, DocumentException{
-        Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
-        selectedIdVermist = bagage.getId();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save file");
+        fileChooser.setInitialFileName("Lost.pdf");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF Files (*.pdf)", "*.pdf");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File savedFile = fileChooser.showSaveDialog(new Stage());
         
-        Form form = new Form();
-        form.createMissing("pdf/vermist.pdf", selectedIdVermist);
+        if (savedFile != null) {
+            Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
+            Form form = new Form();
+            form.createMissing(savedFile.getPath(), bagage.getId());
+        }
     }
     
     @FXML
     private void createFoundPdf() throws IOException, DocumentException{
-        Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
-        selectedIdGevonden = bagage.getId();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save file");
+        fileChooser.setInitialFileName("Found.pdf");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF Files (*.pdf)", "*.pdf");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File savedFile = fileChooser.showSaveDialog(new Stage());
         
-        Form form = new Form();
-        form.createFound("pdf/gevonden.pdf", selectedIdGevonden);
+        if (savedFile != null) {
+           Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
+           Form form = new Form();
+           form.createFound(savedFile.getPath(), bagage.getId()); 
+        }
     }
 
     @FXML
