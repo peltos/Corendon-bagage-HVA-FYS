@@ -34,6 +34,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Optional;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import nl.hva.dmci.ict.fys.CSVWriter;
 
@@ -42,6 +43,12 @@ import nl.hva.dmci.ict.fys.CSVWriter;
  * @author Daan
  */
 public class OvereenkomstController implements Initializable {
+    
+    @FXML
+    Button createMatchesPDF;
+    
+    @FXML
+    Button createMatchesCSV;
 
     @FXML
     public TableView<Bagage> overeenkomstTableView;
@@ -135,6 +142,9 @@ public class OvereenkomstController implements Initializable {
 
         if (overeenkomstTableView.getSelectionModel().getSelectedItem() != null) {
             Bagage bagage = overeenkomstTableView.getSelectionModel().getSelectedItem();
+            
+            createMatchesCSV.setDisable(false);
+            createMatchesPDF.setDisable(false);
 
             gevondenDatum.setText(bagage.getGDatum());
             gevondenTijd.setText(bagage.getGTijd());
