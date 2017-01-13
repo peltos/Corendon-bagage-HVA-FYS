@@ -27,6 +27,8 @@ import FYS.Bagage;
 import FYS.Database;
 import FYS.Main;
 import FYS.MainNavigator;
+import FYS.pdf.Form;
+import com.itextpdf.text.DocumentException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -295,6 +297,14 @@ public class GeslotenController implements Initializable {
 
         }
 
+    }
+    
+    @FXML
+    private void createClosedPDF() throws IOException, DocumentException{
+        Bagage bagage = geslotenTableView.getSelectionModel().getSelectedItem();
+        
+        Form form = new Form();
+        form.createMatchedPDF("pdf/Closed.pdf", bagage.getId());
     }
     
     @FXML

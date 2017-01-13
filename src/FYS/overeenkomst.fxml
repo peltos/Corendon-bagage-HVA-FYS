@@ -227,6 +227,7 @@
         </HBox>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" styleClass="correndon-blue" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
+            <Button mnemonicParsing="false" onAction="#createMatchesPDF" text="PDF" />
             <Button mnemonicParsing="false" onAction="#CSV" text="Output to CSV">
                <HBox.margin>
                   <Insets right="5.0" />

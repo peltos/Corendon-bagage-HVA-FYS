@@ -27,6 +27,8 @@ import FYS.Bagage;
 import FYS.Database;
 import FYS.Main;
 import FYS.MainNavigator;
+import FYS.pdf.Form;
+import com.itextpdf.text.DocumentException;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -119,6 +121,14 @@ public class OvereenkomstController implements Initializable {
             vermisteNaam, vermisteAdres, vermisteWoonplaats, vermistePostcode,
             vermisteLand, vermisteTelefoon, vermisteEmail, vermisteType, vermisteMerk,
             vermisteKleur, vermisteBK, vermisteLabelNr, vermisteVluchtNr, vermisteBestemming;
+    
+    @FXML
+    private void createMatchesPDF() throws IOException, DocumentException{
+        Bagage bagage = overeenkomstTableView.getSelectionModel().getSelectedItem();
+        
+        Form form = new Form();
+        form.createMatchedPDF("pdf/Matches.pdf", bagage.getId());
+    }
 
     @FXML
     private void overeenkomstSelected() {
