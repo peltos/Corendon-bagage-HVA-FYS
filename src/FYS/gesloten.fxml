@@ -226,8 +226,14 @@
         </HBox>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" styleClass="correndon-blue" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" onAction="#createClosedPDF" text="Pdf" />
-            <Button mnemonicParsing="false" onAction="#CSV" text="Output to CSV">
+            <Button fx:id="createClosedPDF" disable="true" mnemonicParsing="false" onAction="#createClosedPDF" text="Pdf">
+               <HBox.margin>
+                  <Insets right="4.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding></Button>
+            <Button fx:id="createClosedCSV" disable="true" mnemonicParsing="false" onAction="#CSV" text="Output to CSV">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin>

@@ -33,6 +33,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import nl.hva.dmci.ict.fys.CSVWriter;
 
@@ -41,6 +42,12 @@ import nl.hva.dmci.ict.fys.CSVWriter;
  * @author Daan
  */
 public class GeslotenController implements Initializable {
+    
+    @FXML
+    Button createClosedPDF;
+    
+    @FXML
+    Button createClosedCSV;
     
     @FXML public TableView<Bagage> geslotenTableView;
     @FXML public TableColumn<Bagage, Integer> geslotenIdKolom;
@@ -119,6 +126,9 @@ public class GeslotenController implements Initializable {
         
         if (geslotenTableView.getSelectionModel().getSelectedItem() != null) {
             Bagage bagage = geslotenTableView.getSelectionModel().getSelectedItem();
+            
+            createClosedCSV.setDisable(false);
+            createClosedPDF.setDisable(false);
 
             gevondenDatum.setText(bagage.getGDatum());
             gevondenTijd.setText(bagage.getGTijd());
