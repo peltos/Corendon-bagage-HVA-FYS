@@ -47,6 +47,10 @@ public class StartController implements Initializable {
     Button FXGevondenDelete;
     @FXML
     Button gevondenToevoegenButton;
+    @FXML 
+    Button createFoundPdf;
+    @FXML 
+    Button createFoundCSV;
 
     @FXML
     Button editVermist;
@@ -54,6 +58,10 @@ public class StartController implements Initializable {
     Button FXVermistDelete;
     @FXML
     Button VermistToevoegenButton;
+    @FXML
+    Button createLostPdf;
+    @FXML 
+    Button createLostCSV;
 
     @FXML
     public CheckBox vermisteCheckBox;
@@ -173,17 +181,20 @@ public class StartController implements Initializable {
             Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
             selectedIdGevonden = bagage.getId();
 
+            //Vermiste buttons
             editVermist.setDisable(true);
             FXVermistDelete.setDisable(true);
+            createLostPdf.setDisable(true);
+            createLostCSV.setDisable(true);
+            
+            //Gevonden buttons
             createFoundPdf.setDisable(false);
+            createFoundCSV.setDisable(false);
+            editGevonden.setDisable(false);
+            FXGevondenDelete.setDisable(false);
 
             if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
                 buttonOvereenkomst.setDisable(false);
-            }
-
-            if (bagage.getId() != null) {
-                editGevonden.setDisable(false);
-                FXGevondenDelete.setDisable(false);
             }
 
             boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
@@ -219,17 +230,20 @@ public class StartController implements Initializable {
             Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
             selectedIdVermist = bagage.getId();
 
+            //Gevonden bagage
             editGevonden.setDisable(true);
             FXGevondenDelete.setDisable(true);
+            createFoundPdf.setDisable(true);
+            createFoundCSV.setDisable(true);
+            
+            //Vermiste bagage
             createLostPdf.setDisable(false);
+            editVermist.setDisable(false);
+            FXVermistDelete.setDisable(false);
+            createLostCSV.setDisable(false);
 
             if (selectedIdGevonden != 0 && selectedIdVermist != 0) {
                 buttonOvereenkomst.setDisable(false);
-            }
-
-            if (bagage.getId() != null) {
-                editVermist.setDisable(false);
-                FXVermistDelete.setDisable(false);
             }
 
             boolean bSelected = gevondenCheckBox.isSelected() || vermisteCheckBox.isSelected();
@@ -541,8 +555,6 @@ public class StartController implements Initializable {
             e.printStackTrace(System.err);
         }
     }
-    
-    @FXML Button createLostPdf, createFoundPdf;
     
     @FXML
     private void createLostPdf() throws IOException, DocumentException{

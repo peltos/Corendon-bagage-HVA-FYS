@@ -83,7 +83,7 @@
                                 <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                             </padding>
                         </Button>
-                  <Button layoutX="406.0" layoutY="1.0" mnemonicParsing="false" onAction="#CSVVermist">
+                  <Button fx:id="createLostCSV" disable="true" layoutX="406.0" layoutY="1.0" mnemonicParsing="false" onAction="#CSVVermist">
                      <graphic>
                         <ImageView>
                            <image>
@@ -174,7 +174,7 @@
                                 <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                             </padding>
                         </Button>
-                  <Button layoutX="410.0" mnemonicParsing="false" onAction="#CSVGevonden">
+                  <Button fx:id="createFoundCSV" disable="true" layoutX="410.0" mnemonicParsing="false" onAction="#CSVGevonden">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0">
                            <image>
