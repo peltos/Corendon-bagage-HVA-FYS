@@ -60,7 +60,8 @@ public class MainController {
     @FXML
     private Label error;
 
-    private static String dbUsername, dbPassword, MD5Password ;
+    private static String dbUsername, dbPassword, MD5Password, dbFirstName, 
+            dbInsertion, dbLastName;
     private static int dbID, dbManager;
     
     @FXML
@@ -72,15 +73,17 @@ public class MainController {
     @FXML
     private void loginCheck(ActionEvent event) throws Exception {
         
-        ResultSet result = database.executeQuery("SELECT ID, username, password, "
-                + "positie FROM testDatabase.Gebruikers;");
+        ResultSet result = database.executeQuery("SELECT * FROM testDatabase.Gebruikers;");
+        
         try {
-
             while (result.next()) {
                 dbID = result.getInt("ID");
                 dbUsername = result.getString("username");
                 dbPassword = result.getString("password");
                 dbManager = result.getInt("positie");
+                dbFirstName = result.getString("Voornaam");
+                dbInsertion = result.getString("Tussenvoegsel");
+                dbLastName = result.getString("Achternaam");
                 
                 String[] MD5 = {wachtwoord.getText()};
                 MD5 encryptie = new MD5();
@@ -123,6 +126,13 @@ public class MainController {
     }
     public String getPassword() {
         return dbPassword;
+    }
+    public static String getUserInfo() {
+        if (dbInsertion != null) {
+            return dbFirstName + " " + dbInsertion + " " + dbLastName;
+        } else {
+            return dbFirstName + " " + dbLastName;
+        }
     }
 
     public void setPassword(String dbPassword) {

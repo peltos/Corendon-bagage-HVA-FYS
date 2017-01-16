@@ -134,15 +134,16 @@ public class OvereenkomstController implements Initializable {
     
     @FXML
     private void createMatchesPDF() throws IOException, DocumentException{
+        Bagage bagage = overeenkomstTableView.getSelectionModel().getSelectedItem();
+        
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save file");
-        fileChooser.setInitialFileName("Matches.pdf");
+        fileChooser.setInitialFileName(bagage.getId() + " - Matches.pdf");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF Files (*.pdf)", "*.pdf");
         fileChooser.getExtensionFilters().add(extFilter);
         File savedFile = fileChooser.showSaveDialog(new Stage());
         
         if (savedFile != null) {
-            Bagage bagage = overeenkomstTableView.getSelectionModel().getSelectedItem();
             Form form = new Form();
             form.createMatchedPDF(savedFile.getPath(), bagage.getId());
         }

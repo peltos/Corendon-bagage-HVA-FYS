@@ -561,15 +561,16 @@ public class StartController implements Initializable {
     
     @FXML
     private void createLostPdf() throws IOException, DocumentException{
+        Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
+        
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save file");
-        fileChooser.setInitialFileName("Lost.pdf");
+        fileChooser.setInitialFileName(bagage.getId() + " - Lost.pdf");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF Files (*.pdf)", "*.pdf");
         fileChooser.getExtensionFilters().add(extFilter);
         File savedFile = fileChooser.showSaveDialog(new Stage());
         
         if (savedFile != null) {
-            Bagage bagage = vermisteTabel.getSelectionModel().getSelectedItem();
             Form form = new Form();
             form.createMissing(savedFile.getPath(), bagage.getId());
         }
@@ -577,15 +578,16 @@ public class StartController implements Initializable {
     
     @FXML
     private void createFoundPdf() throws IOException, DocumentException{
+        Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
+        
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save file");
-        fileChooser.setInitialFileName("Found.pdf");
+        fileChooser.setInitialFileName(bagage.getId() + " - Found.pdf");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF Files (*.pdf)", "*.pdf");
         fileChooser.getExtensionFilters().add(extFilter);
         File savedFile = fileChooser.showSaveDialog(new Stage());
         
         if (savedFile != null) {
-           Bagage bagage = gevondenTabel.getSelectionModel().getSelectedItem();
            Form form = new Form();
            form.createFound(savedFile.getPath(), bagage.getId()); 
         }
